@@ -1,0 +1,25 @@
+{
+    "device": "aloha/ohana (Portal 10\" Gen 1 / Portal Plus Gen 1)",
+    "api_endpoint": "ota.device_type(ota.aloha_prod.ohana.user).version(0).fullbuild(True)",
+    "target_version": 1041515800015050,
+    "base_version": 1041515800015050,
+    "file_size": 1282501712,
+    "file_checksum_sha256": "0287084025af63af4063afe2022e81a9bba52d4bd32f011614a441da5ca4297c",
+    "payload_size": 1282490033,
+    "payload_offset": 8264,
+    "file_hash_base64": "jZPmtRDorD69TpWlL0noiBqDNIfpQWgGR227RfZNrWw=",
+    "metadata_hash_base64": "rwPkQp4ZhPNSUwDx1UR0UgVsLeMoBnAlxpr6bZSZ9xA=",
+    "metadata_size": 174958,
+    "release_channel_id": "606454806863784",
+    "ota_id": "683160718186281",
+    "retrieved": "2026-02-26",
+    "notes": "Full build OTA from Facebook Graph API. Contains Android 9 system update. Should contain bootloader partitions including ABL.",
+    "marcel_intel": {
+        "early_abls_unreadable": true,
+        "later_abls_readable": true,
+        "unlock_requires_signed_response": true,
+        "gofile_link": "https://gofile.io/d/t4Hh15",
+        "gofile_contents": "LinuxLoader for terry (Portal Go) + early unreadable ABL",
+        "earlier_firmware_exploitable_but_no_downgrade": true
+    }
+}

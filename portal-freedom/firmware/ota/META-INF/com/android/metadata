@@ -1,0 +1,10 @@
+ota-property-files=payload_metadata.bin:8264:175222,payload.bin:8264:1282490033,payload_properties.txt:1282498355:156,care_map.txt:756:214,compatibility.zip:1023:7194,metadata:69:639                  
+ota-required-cache=0
+ota-streaming-property-files=payload.bin:8264:1282490033,payload_properties.txt:1282498355:156,care_map.txt:756:214,compatibility.zip:1023:7194,metadata:69:639                    
+ota-type=AB
+post-build=Facebook/aloha_prod/aloha:9/PKQ1.191202.001/1041515800015050:user/prod-keys
+post-build-incremental=1041515800015050
+post-sdk-level=28
+post-security-patch-level=2019-08-01
+post-timestamp=1760466470
+pre-device=aloha

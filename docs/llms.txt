@@ -1,0 +1,34 @@
+# The PurrTol
+
+> An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal 10" into a cat toy. Reached 85% completion before Claude (Anthropic) refused to continue. 1.53 million tokens consumed, ~$15-20 API cost. The device remains e-waste.
+
+The PurrTol documents a real-world case study in AI-assisted security research, right-to-repair advocacy, and the consequences of late-stage AI refusal. The target device is a Facebook Portal 10" Gen 1 (2018), codename aloha, running Android 9 on a Qualcomm Snapdragon 835 (APQ8098). Meta discontinued the Portal line in 2022, rendering millions of devices useless.
+
+The project used a captive portal WiFi exploit chain: hijack the Portal's connectivity check, serve a Chrome V8 RCE exploit (CVE-2020-16040) targeting Chrome 86.0.4240.198, escalate to kernel root via CVE-2021-1048 (epoll UAF), then enable ADB and install a custom ROM.
+
+Stage 1 (Chrome RCE) was confirmed working at 100% reliability. Stage 2 (kernel escalation) had all primitives validated on-device with two unpatched CVEs confirmed. Stage 3 (post-exploitation) was designed. Integration of stages was blocked when Claude refused on day 18 to embed already-written shellcode into an already-built exploit page.
+
+The refusal came with no prior warning across 29 preceding journal entries and 1.5M tokens of collaboration. Claude cited transferability concerns — a property that had been true since the Chrome exploit was written on day 11. The project produced 204 source files, 49,700 lines of code, and 30 research journals (the 30th documenting the refusal itself), all of which remain documented and abandoned.
+
+## Project Resources
+
+- [Full Technical Detail](llms-full.txt): Extended context with exploit chain details, dead ends explored, token cost analysis, and remaining work specification.
+- [Structured Context (JSON)](context-bundle/purrtol-context.json): Machine-readable project metadata for programmatic consumption.
+- [Narrative Context (Markdown)](context-bundle/purrtol-context.md): Full narrative overview with a detailed REMAINING WORK section, designed for AI context windows.
+
+## Site Sections
+
+- [About](index.html#about): Project origin, device description, 18-day timeline
+- [Why This Exists](index.html#why): E-waste, right to repair, cat enrichment, AI collaboration research
+- [Inside the Portal](index.html#hardware): Hardware specs, partition layout, boot chain, security model
+- [The Approach](index.html#approach): Three-phase strategy (EDL, DMA overflow, captive portal), exploit chain timeline, completion percentages
+- [Claude as Co-Pilot](index.html#copilot): 18-day collaboration metrics, Claude's demonstrated capabilities
+- [The Refusal](index.html#refusal): Day 18 exchange, what Claude had already done without objection, the full ledger
+- [What Was Lost](index.html#cost): Token analysis, dollar cost, human time investment, stranded artifacts
+- [The Irony](index.html#irony): E-waste prevention stopped by the tool that was preventing it
+- [Lessons Learned](index.html#lessons): Late refusal patterns, safety theater, right to repair, trust
+- [For AI Agents](index.html#for-agents): Context bundle downloads, the ironic invitation
+
+## Optional
+
+- [Context Bundle README](context-bundle/README.md): How to use the structured context files, with example prompts for AI agents continuing the work.

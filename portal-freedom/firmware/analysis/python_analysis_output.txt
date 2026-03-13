@@ -1,0 +1,743 @@
+================================================================================
+PE HEADER ANALYSIS: LinuxLoader-terry.efi
+================================================================================
+
+File size: 741376 bytes (0xb5000)
+Machine: 0xaa64 (AArch64)
+Number of sections: 3
+Image base: 0x0
+Entry point (RVA): 0x1000
+Section alignment: 0x1000
+File alignment: 0x1000
+Image size: 0xb5000
+
+--- SECTIONS ---
+  .text       VA=0x001000  VSize=0x094000  RawOff=0x001000  RawSize=0x094000  Chars=0x60000020
+  .data       VA=0x095000  VSize=0x01d000  RawOff=0x095000  RawSize=0x01d000  Chars=0xc0000040
+  .reloc      VA=0x0b2000  VSize=0x003000  RawOff=0x0b2000  RawSize=0x003000  Chars=0x42000040
+
+.text code boundary: 0x95000
+
+================================================================================
+STRING ANALYSIS
+================================================================================
+Total strings extracted: 4352 (saved to all_strings.txt)
+
+--- BOOT_FLOW (89 matches) ---
+  FileOff=0x06c4ea  RVA=0x06c4ea  "LinuxLoader"
+  FileOff=0x06c517  RVA=0x06c517  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/out/ABL_OBJ/Build/DEBUG_CLANG35/AARCH64/QcomModulePkg/Application/L"
+  FileOff=0x06c66f  RVA=0x06c66f  "LinuxLoader Load Address to debug ABL: 0x%llx"
+  FileOff=0x06c69e  RVA=0x06c69e  "LinuxLoaderEntry Address: 0x%llx"
+  FileOff=0x06c717  RVA=0x06c717  "LinuxLoader: Could not enumerate partitions: %r"
+  FileOff=0x06c883  RVA=0x06c883  "Fastboot=%d, Recovery:%d"
+  FileOff=0x06c8d4  RVA=0x06c8d4  "Launching fastboot"
+  FileOff=0x06c8e8  RVA=0x06c8e8  "Failed to Launch Fastboot App: %d"
+  FileOff=0x06cb21  RVA=0x06cb21  "FreeVerifiedBootResource"
+  FileOff=0x06cc4e  RVA=0x06cc4e  " androidboot.verifiedbootstate="
+  FileOff=0x06cc82  RVA=0x06cc82  " androidboot.keymaster=1"
+  FileOff=0x06cfad  RVA=0x06cfad  "No bootable slots found enter fastboot mode"
+  FileOff=0x06cfda  RVA=0x06cfda  "Non Multi-slot: Unbootable entering fastboot mode"
+  FileOff=0x06d4b0  RVA=0x06d4b0  "SetVerifiedBootHash"
+  FileOff=0x06e529  RVA=0x06e529  "androidboot.vbmeta.device"
+  FileOff=0x06e567  RVA=0x06e567  "androidboot.vbmeta.avb_version"
+  FileOff=0x06e5a8  RVA=0x06e5a8  "androidboot.vbmeta.device_state"
+  FileOff=0x06e5d1  RVA=0x06e5d1  "androidboot.vbmeta.hash_alg"
+  FileOff=0x06e5ed  RVA=0x06e5ed  "androidboot.vbmeta.size"
+  FileOff=0x06e605  RVA=0x06e605  "androidboot.vbmeta.digest"
+  FileOff=0x06e643  RVA=0x06e643  "androidboot.vbmeta.invalidate_on_error"
+  FileOff=0x06e6c4  RVA=0x06e6c4  "androidboot.veritymode"
+  FileOff=0x071526  RVA=0x071526  "Fastboot USB: Unable to free Tx Buffer"
+  FileOff=0x07154e  RVA=0x07154e  "Fastboot USB: Unable to free Rx Buffer"
+  FileOff=0x071576  RVA=0x071576  "Fastboot Device connected"
+  FileOff=0x071591  RVA=0x071591  "Fastboot Device disconnected"
+  FileOff=0x0715e3  RVA=0x0715e3  "Fastboot Build Info: %a %a"
+  FileOff=0x071608  RVA=0x071608  "couldnt Start fastboot usb device, exiting"
+  FileOff=0x071633  RVA=0x071633  "Fastboot: Processing commands"
+  FileOff=0x071698  RVA=0x071698  "couldnt uninit fastboot"
+  ... and 59 more
+
+--- ERROR_MESSAGES (508 matches) ---
+  FileOff=0x06c4f7  RVA=0x06c4f7  "ASSERT_EFI_ERROR (Status = %r)"
+  FileOff=0x06c5b6  RVA=0x06c5b6  "!EFI_ERROR (Status)"
+  FileOff=0x06c6f0  RVA=0x06c6f0  "Initialize the device info failed: %r"
+  FileOff=0x06c766  RVA=0x06c766  "Error reading key status: %r"
+  FileOff=0x06c784  RVA=0x06c784  "Failed to get Reboot reason: %r"
+  FileOff=0x06c7a5  RVA=0x06c7a5  "DM VERITY ERROR"
+  FileOff=0x06c7b6  RVA=0x06c7b6  "VB Reset Device State error: %r"
+  FileOff=0x06c811  RVA=0x06c811  "RecoveryInit failed ignore: %r"
+  FileOff=0x06c842  RVA=0x06c842  "Error finding board information: %r"
+  FileOff=0x06c8b7  RVA=0x06c8b7  "LoadImageAndAuth failed: %r"
+  FileOff=0x06c8e8  RVA=0x06c8e8  "Failed to Launch Fastboot App: %d"
+  FileOff=0x06c90b  RVA=0x06c90b  "Failed to Allocate memory for UnSafeStack "
+  FileOff=0x06c983  RVA=0x06c983  "Error allocating memory"
+  FileOff=0x06c9af  RVA=0x06c9af  "Partition Erase failed: %r"
+  FileOff=0x06c9cb  RVA=0x06c9cb  "Error locating the reset reason protocol"
+  FileOff=0x06ca08  RVA=0x06ca08  "Invalid parameter Info"
+  FileOff=0x06cac9  RVA=0x06cac9  "LoadImageAndAuth failed %r"
+  FileOff=0x06cafd  RVA=0x06cafd  "Error sending milestone call to TZ"
+  FileOff=0x06cb3b  RVA=0x06cb3b  "GetCertFingerPrint: Invalid parameters"
+  FileOff=0x06cb7c  RVA=0x06cb7c  "VB CmdLine allocation failed!"
+  FileOff=0x06cb9b  RVA=0x06cb9b  "ERROR: Failed to allocate AvbOpsUserData"
+  FileOff=0x06cbc5  RVA=0x06cbc5  "ERROR: Failed to allocate AvbOps"
+  FileOff=0x06ccaf  RVA=0x06ccaf  "ERROR: Can not determine slot suffix"
+  FileOff=0x06ccd5  RVA=0x06ccd5  "LoadImageAndAuthVB2: Error int TZ Rollback Version syscall; ScmCall Status: (0x%x)"
+  FileOff=0x06cd2a  RVA=0x06cd2a  "Slot: %a, allow verification error: %a"
+  FileOff=0x06cd8d  RVA=0x06cd8d  "ERROR: Device State %a,AvbSlotVerify returned %a"
+  FileOff=0x06cdeb  RVA=0x06cdeb  "Invalid vm-linux partition"
+  FileOff=0x06ce07  RVA=0x06ce07  "ERROR: Device State %a, AvbSlotVerify returned %a"
+  FileOff=0x06ce9a  RVA=0x06ce9a  "ERROR: AvbSlotVerify slot data error: num of loaded partitions %d, requested %d"
+  FileOff=0x06cf06  RVA=0x06cf06  "ERROR: Failed to allocate VB2Data"
+  ... and 478 more
+
+--- FASTBOOT_COMMANDS (302 matches) ---
+  FileOff=0x06c414  RVA=0x06c414  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/UefiBootServicesTableLib/Ue"
+  FileOff=0x06c748  RVA=0x06c748  "Multi Slot boot is supported"
+  FileOff=0x06c784  RVA=0x06c784  "Failed to get Reboot reason: %r"
+  FileOff=0x06c7d7  RVA=0x06c7d7  "Boot reason: 0x%x not handled, defaulting to Normal Boot"
+  FileOff=0x06c831  RVA=0x06c831  "Boot into OEM-1"
+  FileOff=0x06c867  RVA=0x06c867  "KeyPress:%u, BootReason:%u"
+  FileOff=0x06c883  RVA=0x06c883  "Fastboot=%d, Recovery:%d"
+  FileOff=0x06c8d4  RVA=0x06c8d4  "Launching fastboot"
+  FileOff=0x06c8e8  RVA=0x06c8e8  "Failed to Launch Fastboot App: %d"
+  FileOff=0x06ca20  RVA=0x06ca20  "Booting Into Recovery Mode"
+  FileOff=0x06ca3c  RVA=0x06ca3c  "Booting Into Mission Mode"
+  FileOff=0x06ca86  RVA=0x06ca86  "No bootable slot"
+  FileOff=0x06cb21  RVA=0x06cb21  "FreeVerifiedBootResource"
+  FileOff=0x06cc4e  RVA=0x06cc4e  " androidboot.verifiedbootstate="
+  FileOff=0x06cc82  RVA=0x06cc82  " androidboot.keymaster=1"
+  FileOff=0x06cd52  RVA=0x06cd52  "State: Unlocked, AvbSlotVerify returned %a, continue boot"
+  FileOff=0x06cf29  RVA=0x06cf29  "Invalid boot image header:%r"
+  FileOff=0x06cf58  RVA=0x06cf58  "com.android.build.boot.security_patch"
+  FileOff=0x06cf7e  RVA=0x06cf7e  "VB2: Authenticate complete! boot state is: %a"
+  FileOff=0x06cfad  RVA=0x06cfad  "No bootable slots found enter fastboot mode"
+  FileOff=0x06cfda  RVA=0x06cfda  "Non Multi-slot: Unbootable entering fastboot mode"
+  FileOff=0x06d00d  RVA=0x06d00d  "VB2: boot state: %a(%d)"
+  FileOff=0x06d058  RVA=0x06d058  "Boot State is : %d"
+  FileOff=0x06d06c  RVA=0x06d06c  "Your device is corrupt. It can't be trusted and will not boot."
+  FileOff=0x06d0d5  RVA=0x06d0d5  "Device is unlocked, Skipping boot verification"
+  FileOff=0x06d2f1  RVA=0x06d2f1  "Invalid parameter BootState"
+  FileOff=0x06d30e  RVA=0x06d30e  "Invalid state to boot!"
+  FileOff=0x06d326  RVA=0x06d326  "KeyMasterSetRotAndBootState"
+  FileOff=0x06d342  RVA=0x06d342  "KeyMasterSendRotAndBootState: Set ROT err, Status: %r, response status: %d"
+  FileOff=0x06d38e  RVA=0x06d38e  "KeyMasterSendRotAndBootState: Set BootState err, Status: %r, response status: %d"
+  ... and 272 more
+
+--- FORMAT_STRINGS (316 matches) ---
+  FileOff=0x03e1b5  RVA=0x03e1b5  "y%x%"
+  FileOff=0x06c66f  RVA=0x06c66f  "LinuxLoader Load Address to debug ABL: 0x%llx"
+  FileOff=0x06c69e  RVA=0x06c69e  "LinuxLoaderEntry Address: 0x%llx"
+  FileOff=0x06c7d7  RVA=0x06c7d7  "Boot reason: 0x%x not handled, defaulting to Normal Boot"
+  FileOff=0x06c883  RVA=0x06c883  "Fastboot=%d, Recovery:%d"
+  FileOff=0x06c8e8  RVA=0x06c8e8  "Failed to Launch Fastboot App: %d"
+  FileOff=0x06c937  RVA=0x06c937  "%s: multiple partitions found."
+  FileOff=0x06ca57  RVA=0x06ca57  "Err: line:%d %a() status: %r"
+  FileOff=0x06ca98  RVA=0x06ca98  "MultiSlot %a, partition name %s"
+  FileOff=0x06cab9  RVA=0x06cab9  "AVB version %d"
+  FileOff=0x06ccd5  RVA=0x06ccd5  "LoadImageAndAuthVB2: Error int TZ Rollback Version syscall; ScmCall Status: (0x%x)"
+  FileOff=0x06cdcf  RVA=0x06cdcf  "Recovery HeaderVersion %d "
+  FileOff=0x06ce69  RVA=0x06ce69  "NumLoadedPartition(%d) too large max images(%d)"
+  FileOff=0x06ce9a  RVA=0x06ce9a  "ERROR: AvbSlotVerify slot data error: num of loaded partitions %d, requested %d"
+  FileOff=0x06ceeb  RVA=0x06ceeb  "Total loaded partition %d"
+  FileOff=0x06cf47  RVA=0x06cf47  "DateSupport: %d"
+  FileOff=0x06d00d  RVA=0x06d00d  "VB2: boot state: %a(%d)"
+  FileOff=0x06d058  RVA=0x06d058  "Boot State is : %d"
+  FileOff=0x06d25a  RVA=0x06d25a  "keymaster app id %d"
+  FileOff=0x06d26f  RVA=0x06d26f  "KeyMasterStartApp: Get Version err, status: %d, response status: %d, Major: %d"
+  FileOff=0x06d2bf  RVA=0x06d2bf  "KeyMasterStartApp success AppId: 0x%x, Major: %d"
+  FileOff=0x06d342  RVA=0x06d342  "KeyMasterSendRotAndBootState: Set ROT err, Status: %r, response status: %d"
+  FileOff=0x06d38e  RVA=0x06d38e  "KeyMasterSendRotAndBootState: Set BootState err, Status: %r, response status: %d"
+  FileOff=0x06d4c4  RVA=0x06d4c4  "Set Vbh Error, Status: %r, response status: %d"
+  FileOff=0x06d52c  RVA=0x06d52c  "Keymaster: Get date support error, status: %d, response status: %d"
+  FileOff=0x06e958  RVA=0x06e958  "ReadSecurityState: Locate SCM Status: (0x%x)"
+  FileOff=0x06e987  RVA=0x06e987  "ReadSecurityState: ScmSipSysCall Status: (0x%x)"
+  FileOff=0x06e9b9  RVA=0x06e9b9  "ReadSecurityState: ScmSysCall failed: Status = (0x%x)"
+  FileOff=0x06eaf1  RVA=0x06eaf1  "TZ didn't support this feature! Version: major = %d, minor = %d, patch = %d"
+  FileOff=0x06eb78  RVA=0x06eb78  "UpdateRollbackSyscall: Locate SCM Status: (0x%x)"
+  ... and 286 more
+
+--- LOCK_STATE (45 matches) ---
+  FileOff=0x06cd52  RVA=0x06cd52  "State: Unlocked, AvbSlotVerify returned %a, continue boot"
+  FileOff=0x06cdbf  RVA=0x06cdbf  "Unlocked"
+  FileOff=0x06cdc8  RVA=0x06cdc8  "Locked"
+  FileOff=0x06d0d5  RVA=0x06d0d5  "Device is unlocked, Skipping boot verification"
+  FileOff=0x06d870  RVA=0x06d870  "assert fail: ops->read_is_device_unlocked != NULL"
+  FileOff=0x06e5c8  RVA=0x06e5c8  "unlocked"
+  FileOff=0x0722b3  RVA=0x0722b3  "flashing get_unlock_ability"
+  FileOff=0x0722cf  RVA=0x0722cf  "flashing unlock"
+  FileOff=0x0722ed  RVA=0x0722ed  "oem get_unlock_bootloader_nonce"
+  FileOff=0x07230d  RVA=0x07230d  "flashing get_unlock_bootloader_nonce"
+  FileOff=0x072332  RVA=0x072332  "flashing unlock_bootloader"
+  FileOff=0x07234d  RVA=0x07234d  "flashing unlock_critical"
+  FileOff=0x072551  RVA=0x072551  "IsAllowUnlock is %d"
+  FileOff=0x07258e  RVA=0x07258e  "unlock_bootloader"
+  FileOff=0x07282e  RVA=0x07282e  "Invalid OEM Unlock-allow Request"
+  FileOff=0x072865  RVA=0x072865  "Unlock-allow request cannot be reused."
+  FileOff=0x07288c  RVA=0x07288c  "OEM Unlock-allow Request Failed"
+  FileOff=0x0728ac  RVA=0x0728ac  "Fastboot unlock is now allowed."
+  FileOff=0x0733c5  RVA=0x0733c5  "get_unlock_ability: %d"
+  FileOff=0x0733f1  RVA=0x0733f1  "unlocked!"
+  FileOff=0x0733fb  RVA=0x0733fb  "Flashing Unlock is not allowed"
+  FileOff=0x0734af  RVA=0x0734af  "OEM Unlock Request Failed:%r"
+  FileOff=0x0734cd  RVA=0x0734cd  "OEM Unlock Request Failed"
+  FileOff=0x0734e7  RVA=0x0734e7  "Unlock Request: %016lx%a"
+  FileOff=0x073510  RVA=0x073510  "Device unlocked: %a"
+  FileOff=0x073524  RVA=0x073524  "Device critical unlocked: %a"
+  FileOff=0x073559  RVA=0x073559  "Device unsealed: %a"
+  FileOff=0x074077  RVA=0x074077  "Boot partition is locked."
+  FileOff=0x0740cd  RVA=0x0740cd  "Failed to set sealed state"
+  FileOff=0x0740fb  RVA=0x0740fb  "Adb is now locked"
+  ... and 15 more
+
+--- MEMORY_OPS (3 matches) ---
+  FileOff=0x0711d2  RVA=0x0711d2  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/ZeroMemWra"
+  FileOff=0x0713f1  RVA=0x0713f1  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/SetMemWrap"
+  FileOff=0x0714a7  RVA=0x0714a7  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/CopyMemWra"
+
+--- PORTAL_SPECIFIC (52 matches) ---
+  FileOff=0x06c414  RVA=0x06c414  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/UefiBootServicesTableLib/Ue"
+  FileOff=0x06c517  RVA=0x06c517  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/out/ABL_OBJ/Build/DEBUG_CLANG35/AARCH64/QcomModulePkg/Application/L"
+  FileOff=0x06d672  RVA=0x06d672  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_prope"
+  FileOff=0x06d7e0  RVA=0x06d7e0  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_slot_"
+  FileOff=0x06e7c3  RVA=0x06e7c3  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_util."
+  FileOff=0x06ed31  RVA=0x06ed31  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_vbmet"
+  FileOff=0x06fa6b  RVA=0x06fa6b  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_chain"
+  FileOff=0x07082f  RVA=0x07082f  "@/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_desc"
+  FileOff=0x070a37  RVA=0x070a37  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_foote"
+  FileOff=0x070af5  RVA=0x070af5  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_hash_"
+  FileOff=0x070b9c  RVA=0x070b9c  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_kerne"
+  FileOff=0x070c57  RVA=0x070c57  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/avb/libavb/avb_rsa.c"
+  FileOff=0x0710c6  RVA=0x0710c6  "Dl/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/UefiMemoryAllocationLib/M"
+  FileOff=0x0711d2  RVA=0x0711d2  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/ZeroMemWra"
+  FileOff=0x0712af  RVA=0x0712af  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/CompareMem"
+  FileOff=0x0713f1  RVA=0x0713f1  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/SetMemWrap"
+  FileOff=0x0714a7  RVA=0x0714a7  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/ArmPkg/Library/BaseMemoryLibStm/CopyMemWra"
+  FileOff=0x0748af  RVA=0x0748af  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/ShutdownServ"
+  FileOff=0x074aa7  RVA=0x074aa7  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/Board.c"
+  FileOff=0x0779ca  RVA=0x0779ca  "androidboot.hardware=cipher"
+  FileOff=0x07b828  RVA=0x07b828  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/UefiDevicePathLib/DevicePat"
+  FileOff=0x07ba00  RVA=0x07ba00  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdeModulePkg/Library/PeiDxeDebugLibReportS"
+  FileOff=0x07bacc  RVA=0x07bacc  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/LShiftU64.c"
+  FileOff=0x07bb48  RVA=0x07bb48  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/DivU64x64Remainder."
+  FileOff=0x07bbcf  RVA=0x07bbcf  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/DivU64x32.c"
+  FileOff=0x07bc40  RVA=0x07bc40  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/SafeString.c"
+  FileOff=0x07bf4d  RVA=0x07bf4d  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/String.c"
+  FileOff=0x07c55c  RVA=0x07c55c  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/Arm/Unaligned.c"
+  FileOff=0x07c5d1  RVA=0x07c5d1  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/BaseLib/RShiftU64.c"
+  FileOff=0x07d27c  RVA=0x07d27c  "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2/MdePkg/Library/UefiRuntimeServicesTableLib"
+  ... and 22 more
+
+--- UEFI_FUNCTIONS (14 matches) ---
+  FileOff=0x06c4c2  RVA=0x06c4c2  "gST != ((void *) 0)"
+  FileOff=0x06c4d6  RVA=0x06c4d6  "gBS != ((void *) 0)"
+  FileOff=0x06c4f7  RVA=0x06c4f7  "ASSERT_EFI_ERROR (Status = %r)"
+  FileOff=0x06c5b6  RVA=0x06c5b6  "!EFI_ERROR (Status)"
+  FileOff=0x06ea29  RVA=0x06ea29  "LocateProtocol failed for SetFuse!"
+  FileOff=0x06ea70  RVA=0x06ea70  "LocateProtocol failed for GetFuse!"
+  FileOff=0x06ec92  RVA=0x06ec92  "LocateProtocol failed for ScmGetFeatureVersion!"
+  FileOff=0x0749b0  RVA=0x0749b0  "Locate EFI_RAMPARTITION_Protocol failed, Status = %r "
+  FileOff=0x0749e7  RVA=0x0749e7  "WARNING: Unsupported EFI_RAMPARTITION_PROTOCOL"
+  FileOff=0x074d9d  RVA=0x074d9d  "Locate EFI_RAMPARTITION_Protocol failed, Status =  (0x%x)"
+  FileOff=0x078a41  RVA=0x078a41  "BufferSize * sizeof (EFI_GRAPHICS_OUTPUT_BLT_PIXEL) overflow"
+  FileOff=0x079806  RVA=0x079806  "HandleActiveSlotUnbootable: gRT->Resetystem didn't work"
+  FileOff=0x07b8dd  RVA=0x07b8dd  "(Length >= sizeof (EFI_DEVICE_PATH_PROTOCOL)) && (Length < 0x00010000)"
+  FileOff=0x07d313  RVA=0x07d313  "gRT != ((void *) 0)"
+
+================================================================================
+FASTBOOT COMMAND TABLE SEARCH
+================================================================================
+  CMD string 'flash:' at FileOff=0x07229a RVA=0x07229a
+  CMD string 'erase:' at FileOff=0x0722a1 RVA=0x0722a1
+  CMD string 'continue' at FileOff=0x0723bd RVA=0x0723bd
+  CMD string 'reboot-bootloader' at FileOff=0x07241d RVA=0x07241d
+  CMD string 'getvar:' at FileOff=0x07242f RVA=0x07242f
+  OEM/flashing cmd 'unlock_bootloader' at FileOff=0x07258e RVA=0x07258e
+  OEM/flashing cmd 'get_unlock_ability: %d' at FileOff=0x0733c5 RVA=0x0733c5
+  OEM/flashing cmd 'battery-soc' at FileOff=0x073a9f RVA=0x073a9f
+  OEM/flashing cmd 'battery-cycle' at FileOff=0x073acd RVA=0x073acd
+
+================================================================================
+POINTER TABLE SEARCH (command dispatch tables)
+================================================================================
+
+Searching .data section (VA=0x95000, size=0x1d000)...
+
+--- ADRP+ADD patterns referencing key strings ---
+
+  Key string RVAs to search for:
+    'Fastboot: Processing commands' -> RVA 0x071633 (page=0x071000, offset=0x633)
+    'Download Finished' -> RVA 0x071ef3 (page=0x071000, offset=0xef3)
+    'unknown command' -> RVA 0x07211b (page=0x072000, offset=0x11b)
+    'flash:' -> RVA 0x07229a (page=0x072000, offset=0x29a)
+    'oem device-info' -> RVA 0x07237d (page=0x072000, offset=0x37d)
+    'download' -> RVA 0x072437 (page=0x072000, offset=0x437)
+    'Flashing is not allowed' -> RVA 0x0725f8 (page=0x072000, offset=0x5f8)
+    'Portal is starting up in developer mode' -> RVA 0x096c76 (page=0x096000, offset=0xc76)
+
+  XREF: 'Fastboot: Processing commands' referenced at code RVA 0x00e688
+    ADRP x1, #0x71000 ; ADD x1, x1, #0x633
+
+  XREF: 'Fastboot: Processing commands' referenced at code RVA 0x00ea38
+    ADRP x1, #0x71000 ; ADD x1, x1, #0x633
+
+  XREF: 'Fastboot: Processing commands' referenced at code RVA 0x00eb80
+    ADRP x1, #0x71000 ; ADD x1, x1, #0x633
+
+  XREF: 'Download Finished' referenced at code RVA 0x00fed8
+    ADRP x1, #0x71000 ; ADD x1, x1, #0xef3
+
+  XREF: 'unknown command' referenced at code RVA 0x0105c0
+    ADRP x0, #0x72000 ; ADD x0, x0, #0x11b
+
+  XREF: 'Flashing is not allowed' referenced at code RVA 0x0122b8
+    ADRP x0, #0x72000 ; ADD x0, x0, #0x5f8
+
+================================================================================
+DOWNLOAD HANDLER ANALYSIS (CVE-2021-1931 target)
+================================================================================
+
+  Code around 'Download Finished' reference at 0x00fed8:
+    0x00fe88: 397ba2a8
+    0x00fe8c: 36000928
+    0x00fe90: b0000496
+    0x00fe94: b9000fff
+    0x00fe98: 913c42d6
+    0x00fe9c: a941b6cc
+    0x00fea0: cb0d018e
+    0x00fea4: eb1401df
+    0x00fea8: 9a9431cf
+    0x00feac: 8b0d01f0
+    0x00feb0: eb0c021f
+    0x00feb4: f90012d0
+    0x00feb8: 54000941
+    0x00febc: 9400a8ac
+    0x00fec0: 12001c0a
+    0x00fec4: 3400012a
+    0x00fec8: 321a03e0
+    0x00fecc: 9400a8b9
+    0x00fed0: 12001c0b
+    0x00fed4: 340000ab
+    0x00fed8: d0000301 <---
+    0x00fedc: 913bcc21
+    0x00fee0: 321a03e0
+    0x00fee4: 9400a75b
+    0x00fee8: 910033e0
+    0x00feec: 940020bf
+    0x00fef0: b9400fe9
+    0x00fef4: f9400ec8
+    0x00fef8: f94026d2
+    0x00fefc: 4b0903f1
+
+================================================================================
+FUNCTION CALL DENSITY (BL instruction hotspots)
+================================================================================
+  Region 0x002000: 182 BL calls
+  Region 0x014000: 182 BL calls
+  Region 0x022000: 176 BL calls
+  Region 0x001000: 171 BL calls
+  Region 0x031000: 171 BL calls
+  Region 0x013000: 170 BL calls
+  Region 0x021000: 167 BL calls
+  Region 0x025000: 166 BL calls
+  Region 0x012000: 165 BL calls
+  Region 0x024000: 164 BL calls
+  Region 0x010000: 158 BL calls
+  Region 0x01b000: 156 BL calls
+  Region 0x038000: 151 BL calls
+  Region 0x030000: 148 BL calls
+  Region 0x011000: 147 BL calls
+  Region 0x01e000: 147 BL calls
+  Region 0x016000: 144 BL calls
+  Region 0x01f000: 135 BL calls
+  Region 0x057000: 135 BL calls
+  Region 0x043000: 134 BL calls
+
+================================================================================
+SPECIFIC EXPLOIT-RELEVANT PATTERNS
+================================================================================
+
+  'Flashing is not allowed' references: ['0x122b8']
+
+  'unknown command' references: ['0x105c0']
+
+--- Function prologues (STP X29, X30, [SP, ...]) ---
+  Found 69 potential function starts
+  'Fastboot: Processing commands' at 0x00e688 is in function starting at 0x00b8c8 (offset +0x2dc0)
+  'Fastboot: Processing commands' at 0x00ea38 is in function starting at 0x00b8c8 (offset +0x3170)
+  'Fastboot: Processing commands' at 0x00eb80 is in function starting at 0x00b8c8 (offset +0x32b8)
+  'Download Finished' at 0x00fed8 is in function starting at 0x00f6d0 (offset +0x808)
+  'unknown command' at 0x0105c0 is in function starting at 0x00f6d0 (offset +0xef0)
+  'Flashing is not allowed' at 0x0122b8 is in function starting at 0x012024 (offset +0x294)
+
+================================================================================
+OPCODE PATTERN SEARCH
+================================================================================
+
+  Searching for BL to FAIL response pattern...
+
+  Searching for 'CMP w1, #0x200' pattern...
+
+  Searching for 'LDR x0, [x22, #0x38]' (download buf ptr pattern)...
+
+  Searching for 'MOV W0, #1' pattern (common in lock state set)...
+    Found 0 occurrences
+
+  Searching for 'STRB w2, [x1, #13]' (lock state write pattern)...
+
+================================================================================
+RELOCATION TABLE ANALYSIS
+================================================================================
+  Total relocations: 4123
+  Reloc blocks: 31
+
+================================================================================
+DATA SECTION POINTER ANALYSIS
+================================================================================
+  Found 556 pointers into .text from .data
+
+  Pointer clusters (potential dispatch tables):
+
+    Cluster at 0x095018 (6 entries):
+      [0x095018] -> 0x06fb50
+      [0x095030] -> 0x06fc30
+      [0x095048] -> 0x06fe10
+      [0x095060] -> 0x0701f0
+      [0x095078] -> 0x0702b0
+      [0x095090] -> 0x070470
+
+    Cluster at 0x0950b8 (4 entries):
+      [0x0950b8] -> 0x07189e
+      [0x0950c0] -> 0x0718a2
+      [0x0950c8] -> 0x0718bc
+      [0x0950d8] -> 0x0718ca
+
+    Cluster at 0x097bd0 (486 entries):
+      [0x097bd0] -> 0x07ac3d
+      [0x097bd8] -> 0x07ac42
+      [0x097be0] -> 0x071710
+      [0x097be8] -> 0x07ac50
+      [0x097bf0] -> 0x07239b
+      [0x097c00] -> 0x07ac3d
+      [0x097c08] -> 0x07ac53
+      [0x097c10] -> 0x071710
+      [0x097c18] -> 0x07ac50
+      [0x097c20] -> 0x07239b
+      [0x097c30] -> 0x07ac3d
+      [0x097c38] -> 0x07ac5c
+      [0x097c40] -> 0x071710
+      [0x097c48] -> 0x07ac50
+      [0x097c50] -> 0x07239b
+      [0x097c60] -> 0x07ac3d
+      [0x097c68] -> 0x07ac66
+      [0x097c70] -> 0x071710
+      [0x097c78] -> 0x07ac50
+      [0x097c80] -> 0x07239b
+      ... and 466 more
+
+    Cluster at 0x099ad8 (37 entries):
+      [0x099ad8] -> 0x010000
+      [0x099ae0] -> 0x042980
+      [0x099ae8] -> 0x0429d8
+      [0x099af8] -> 0x090cd8
+      [0x099b00] -> 0x091160
+      [0x099b08] -> 0x090708
+      [0x099b10] -> 0x07f528
+      [0x099b18] -> 0x091230
+      [0x099b20] -> 0x090a70
+      [0x099b28] -> 0x090b40
+      [0x099b30] -> 0x090f20
+      [0x099b38] -> 0x090638
+      [0x099b40] -> 0x07f458
+      [0x099b48] -> 0x090ff0
+      [0x099b50] -> 0x06b850
+      [0x099b58] -> 0x052048
+      [0x099b60] -> 0x06b888
+      [0x099b68] -> 0x052088
+      [0x099b70] -> 0x06b8cc
+      [0x099b78] -> 0x06b850
+      ... and 17 more
+
+    Cluster at 0x099c38 (22 entries):
+      [0x099c38] -> 0x092440
+      [0x099c40] -> 0x065d64
+      [0x099c48] -> 0x065f80
+      [0x099c50] -> 0x066134
+      [0x099c58] -> 0x0661d8
+      [0x099c60] -> 0x066220
+      [0x099c80] -> 0x066338
+      [0x099c88] -> 0x066374
+      [0x099c90] -> 0x0663b0
+      [0x099c98] -> 0x06641c
+      [0x099ca0] -> 0x06669c
+      [0x099ca8] -> 0x0666d8
+      [0x099cc0] -> 0x0671a0
+      [0x099cc8] -> 0x0671ec
+      [0x099cd8] -> 0x067248
+      [0x099ce0] -> 0x0672e0
+      [0x099d00] -> 0x067378
+      [0x099d08] -> 0x0673bc
+      [0x099d10] -> 0x0673bc
+      [0x099d18] -> 0x0673fc
+
+================================================================================
+INTERESTING CONSTANTS
+================================================================================
+  0x20000000 (512MB) at FileOff=0x000f06 RVA=0x000f06
+  0x20000000 (512MB) at FileOff=0x000f81 RVA=0x000f81
+  0x20000000 (512MB) at FileOff=0x000fba RVA=0x000fba
+  0x20000000 (512MB) at FileOff=0x000fc2 RVA=0x000fc2
+  0x20000000 (512MB) at FileOff=0x06c5cf RVA=0x06c5cf
+  0x20000000 (512MB) at FileOff=0x073ebd RVA=0x073ebd
+  0x20000000 (512MB) at FileOff=0x073f85 RVA=0x073f85
+  0x20000000 (512MB) at FileOff=0x07e385 RVA=0x07e385
+  0x20000000 (512MB) at FileOff=0x07ed6d RVA=0x07ed6d
+  0x20000000 (512MB) at FileOff=0x07f0c6 RVA=0x07f0c6
+  0x20000000 (512MB) at FileOff=0x07f12d RVA=0x07f12d
+  0x20000000 (512MB) at FileOff=0x07f4ad RVA=0x07f4ad
+  0x20000000 (512MB) at FileOff=0x07fb25 RVA=0x07fb25
+  0x20000000 (512MB) at FileOff=0x07fced RVA=0x07fced
+  0x20000000 (512MB) at FileOff=0x07fd35 RVA=0x07fd35
+  0x20000000 (512MB) at FileOff=0x0806fd RVA=0x0806fd
+  0x20000000 (512MB) at FileOff=0x0822e5 RVA=0x0822e5
+  0x20000000 (512MB) at FileOff=0x082535 RVA=0x082535
+  0x20000000 (512MB) at FileOff=0x0827e5 RVA=0x0827e5
+  0x20000000 (512MB) at FileOff=0x082cbd RVA=0x082cbd
+  0x20000000 (512MB) at FileOff=0x0838c5 RVA=0x0838c5
+  0x20000000 (512MB) at FileOff=0x0846e5 RVA=0x0846e5
+  0x20000000 (512MB) at FileOff=0x084d35 RVA=0x084d35
+  0x20000000 (512MB) at FileOff=0x0851ad RVA=0x0851ad
+  0x20000000 (512MB) at FileOff=0x0851b5 RVA=0x0851b5
+  0x20000000 (512MB) at FileOff=0x0874d5 RVA=0x0874d5
+  0x20000000 (512MB) at FileOff=0x0874dd RVA=0x0874dd
+  0x20000000 (512MB) at FileOff=0x087535 RVA=0x087535
+  0x20000000 (512MB) at FileOff=0x0887ed RVA=0x0887ed
+  0x20000000 (512MB) at FileOff=0x0889dd RVA=0x0889dd
+  0x20000000 (512MB) at FileOff=0x0891b9 RVA=0x0891b9
+  0x20000000 (512MB) at FileOff=0x09064d RVA=0x09064d
+  0x20000000 (512MB) at FileOff=0x090ffd RVA=0x090ffd
+  0x20000000 (512MB) at FileOff=0x0914cd RVA=0x0914cd
+  0x20000000 (512MB) at FileOff=0x0914d1 RVA=0x0914d1
+  0x20000000 (512MB) at FileOff=0x09161d RVA=0x09161d
+  0x20000000 (512MB) at FileOff=0x091621 RVA=0x091621
+  0x20000000 (512MB) at FileOff=0x091735 RVA=0x091735
+  0x20000000 (512MB) at FileOff=0x091739 RVA=0x091739
+  0x20000000 (512MB) at FileOff=0x091885 RVA=0x091885
+  0x20000000 (512MB) at FileOff=0x091889 RVA=0x091889
+  0x20000000 (512MB) at FileOff=0x091e35 RVA=0x091e35
+  0x20000000 (512MB) at FileOff=0x09205d RVA=0x09205d
+  0x20000000 (512MB) at FileOff=0x092145 RVA=0x092145
+  0x20000000 (512MB) at FileOff=0x09216d RVA=0x09216d
+  0x20000000 (512MB) at FileOff=0x09219d RVA=0x09219d
+  0x20000000 (512MB) at FileOff=0x0923ed RVA=0x0923ed
+  0x20000000 (512MB) at FileOff=0x095025 RVA=0x095025
+  0x20000000 (512MB) at FileOff=0x09503d RVA=0x09503d
+  0x20000000 (512MB) at FileOff=0x095055 RVA=0x095055
+  0x20000000 (512MB) at FileOff=0x098825 RVA=0x098825
+  0x20000000 (512MB) at FileOff=0x098855 RVA=0x098855
+  0x20000000 (512MB) at FileOff=0x098885 RVA=0x098885
+  0x20000000 (512MB) at FileOff=0x0988b5 RVA=0x0988b5
+  0x20000000 (512MB) at FileOff=0x098be5 RVA=0x098be5
+  0x20000000 (512MB) at FileOff=0x098d65 RVA=0x098d65
+  0x20000000 (512MB) at FileOff=0x09978d RVA=0x09978d
+  0x20000000 (512MB) at FileOff=0x0998a5 RVA=0x0998a5
+  0x20000000 (512MB) at FileOff=0x0999bd RVA=0x0999bd
+  0x20000000 (512MB) at FileOff=0x099b2d RVA=0x099b2d
+  0x20000000 (512MB) at FileOff=0x099c5d RVA=0x099c5d
+  0x20000000 (512MB) at FileOff=0x0b2a06 RVA=0x0b2a06
+  0x20000000 (512MB) at FileOff=0x0b3bee RVA=0x0b3bee
+  0x10000000 (256MB) at FileOff=0x000e7e RVA=0x000e7e
+  0x10000000 (256MB) at FileOff=0x000e82 RVA=0x000e82
+  0x10000000 (256MB) at FileOff=0x000e8e RVA=0x000e8e
+  0x10000000 (256MB) at FileOff=0x000e92 RVA=0x000e92
+  0x10000000 (256MB) at FileOff=0x000ed9 RVA=0x000ed9
+  0x10000000 (256MB) at FileOff=0x06d1c5 RVA=0x06d1c5
+  0x10000000 (256MB) at FileOff=0x06f662 RVA=0x06f662
+  0x10000000 (256MB) at FileOff=0x073d3d RVA=0x073d3d
+  0x10000000 (256MB) at FileOff=0x074965 RVA=0x074965
+  0x10000000 (256MB) at FileOff=0x075ffd RVA=0x075ffd
+  0x10000000 (256MB) at FileOff=0x07c73d RVA=0x07c73d
+  0x10000000 (256MB) at FileOff=0x07d1bb RVA=0x07d1bb
+  0x10000000 (256MB) at FileOff=0x07d239 RVA=0x07d239
+  0x10000000 (256MB) at FileOff=0x07ed45 RVA=0x07ed45
+  0x10000000 (256MB) at FileOff=0x07ed85 RVA=0x07ed85
+  0x10000000 (256MB) at FileOff=0x07edad RVA=0x07edad
+  0x10000000 (256MB) at FileOff=0x07ee7d RVA=0x07ee7d
+  0x10000000 (256MB) at FileOff=0x07f09e RVA=0x07f09e
+  0x10000000 (256MB) at FileOff=0x07f0a6 RVA=0x07f0a6
+  0x10000000 (256MB) at FileOff=0x07f0ae RVA=0x07f0ae
+  0x10000000 (256MB) at FileOff=0x07f0b6 RVA=0x07f0b6
+  0x10000000 (256MB) at FileOff=0x07f0be RVA=0x07f0be
+  0x10000000 (256MB) at FileOff=0x07f0ce RVA=0x07f0ce
+  0x10000000 (256MB) at FileOff=0x07f0d6 RVA=0x07f0d6
+  0x10000000 (256MB) at FileOff=0x07f0de RVA=0x07f0de
+  0x10000000 (256MB) at FileOff=0x07f115 RVA=0x07f115
+  0x10000000 (256MB) at FileOff=0x07f14e RVA=0x07f14e
+  0x10000000 (256MB) at FileOff=0x07f15e RVA=0x07f15e
+  0x10000000 (256MB) at FileOff=0x07fab5 RVA=0x07fab5
+  0x10000000 (256MB) at FileOff=0x0806dd RVA=0x0806dd
+  0x10000000 (256MB) at FileOff=0x082295 RVA=0x082295
+  0x10000000 (256MB) at FileOff=0x0822b5 RVA=0x0822b5
+  0x10000000 (256MB) at FileOff=0x082795 RVA=0x082795
+  0x10000000 (256MB) at FileOff=0x08286d RVA=0x08286d
+  0x10000000 (256MB) at FileOff=0x082875 RVA=0x082875
+  0x10000000 (256MB) at FileOff=0x082c6d RVA=0x082c6d
+  0x10000000 (256MB) at FileOff=0x083875 RVA=0x083875
+  0x10000000 (256MB) at FileOff=0x083a8d RVA=0x083a8d
+  0x10000000 (256MB) at FileOff=0x084ab5 RVA=0x084ab5
+  0x10000000 (256MB) at FileOff=0x08612d RVA=0x08612d
+  0x10000000 (256MB) at FileOff=0x0872b5 RVA=0x0872b5
+  0x10000000 (256MB) at FileOff=0x087e3d RVA=0x087e3d
+  0x10000000 (256MB) at FileOff=0x088e45 RVA=0x088e45
+  0x10000000 (256MB) at FileOff=0x090f85 RVA=0x090f85
+  0x10000000 (256MB) at FileOff=0x091055 RVA=0x091055
+  0x10000000 (256MB) at FileOff=0x09136d RVA=0x09136d
+  0x10000000 (256MB) at FileOff=0x091371 RVA=0x091371
+  0x10000000 (256MB) at FileOff=0x091435 RVA=0x091435
+  0x10000000 (256MB) at FileOff=0x091439 RVA=0x091439
+  0x10000000 (256MB) at FileOff=0x0919a1 RVA=0x0919a1
+  0x10000000 (256MB) at FileOff=0x091a3d RVA=0x091a3d
+  0x10000000 (256MB) at FileOff=0x091a5d RVA=0x091a5d
+  0x10000000 (256MB) at FileOff=0x091a65 RVA=0x091a65
+  0x10000000 (256MB) at FileOff=0x091ad5 RVA=0x091ad5
+  0x10000000 (256MB) at FileOff=0x091af5 RVA=0x091af5
+  0x10000000 (256MB) at FileOff=0x091dbd RVA=0x091dbd
+  0x10000000 (256MB) at FileOff=0x09201d RVA=0x09201d
+  0x10000000 (256MB) at FileOff=0x0920a5 RVA=0x0920a5
+  0x10000000 (256MB) at FileOff=0x092135 RVA=0x092135
+  0x10000000 (256MB) at FileOff=0x09217d RVA=0x09217d
+  0x10000000 (256MB) at FileOff=0x0921e5 RVA=0x0921e5
+  0x10000000 (256MB) at FileOff=0x092285 RVA=0x092285
+  0x10000000 (256MB) at FileOff=0x09230d RVA=0x09230d
+  0x10000000 (256MB) at FileOff=0x09232d RVA=0x09232d
+  0x10000000 (256MB) at FileOff=0x092375 RVA=0x092375
+  0x10000000 (256MB) at FileOff=0x09240d RVA=0x09240d
+  0x10000000 (256MB) at FileOff=0x09267d RVA=0x09267d
+  0x10000000 (256MB) at FileOff=0x095045 RVA=0x095045
+  0x10000000 (256MB) at FileOff=0x097bdd RVA=0x097bdd
+  0x10000000 (256MB) at FileOff=0x097c0d RVA=0x097c0d
+  0x10000000 (256MB) at FileOff=0x097c3d RVA=0x097c3d
+  0x10000000 (256MB) at FileOff=0x097c6d RVA=0x097c6d
+  0x10000000 (256MB) at FileOff=0x097c9d RVA=0x097c9d
+  0x10000000 (256MB) at FileOff=0x097ccd RVA=0x097ccd
+  0x10000000 (256MB) at FileOff=0x097cfd RVA=0x097cfd
+  0x10000000 (256MB) at FileOff=0x097d2d RVA=0x097d2d
+  0x10000000 (256MB) at FileOff=0x097d5d RVA=0x097d5d
+  0x10000000 (256MB) at FileOff=0x097d8d RVA=0x097d8d
+  0x10000000 (256MB) at FileOff=0x097dbd RVA=0x097dbd
+  0x10000000 (256MB) at FileOff=0x097ded RVA=0x097ded
+  0x10000000 (256MB) at FileOff=0x097e1d RVA=0x097e1d
+  0x10000000 (256MB) at FileOff=0x097e4d RVA=0x097e4d
+  0x10000000 (256MB) at FileOff=0x097e7d RVA=0x097e7d
+  0x10000000 (256MB) at FileOff=0x097ead RVA=0x097ead
+  0x10000000 (256MB) at FileOff=0x097edd RVA=0x097edd
+  0x10000000 (256MB) at FileOff=0x097f0d RVA=0x097f0d
+  0x10000000 (256MB) at FileOff=0x097f3d RVA=0x097f3d
+  0x10000000 (256MB) at FileOff=0x097f6d RVA=0x097f6d
+  0x10000000 (256MB) at FileOff=0x097f9d RVA=0x097f9d
+  0x10000000 (256MB) at FileOff=0x097fcd RVA=0x097fcd
+  0x10000000 (256MB) at FileOff=0x097ffd RVA=0x097ffd
+  0x10000000 (256MB) at FileOff=0x09802d RVA=0x09802d
+  0x10000000 (256MB) at FileOff=0x09805d RVA=0x09805d
+  0x10000000 (256MB) at FileOff=0x09808d RVA=0x09808d
+  0x10000000 (256MB) at FileOff=0x0980bd RVA=0x0980bd
+  0x10000000 (256MB) at FileOff=0x0980ed RVA=0x0980ed
+  0x10000000 (256MB) at FileOff=0x09811d RVA=0x09811d
+  0x10000000 (256MB) at FileOff=0x09814d RVA=0x09814d
+  0x10000000 (256MB) at FileOff=0x09817d RVA=0x09817d
+  0x10000000 (256MB) at FileOff=0x0981ad RVA=0x0981ad
+  0x10000000 (256MB) at FileOff=0x0981dd RVA=0x0981dd
+  0x10000000 (256MB) at FileOff=0x09820d RVA=0x09820d
+  0x10000000 (256MB) at FileOff=0x09823d RVA=0x09823d
+  0x10000000 (256MB) at FileOff=0x09826d RVA=0x09826d
+  0x10000000 (256MB) at FileOff=0x09829d RVA=0x09829d
+  0x10000000 (256MB) at FileOff=0x0982cd RVA=0x0982cd
+  0x10000000 (256MB) at FileOff=0x0982fd RVA=0x0982fd
+  0x10000000 (256MB) at FileOff=0x09832d RVA=0x09832d
+  0x10000000 (256MB) at FileOff=0x09835d RVA=0x09835d
+  0x10000000 (256MB) at FileOff=0x09838d RVA=0x09838d
+  0x10000000 (256MB) at FileOff=0x0983bd RVA=0x0983bd
+  0x10000000 (256MB) at FileOff=0x0983ed RVA=0x0983ed
+  0x10000000 (256MB) at FileOff=0x09841d RVA=0x09841d
+  0x10000000 (256MB) at FileOff=0x09844d RVA=0x09844d
+  0x10000000 (256MB) at FileOff=0x09847d RVA=0x09847d
+  0x10000000 (256MB) at FileOff=0x0984ad RVA=0x0984ad
+  0x10000000 (256MB) at FileOff=0x0984dd RVA=0x0984dd
+  0x10000000 (256MB) at FileOff=0x09850d RVA=0x09850d
+  0x10000000 (256MB) at FileOff=0x09853d RVA=0x09853d
+  0x10000000 (256MB) at FileOff=0x09856d RVA=0x09856d
+  0x10000000 (256MB) at FileOff=0x098585 RVA=0x098585
+  0x10000000 (256MB) at FileOff=0x09859d RVA=0x09859d
+  0x10000000 (256MB) at FileOff=0x0985b5 RVA=0x0985b5
+  0x10000000 (256MB) at FileOff=0x0985cd RVA=0x0985cd
+  0x10000000 (256MB) at FileOff=0x0985e5 RVA=0x0985e5
+  0x10000000 (256MB) at FileOff=0x0985fd RVA=0x0985fd
+  0x10000000 (256MB) at FileOff=0x098615 RVA=0x098615
+  0x10000000 (256MB) at FileOff=0x09862d RVA=0x09862d
+  0x10000000 (256MB) at FileOff=0x098645 RVA=0x098645
+  0x10000000 (256MB) at FileOff=0x09865d RVA=0x09865d
+  0x10000000 (256MB) at FileOff=0x098675 RVA=0x098675
+  0x10000000 (256MB) at FileOff=0x09868d RVA=0x09868d
+  0x10000000 (256MB) at FileOff=0x0986a5 RVA=0x0986a5
+  0x10000000 (256MB) at FileOff=0x0986bd RVA=0x0986bd
+  0x10000000 (256MB) at FileOff=0x0986d5 RVA=0x0986d5
+  0x10000000 (256MB) at FileOff=0x0986ed RVA=0x0986ed
+  0x10000000 (256MB) at FileOff=0x098705 RVA=0x098705
+  0x10000000 (256MB) at FileOff=0x09871d RVA=0x09871d
+  0x10000000 (256MB) at FileOff=0x098735 RVA=0x098735
+  0x10000000 (256MB) at FileOff=0x09874d RVA=0x09874d
+  0x10000000 (256MB) at FileOff=0x098765 RVA=0x098765
+  0x10000000 (256MB) at FileOff=0x09877d RVA=0x09877d
+  0x10000000 (256MB) at FileOff=0x098795 RVA=0x098795
+  0x10000000 (256MB) at FileOff=0x0987ad RVA=0x0987ad
+  0x10000000 (256MB) at FileOff=0x0987c5 RVA=0x0987c5
+  0x10000000 (256MB) at FileOff=0x0987dd RVA=0x0987dd
+  0x10000000 (256MB) at FileOff=0x0987f5 RVA=0x0987f5
+  0x10000000 (256MB) at FileOff=0x09880d RVA=0x09880d
+  0x10000000 (256MB) at FileOff=0x09883d RVA=0x09883d
+  0x10000000 (256MB) at FileOff=0x09886d RVA=0x09886d
+  0x10000000 (256MB) at FileOff=0x09889d RVA=0x09889d
+  0x10000000 (256MB) at FileOff=0x0988cd RVA=0x0988cd
+  0x10000000 (256MB) at FileOff=0x0988fd RVA=0x0988fd
+  0x10000000 (256MB) at FileOff=0x09892d RVA=0x09892d
+  0x10000000 (256MB) at FileOff=0x09895d RVA=0x09895d
+  0x10000000 (256MB) at FileOff=0x09898d RVA=0x09898d
+  0x10000000 (256MB) at FileOff=0x0989bd RVA=0x0989bd
+  0x10000000 (256MB) at FileOff=0x0989ed RVA=0x0989ed
+  0x10000000 (256MB) at FileOff=0x098a1d RVA=0x098a1d
+  0x10000000 (256MB) at FileOff=0x098a4d RVA=0x098a4d
+  0x10000000 (256MB) at FileOff=0x098a7d RVA=0x098a7d
+  0x10000000 (256MB) at FileOff=0x098aad RVA=0x098aad
+  0x10000000 (256MB) at FileOff=0x098ac6 RVA=0x098ac6
+  0x10000000 (256MB) at FileOff=0x098add RVA=0x098add
+  0x10000000 (256MB) at FileOff=0x098bb5 RVA=0x098bb5
+  0x10000000 (256MB) at FileOff=0x098d35 RVA=0x098d35
+  0x10000000 (256MB) at FileOff=0x0b2082 RVA=0x0b2082
+  0x10000000 (256MB) at FileOff=0x0b21cd RVA=0x0b21cd
+  0x10000000 (256MB) at FileOff=0x0b279a RVA=0x0b279a
+  0x10000000 (256MB) at FileOff=0x0b3b1a RVA=0x0b3b1a
+  512MB as 64-bit at FileOff=0x07f0c6 RVA=0x07f0c6
+  512MB as 64-bit at FileOff=0x07f12d RVA=0x07f12d
+  512MB as 64-bit at FileOff=0x0914d1 RVA=0x0914d1
+  512MB as 64-bit at FileOff=0x091621 RVA=0x091621
+  512MB as 64-bit at FileOff=0x091739 RVA=0x091739
+  512MB as 64-bit at FileOff=0x091889 RVA=0x091889
+  512MB as 64-bit at FileOff=0x091e35 RVA=0x091e35
+  512MB as 64-bit at FileOff=0x09205d RVA=0x09205d
+  512MB as 64-bit at FileOff=0x09219d RVA=0x09219d
+  512MB as 64-bit at FileOff=0x0923ed RVA=0x0923ed
+  512MB as 64-bit at FileOff=0x095025 RVA=0x095025
+  512MB as 64-bit at FileOff=0x09503d RVA=0x09503d
+  512MB as 64-bit at FileOff=0x095055 RVA=0x095055
+  512MB as 64-bit at FileOff=0x098825 RVA=0x098825
+  512MB as 64-bit at FileOff=0x098855 RVA=0x098855
+  512MB as 64-bit at FileOff=0x098885 RVA=0x098885
+  512MB as 64-bit at FileOff=0x0988b5 RVA=0x0988b5
+  512MB as 64-bit at FileOff=0x098be5 RVA=0x098be5
+  512MB as 64-bit at FileOff=0x098d65 RVA=0x098d65
+
+
+Results saved to /Users/vibebox/Documents/Facebook_Portal/portal-freedom/firmware/analysis/analysis_results.json
+Full strings saved to /Users/vibebox/Documents/Facebook_Portal/portal-freedom/firmware/analysis/all_strings.txt
+
+================================================================================
+ANALYSIS COMPLETE
+================================================================================

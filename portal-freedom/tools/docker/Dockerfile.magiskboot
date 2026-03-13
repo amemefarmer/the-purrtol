@@ -1,0 +1,87 @@
+# Dockerfile.magiskboot
+#
+# PURPOSE:
+#   Creates a Docker container with the `magiskboot` binary from the Magisk
+#   project. magiskboot is used to unpack and repack Android boot.img files,
+#   which is essential for modifying the boot image (e.g., patching init,
+#   disabling dm-verity, injecting custom ramdisk entries).
+#
+# APPROACH:
+#   1. Start from Ubuntu 22.04 for a stable, well-supported base.
+#   2. Download the latest Magisk release APK from GitHub.
+#   3. APK files are just ZIP archives. We extract the native magiskboot
+#      binary for x86_64 (linux host architecture) from inside the APK.
+#      The binary lives at: lib/x86_64/libmagiskboot.so (Magisk bundles
+#      its tools as .so files inside the APK for compatibility reasons).
+#   4. Rename it to `magiskboot`, make it executable, and set as ENTRYPOINT.
+#
+# USAGE:
+#   Build:
+#     docker build -f Dockerfile.magiskboot -t magiskboot .
+#
+#   Unpack a boot.img:
+#     docker run --rm -v "$(pwd):/work" -w /work magiskboot unpack boot.img
+#
+#   Repack a boot.img:
+#     docker run --rm -v "$(pwd):/work" -w /work magiskboot repack boot.img
+#
+#   The -v flag mounts your current directory into /work inside the container
+#   so magiskboot can access your boot.img and write output files.
+#
+# NOTES:
+#   - On Apple Silicon Macs (M1/M2/M3/M4), Docker runs as aarch64 (arm64).
+#     We extract the arm64-v8a binary from the APK.
+#   - On Intel Macs, change MAGISK_ARCH to x86_64 in the build command:
+#     docker build --build-arg MAGISK_ARCH=x86_64 -f Dockerfile.magiskboot -t magiskboot .
+#   - The Magisk version is pinned via the MAGISK_VERSION build arg for
+#     reproducibility. Update it when new versions are released.
+
+FROM ubuntu:22.04
+
+# Pin the Magisk version for reproducible builds.
+# Check https://github.com/topjohnwu/Magisk/releases for the latest.
+ARG MAGISK_VERSION=v28.1
+ARG MAGISK_ARCH=arm64-v8a
+
+# Install minimal dependencies:
+#   - curl: to download the APK from GitHub
+#   - unzip: to extract the APK (it's a ZIP file)
+#   - ca-certificates: for HTTPS downloads
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        curl \
+        unzip \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download the Magisk APK from the official GitHub release.
+# The APK contains native binaries for multiple architectures.
+RUN curl -L -o /tmp/magisk.apk \
+    "https://github.com/topjohnwu/Magisk/releases/download/${MAGISK_VERSION}/Magisk-${MAGISK_VERSION}.apk"
+
+# Extract the x86_64 magiskboot binary from the APK.
+#
+# Inside the APK (which is a ZIP), the native libraries are stored as:
+#   lib/<arch>/libmagiskboot.so
+#
+# Despite the .so extension, this is a standalone ELF executable.
+# Magisk packages its tools this way so Android treats them as native libs.
+RUN mkdir -p /tmp/magisk-extract && \
+    cd /tmp/magisk-extract && \
+    unzip /tmp/magisk.apk "lib/${MAGISK_ARCH}/libmagiskboot.so" && \
+    cp lib/${MAGISK_ARCH}/libmagiskboot.so /usr/local/bin/magiskboot && \
+    chmod +x /usr/local/bin/magiskboot && \
+    rm -rf /tmp/magisk-extract /tmp/magisk.apk
+
+# Verify the binary is present and executable.
+RUN /usr/local/bin/magiskboot 2>&1 || true
+
+# Set the working directory to /work. Users should mount their files here.
+WORKDIR /work
+
+# magiskboot is the entrypoint. Users pass subcommands as arguments.
+# Example: docker run --rm -v $(pwd):/work magiskboot unpack boot.img
+ENTRYPOINT ["/usr/local/bin/magiskboot"]
+
+# Default: show usage/help when no arguments are provided.
+CMD []

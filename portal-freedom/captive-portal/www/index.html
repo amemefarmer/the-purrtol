@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Sign-In</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+        .info-section {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .info-section h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { color: #666; }
+        .info-value {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+            color: #1a73e8;
+            max-width: 60%;
+            text-align: right;
+            word-break: break-all;
+        }
+        .chrome-version {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .chrome-version.vulnerable {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #28a745;
+        }
+        .chrome-version.patched {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffc107;
+        }
+        .chrome-version.unknown {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #dee2e6;
+        }
+        .status {
+            text-align: center;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #666;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover { background: #1557b0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to PortalNet</h1>
+
+        <div id="chrome-box" class="chrome-version unknown">
+            Detecting browser version...
+        </div>
+
+        <div class="info-section">
+            <h3>Browser Details</h3>
+            <div class="info-row">
+                <span class="info-label">User-Agent</span>
+                <span class="info-value" id="ua">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Chrome Version</span>
+                <span class="info-value" id="chrome-ver">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">V8 Version</span>
+                <span class="info-value" id="v8-ver">detecting...</span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>Device Details</h3>
+            <div class="info-row">
+                <span class="info-label">Platform</span>
+                <span class="info-value" id="platform">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Screen</span>
+                <span class="info-value" id="screen">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Device Pixel Ratio</span>
+                <span class="info-value" id="dpr">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Touch</span>
+                <span class="info-value" id="touch">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">WebGL Renderer</span>
+                <span class="info-value" id="webgl">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Memory (GB)</span>
+                <span class="info-value" id="memory">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">CPU Cores</span>
+                <span class="info-value" id="cores">detecting...</span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h3>JavaScript Engine</h3>
+            <div class="info-row">
+                <span class="info-label">WebAssembly</span>
+                <span class="info-value" id="wasm">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">SharedArrayBuffer</span>
+                <span class="info-value" id="sab">detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">JIT (TurboFan)</span>
+                <span class="info-value" id="jit">detecting...</span>
+            </div>
+        </div>
+
+        <button class="btn" onclick="location.reload()">Refresh</button>
+
+        <div class="status" id="status">Sending device info to server...</div>
+    </div>
+
+    <script>
+        (function() {
+            // Gather all info
+            const ua = navigator.userAgent;
+            const info = {
+                userAgent: ua,
+                platform: navigator.platform,
+                screen: screen.width + 'x' + screen.height,
+                dpr: window.devicePixelRatio,
+                touch: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+                cores: navigator.hardwareConcurrency || 'N/A',
+                memory: navigator.deviceMemory || 'N/A',
+                wasm: typeof WebAssembly !== 'undefined',
+                sab: typeof SharedArrayBuffer !== 'undefined',
+            };
+
+            // Extract Chrome version
+            let chromeVer = 'Not Chrome';
+            const chromeMatch = ua.match(/Chrome\/(\d+\.\d+\.\d+\.\d+)/);
+            if (chromeMatch) {
+                chromeVer = chromeMatch[1];
+            }
+            info.chromeVersion = chromeVer;
+
+            // Extract major version
+            let majorVer = 0;
+            if (chromeMatch) {
+                majorVer = parseInt(chromeMatch[1].split('.')[0], 10);
+            }
+
+            // WebGL renderer (GPU info)
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (gl) {
+                    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+                    if (ext) {
+                        info.webglRenderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+                        info.webglVendor = gl.getParameter(ext.UNMASKED_VENDOR_WEBGL);
+                    }
+                }
+            } catch(e) {
+                info.webglRenderer = 'N/A';
+            }
+
+            // JIT check (basic — verify optimization works)
+            try {
+                // Simple function that would be JIT-compiled
+                function jitTest(n) { let s = 0; for(let i=0;i<n;i++) s+=i; return s; }
+                const t0 = performance.now();
+                jitTest(1000000);
+                const t1 = performance.now();
+                info.jitTime = (t1-t0).toFixed(2) + 'ms';
+                info.jitActive = (t1-t0) < 50; // JIT should be fast
+            } catch(e) {
+                info.jitActive = 'error';
+            }
+
+            // Display info
+            document.getElementById('ua').textContent = ua;
+            document.getElementById('chrome-ver').textContent = chromeVer;
+            document.getElementById('platform').textContent = info.platform;
+            document.getElementById('screen').textContent = info.screen;
+            document.getElementById('dpr').textContent = info.dpr;
+            document.getElementById('touch').textContent = info.touch ? 'Yes' : 'No';
+            document.getElementById('webgl').textContent = info.webglRenderer || 'N/A';
+            document.getElementById('memory').textContent = info.memory;
+            document.getElementById('cores').textContent = info.cores;
+            document.getElementById('wasm').textContent = info.wasm ? 'Supported' : 'Not supported';
+            document.getElementById('sab').textContent = info.sab ? 'Supported' : 'Not supported';
+            document.getElementById('jit').textContent = info.jitActive ?
+                'Active (' + info.jitTime + ')' : 'Slow/Disabled (' + (info.jitTime||'?') + ')';
+
+            // V8 version estimate from Chrome version
+            const v8Map = {
+                69: '6.9', 70: '7.0', 71: '7.1', 72: '7.2', 73: '7.3',
+                74: '7.4', 75: '7.5', 76: '7.6', 77: '7.7', 78: '7.8',
+                79: '7.9', 80: '8.0', 81: '8.1', 83: '8.3', 84: '8.4',
+                85: '8.5', 86: '8.6', 87: '8.7', 88: '8.8', 89: '8.9',
+                90: '9.0', 91: '9.1', 92: '9.2', 93: '9.3', 94: '9.4',
+                95: '9.5', 96: '9.6', 97: '9.7', 98: '9.8', 99: '9.9',
+                100: '10.0', 101: '10.1', 102: '10.2', 103: '10.3',
+                104: '10.4', 105: '10.5', 106: '10.6', 107: '10.7',
+                108: '10.8', 109: '10.9', 110: '11.0',
+            };
+            const v8Ver = v8Map[majorVer] || 'unknown';
+            info.v8Version = v8Ver;
+            document.getElementById('v8-ver').textContent = v8Ver + '.x';
+
+            // Chrome version assessment
+            const box = document.getElementById('chrome-box');
+            if (majorVer > 0 && majorVer <= 92) {
+                box.className = 'chrome-version vulnerable';
+                box.innerHTML = 'Chrome ' + majorVer + '<br><small>CVE-2021-30632 applicable (V8 ' + v8Ver + ')</small>';
+            } else if (majorVer >= 93 && majorVer <= 106) {
+                box.className = 'chrome-version patched';
+                box.innerHTML = 'Chrome ' + majorVer + '<br><small>CVE-2021-30632 patched. CVE-2023-3420 applicable (V8 ' + v8Ver + ')</small>';
+            } else if (majorVer > 106) {
+                box.className = 'chrome-version patched';
+                box.innerHTML = 'Chrome ' + majorVer + '<br><small>Newer than expected. Needs specific CVE research.</small>';
+            } else {
+                box.className = 'chrome-version unknown';
+                box.innerHTML = 'Non-Chrome browser<br><small>' + ua.substring(0,60) + '...</small>';
+            }
+
+            // Send report to server
+            fetch('/api/report', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(info),
+            }).then(r => r.json()).then(data => {
+                document.getElementById('status').textContent =
+                    'Device info sent to server. Check server console for details.';
+            }).catch(err => {
+                document.getElementById('status').textContent =
+                    'Note: Could not send report to server (' + err.message + ')';
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,651 @@
+# String cross-references for exploit-relevant strings
+# StringAddr | String | RefFrom | RefType | Function
+#---
+0x06C414 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0010EC | PARAM | FUN_000010ac @ 0x10ac
+0x06C414 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x001120 | PARAM | FUN_000010ac @ 0x10ac
+0x06C414 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x001158 | PARAM | FUN_000010ac @ 0x10ac
+0x06C748 | "Multi Slot boot is supported\n" | 0x012B18 | PARAM | FUN_00012010 @ 0x12010
+0x06C748 | "Multi Slot boot is supported\n" | 0x001820 | PARAM | FUN_00001608 @ 0x1608
+0x06C748 | "Multi Slot boot is supported\n" | 0x010DF8 | PARAM | FUN_000107d8 @ 0x107d8
+0x06C784 | "Failed to get Reboot reason: %r\n" | 0x001BA0 | PARAM | FUN_00001608 @ 0x1608
+0x06C883 | "Fastboot=%d, Recovery:%d\n" | 0x001E60 | PARAM | FUN_00001608 @ 0x1608
+0x06C8D4 | "Launching fastboot\n" | 0x001D7C | PARAM | FUN_00001608 @ 0x1608
+0x06C8E8 | "Failed to Launch Fastboot App: %d\n" | 0x001E00 | PARAM | FUN_00001608 @ 0x1608
+0x06C9F6 | "boot" | 0x0123D4 | PARAM | FUN_00012010 @ 0x12010
+0x06C9F6 | "boot" | 0x01277C | PARAM | FUN_00012010 @ 0x12010
+0x06C9F6 | "boot" | 0x012AD8 | PARAM | FUN_00012010 @ 0x12010
+0x06C9F6 | "boot" | 0x02D8B4 | PARAM | FUN_0002d8a4 @ 0x2d8a4
+0x06C9F6 | "boot" | 0x016284 | PARAM | FUN_00016248 @ 0x16248
+0x06C9F6 | "boot" | 0x0162B4 | PARAM | FUN_00016248 @ 0x16248
+0x06C9F6 | "boot" | 0x01631C | PARAM | FUN_00016248 @ 0x16248
+0x06C9F6 | "boot" | 0x035898 | PARAM | FUN_00034a9c @ 0x34a9c
+0x06C9F6 | "boot" | 0x019DF8 | PARAM | FUN_00019d38 @ 0x19d38
+0x06C9F6 | "boot" | 0x019E2C | PARAM | FUN_00019d38 @ 0x19d38
+0x06C9F6 | "boot" | 0x0017EC | PARAM | FUN_00001608 @ 0x1608
+0x06C9F6 | "boot" | 0x015E74 | PARAM | FUN_00015e4c @ 0x15e4c
+0x06C9F6 | "boot" | 0x015F6C | PARAM | FUN_00015e4c @ 0x15e4c
+0x06C9F6 | "boot" | 0x015F9C | PARAM | FUN_00015e4c @ 0x15e4c
+0x06C9F6 | "boot" | 0x00F758 | PARAM | FUN_0000f6b8 @ 0xf6b8
+0x06C9F6 | "boot" | 0x00F78C | PARAM | FUN_0000f6b8 @ 0xf6b8
+0x06C9F6 | "boot" | 0x0027D8 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06C9F6 | "boot" | 0x00280C | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06C9F6 | "boot" | 0x00250C | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06C9F6 | "boot" | 0x002558 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06C9F6 | "boot" | 0x002180 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06C9F6 | "boot" | 0x0021CC | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06C9F6 | "boot" | 0x010C10 | PARAM | FUN_000107d8 @ 0x107d8
+0x06C9F6 | "boot" | 0x0250E4 | PARAM | FUN_000247c0 @ 0x247c0
+0x06C9F6 | "boot" | 0x014058 | PARAM | (none)
+0x06C9F6 | "boot" | 0x0141FC | PARAM | (none)
+0x06C9F6 | "boot" | 0x01422C | PARAM | (none)
+0x06C9F6 | "boot" | 0x00F998 | PARAM | (none)
+0x06C9F6 | "boot" | 0x0147B8 | PARAM | FUN_00014790 @ 0x14790
+0x06CA86 | "No bootable slot\n" | 0x002140 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CC4E | " androidboot.verifiedbootstate=" | 0x003404 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CC82 | " androidboot.keymaster=1" | 0x0034B0 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CD52 | "State: Unlocked, AvbSlotVerify returned %a, continue boot\n" | 0x002BCC | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CD52 | "State: Unlocked, AvbSlotVerify returned %a, continue boot\n" | 0x002FC4 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CDBF | "Unlocked" | 0x003008 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CF29 | "Invalid boot image header:%r\n" | 0x00339C | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CF58 | "com.android.build.boot.security_patch" | 0x003684 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CF7E | "VB2: Authenticate complete! boot state is: %a\n" | 0x003870 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CFAD | "No bootable slots found enter fastboot mode\n" | 0x002710 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06CFDA | "Non Multi-slot: Unbootable entering fastboot mode\n" | 0x00273C | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06D00D | "VB2: boot state: %a(%d)\n" | 0x002774 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06D06C | "Your device is corrupt. It can't be trusted and will not boot.\nYour device wi..." | 0x0028D4 | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06D0D5 | "Device is unlocked, Skipping boot verification\n" | 0x00293C | PARAM | FUN_00001fa8 @ 0x1fa8
+0x06D30E | "Invalid state to boot!\n" | 0x004150 | PARAM | FUN_00003e74 @ 0x3e74
+0x06D672 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004D90 | PARAM | (none)
+0x06D672 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004924 | PARAM | FUN_0000488c @ 0x488c
+0x06D672 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004B68 | PARAM | FUN_0000488c @ 0x488c
+0x06D672 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004BA8 | PARAM | FUN_0000488c @ 0x488c
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005C4C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005D30 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005D98 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005E3C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005FF0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005F0C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00633C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0062E8 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005F84 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00616C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0061CC | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006234 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0062A8 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0063E4 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006574 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0066E0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006F20 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00688C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006BA4 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006D0C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006CCC | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006E28 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006E78 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006D4C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006AB0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006A30 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0073B0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007330 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0073F0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007370 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0072F0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0070F4 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006F6C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007020 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007264 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007218 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0071D8 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00713C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00668C | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006520 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006474 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006634 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0065E0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x006108 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005DD8 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005CDC | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005CA0 | PARAM | FUN_00005b58 @ 0x5b58
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007614 | PARAM | FUN_000075d0 @ 0x75d0
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004E54 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004E9C | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004EEC | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004F3C | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004F8C | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x004FDC | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00504C | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0053C0 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00598C | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0058FC | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0057D8 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005A44 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005414 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0054C0 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005544 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0054FC | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00528C | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005208 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D7E0 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x005098 | PARAM | FUN_00004e04 @ 0x4e04
+0x06D870 | "assert fail: ops->read_is_device_unlocked != NULL\n" | 0x004E7C | PARAM | FUN_00004e04 @ 0x4e04
+0x06DAE4 | "assert fail: avb_strcmp(slot_data->vbmeta_images[0].partition_name, "boot") =..." | 0x0052B4 | PARAM | FUN_00004e04 @ 0x4e04
+0x06DDEE | ": No such partition. Trying 'boot' instead.\n" | 0x00602C | PARAM | FUN_00005b58 @ 0x5b58
+0x06E529 | "androidboot.vbmeta.device" | 0x00531C | PARAM | FUN_00004e04 @ 0x4e04
+0x06E567 | "androidboot.vbmeta.avb_version" | 0x005388 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E5A8 | "androidboot.vbmeta.device_state" | 0x005704 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E5C8 | "unlocked" | 0x011588 | PARAM | FUN_000107d8 @ 0x107d8
+0x06E5D1 | "androidboot.vbmeta.hash_alg" | 0x005780 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E5D1 | "androidboot.vbmeta.hash_alg" | 0x00589C | PARAM | FUN_00004e04 @ 0x4e04
+0x06E5ED | "androidboot.vbmeta.size" | 0x00579C | PARAM | FUN_00004e04 @ 0x4e04
+0x06E5ED | "androidboot.vbmeta.size" | 0x0058B4 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E605 | "androidboot.vbmeta.digest" | 0x0057C0 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E605 | "androidboot.vbmeta.digest" | 0x0058D8 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E643 | "androidboot.vbmeta.invalidate_on_error" | 0x005AA8 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E6C4 | "androidboot.veritymode" | 0x005B34 | PARAM | FUN_00004e04 @ 0x4e04
+0x06E7C3 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0080CC | PARAM | FUN_00008068 @ 0x8068
+0x06E7C3 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00810C | PARAM | FUN_00008068 @ 0x8068
+0x06E7C3 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0081C8 | PARAM | FUN_000081a8 @ 0x81a8
+0x06E7C3 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007E28 | PARAM | FUN_00007e00 @ 0x7e00
+0x06E7C3 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x007E78 | PARAM | FUN_00007e00 @ 0x7e00
+0x06EB3E | "Not updating rollbackindex as current slot is unbootable\n" | 0x008C3C | PARAM | FUN_00008bec @ 0x8bec
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x009E2C | PARAM | FUN_00009de8 @ 0x9de8
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x008EBC | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x008F04 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x008F98 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x008FEC | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00904C | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0090C8 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x009188 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x009230 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00929C | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00930C | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00949C | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x009540 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x009418 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0093DC | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0091C4 | PARAM | FUN_00008e60 @ 0x8e60
+0x06ED31 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x009104 | PARAM | FUN_00008e60 @ 0x8e60
+0x06EE75 | "Overflow while computing size of boot image.\n" | 0x00912C | PARAM | FUN_00008e60 @ 0x8e60
+0x06FA6B | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00B4B4 | PARAM | FUN_0000b28c @ 0xb28c
+0x06FA6B | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00B52C | PARAM | FUN_0000b28c @ 0xb28c
+0x06FA6B | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00B56C | PARAM | FUN_0000b28c @ 0xb28c
+0x06FA6B | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00B4F4 | PARAM | FUN_0000b28c @ 0xb28c
+0x07082F | "@/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk..." | (no xrefs) | - | -
+0x070A37 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C144 | PARAM | FUN_0000bed0 @ 0xbed0
+0x070A37 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C1A0 | PARAM | FUN_0000bed0 @ 0xbed0
+0x070AF5 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C4D8 | PARAM | FUN_0000c218 @ 0xc218
+0x070AF5 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C550 | PARAM | FUN_0000c218 @ 0xc218
+0x070AF5 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C518 | PARAM | FUN_0000c218 @ 0xc218
+0x070B9C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C740 | PARAM | FUN_0000c5c8 @ 0xc5c8
+0x070B9C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C7B8 | PARAM | FUN_0000c5c8 @ 0xc5c8
+0x070B9C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C780 | PARAM | FUN_0000c5c8 @ 0xc5c8
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C954 | PARAM | FUN_0000c82c @ 0xc82c
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C994 | PARAM | FUN_0000c82c @ 0xc82c
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00C91C | PARAM | FUN_0000c82c @ 0xc82c
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CC9C | PARAM | FUN_0000ca40 @ 0xca40
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CE74 | PARAM | FUN_0000ca40 @ 0xca40
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CDD8 | PARAM | FUN_0000ca40 @ 0xca40
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CD98 | PARAM | FUN_0000ca40 @ 0xca40
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CD58 | PARAM | FUN_0000ca40 @ 0xca40
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CD10 | PARAM | FUN_0000ca40 @ 0xca40
+0x070C57 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00CCD8 | PARAM | FUN_0000ca40 @ 0xca40
+0x0710C6 | "Dl/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/ed..." | (no xrefs) | - | -
+0x0711D2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DA30 | PARAM | FUN_0000d9f4 @ 0xd9f4
+0x0711D2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DA60 | PARAM | FUN_0000d9f4 @ 0xd9f4
+0x0712AF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DAE8 | PARAM | FUN_0000daa0 @ 0xdaa0
+0x0712AF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DB10 | PARAM | FUN_0000daa0 @ 0xdaa0
+0x0712AF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DB44 | PARAM | FUN_0000daa0 @ 0xdaa0
+0x0712AF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DB78 | PARAM | FUN_0000daa0 @ 0xdaa0
+0x0713F1 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DC30 | PARAM | FUN_0000dbe4 @ 0xdbe4
+0x0714A7 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DCE8 | PARAM | FUN_0000dc9c @ 0xdc9c
+0x0714A7 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x00DD1C | PARAM | FUN_0000dc9c @ 0xdc9c
+0x071526 | "Fastboot USB: Unable to free Tx Buffer\n" | 0x00E2D4 | PARAM | FUN_0000e240 @ 0xe240
+0x07154E | "Fastboot USB: Unable to free Rx Buffer\n" | 0x00E2AC | PARAM | FUN_0000e240 @ 0xe240
+0x071576 | "Fastboot Device connected\n" | 0x00E3D0 | PARAM | FUN_0000e30c @ 0xe30c
+0x071591 | "Fastboot Device disconnected\n" | 0x00E428 | PARAM | FUN_0000e30c @ 0xe30c
+0x0715E3 | "Fastboot Build Info: %a %a\n" | 0x00EB18 | PARAM | FUN_0000eadc @ 0xeadc
+0x0715E3 | "Fastboot Build Info: %a %a\n" | 0x00E620 | PARAM | FUN_0000e5e4 @ 0xe5e4
+0x071608 | "couldnt Start fastboot usb device, exiting" | 0x00EB60 | PARAM | FUN_0000eadc @ 0xeadc
+0x071608 | "couldnt Start fastboot usb device, exiting" | 0x00E668 | PARAM | FUN_0000e5e4 @ 0xe5e4
+0x071633 | "Fastboot: Processing commands\n" | 0x00EB84 | PARAM | FUN_0000eadc @ 0xeadc
+0x071633 | "Fastboot: Processing commands\n" | 0x00E68C | PARAM | FUN_0000e5e4 @ 0xe5e4
+0x071633 | "Fastboot: Processing commands\n" | 0x00EA3C | PARAM | FUN_0000e79c @ 0xe79c
+0x071698 | "couldnt uninit fastboot\n" | 0x00EC34 | PARAM | FUN_0000eadc @ 0xeadc
+0x071698 | "couldnt uninit fastboot\n" | 0x00E744 | PARAM | FUN_0000e5e4 @ 0xe5e4
+0x071771 | "couldnt init fastboot , exiting" | 0x00E8EC | PARAM | FUN_0000e79c @ 0xe79c
+0x071791 | "Error start the usb device, cannot enter fastboot mode\n" | 0x00EA70 | PARAM | FUN_0000e79c @ 0xe79c
+0x0717C9 | "Error Allocate RX buffer, cannot enter fastboot mode\n" | 0x00EAAC | PARAM | FUN_0000e79c @ 0xe79c
+0x0717FF | "Error Allocate TX buffer, cannot enter fastboot mode\n" | 0x00EAD0 | PARAM | FUN_0000e79c @ 0xe79c
+0x071A96 | "Fastboot: %a unable to locate FbChargerProtocol %r\n" | 0x00F8C8 | PARAM | FUN_0000f860 @ 0xf860
+0x071A96 | "Fastboot: %a unable to locate FbChargerProtocol %r\n" | 0x011E98 | PARAM | FUN_00011e30 @ 0x11e30
+0x071A96 | "Fastboot: %a unable to locate FbChargerProtocol %r\n" | 0x0103D4 | PARAM | FUN_00010078 @ 0x10078
+0x071A96 | "Fastboot: %a unable to locate FbChargerProtocol %r\n" | 0x011F88 | PARAM | FUN_00011f20 @ 0x11f20
+0x071A96 | "Fastboot: %a unable to locate FbChargerProtocol %r\n" | 0x016820 | PARAM | FUN_0001679c @ 0x1679c
+0x071A96 | "Fastboot: %a unable to locate FbChargerProtocol %r\n" | 0x0168BC | PARAM | FUN_0001679c @ 0x1679c
+0x071B0D | "Slot Change is not allowed in Lock State\n" | 0x00FA20 | PARAM | (none)
+0x071BA9 | "set_active _a or _b should be entered" | 0x00FA40 | PARAM | (none)
+0x071BCF | "set_active failed" | 0x00FC80 | PARAM | (none)
+0x071BEF | "Failed to free up fastboot buffer\n" | 0x01074C | PARAM | FUN_000106e4 @ 0x106e4
+0x071C12 | "Fastboot: Initializing...\n" | 0x010830 | PARAM | FUN_000107d8 @ 0x107d8
+0x071C2D | "Fastboot: Couldn't disable watchdog timer: %r\n" | 0x010920 | PARAM | FUN_000107d8 @ 0x107d8
+0x071C5C | "Couldn't create Fastboot protocol send event: %r\n" | 0x010954 | PARAM | FUN_000107d8 @ 0x107d8
+0x071C8E | "Failed to get free memory for fastboot buffer\n" | 0x010B64 | PARAM | FUN_000107d8 @ 0x107d8
+0x071CBD | "ERROR: Allocation fail for minimim buffer for fastboot\n" | 0x010B38 | PARAM | FUN_000107d8 @ 0x107d8
+0x071CF5 | "Not enough memory to Allocate Fastboot Buffer\n" | 0x010B9C | PARAM | FUN_000107d8 @ 0x107d8
+0x071D24 | "Fastboot Buffer Size allocated: %ld\n" | 0x010BE8 | PARAM | FUN_000107d8 @ 0x107d8
+0x071D6B | "boot_a partition deleted\n" | 0x01197C | PARAM | FUN_0001190c @ 0x1190c
+0x071D85 | "Failed to delete boot_a partition\n" | 0x011954 | PARAM | FUN_0001190c @ 0x1190c
+0x071DA8 | "boot_b partition deleted\n" | 0x0119E4 | PARAM | FUN_0001190c @ 0x1190c
+0x071DC2 | "Failed to delete boot_b partition\n" | 0x0119BC | PARAM | FUN_0001190c @ 0x1190c
+0x071EF3 | "Download Finished\n" | 0x00FEDC | PARAM | FUN_0000fe30 @ 0xfe30
+0x071F1B | "Failed to creat event for waiting flash completely" | 0x010040 | PARAM | FUN_0000fe30 @ 0xfe30
+0x071F4E | "Failed to set timer for waiting flash completely" | 0x00FFA8 | PARAM | FUN_0000fe30 @ 0xfe30
+0x071F4E | "Failed to set timer for waiting flash completely" | 0x011D70 | PARAM | (none)
+0x0720BE | "Error: Last flash failed" | 0x0101F0 | PARAM | FUN_00010078 @ 0x10078
+0x0720D7 | "erase" | 0x0102BC | PARAM | FUN_00010078 @ 0x10078
+0x0720D7 | "erase" | 0x0102E8 | PARAM | FUN_00010078 @ 0x10078
+0x0720D7 | "erase" | 0x010480 | PARAM | FUN_00010078 @ 0x10078
+0x0720D7 | "erase" | 0x0104AC | PARAM | FUN_00010078 @ 0x10078
+0x0720F0 | "getvar:partition-type" | 0x010510 | PARAM | FUN_00010078 @ 0x10078
+0x0720F0 | "getvar:partition-type" | 0x01053C | PARAM | FUN_00010078 @ 0x10078
+0x072106 | "\nFastboot Send Fail\n" | 0x0105B4 | PARAM | FUN_00010078 @ 0x10078
+0x07211B | "unknown command" | 0x0105C4 | PARAM | FUN_00010078 @ 0x10078
+0x07212B | "Fastboot: Unable to verify if the target is battery powered. Assume device is..." | 0x010464 | PARAM | FUN_00010078 @ 0x10078
+0x072187 | "Fastboot: Charger's status is unknown.\r\n" | 0x010628 | PARAM | FUN_00010078 @ 0x10078
+0x0721B0 | "Fastboot: A fuel gauge's status is unknown.\r\n" | 0x01066C | PARAM | FUN_00010078 @ 0x10078
+0x0721F5 | "Fastboot: %a IsChargingSupported failed %r\n" | 0x01042C | PARAM | FUN_00010078 @ 0x10078
+0x072234 | "Fastboot: %a IsDcInConnected failed %r\n" | 0x011EDC | PARAM | FUN_00011e30 @ 0x11e30
+0x07226F | "Fastboot: %a GetBatteryCapacity failed %r\n" | 0x011FCC | PARAM | FUN_00011f20 @ 0x11f20
+0x07229A | "flash:" | 0x0116B4 | PARAM | FUN_000107d8 @ 0x107d8
+0x07229A | "flash:" | 0x073D38 | DATA | (none)
+0x0722A1 | "erase:" | 0x073D48 | DATA | (none)
+0x0722A8 | "set_active" | 0x073D58 | DATA | (none)
+0x0722B3 | "flashing get_unlock_ability" | 0x073D68 | DATA | (none)
+0x0722CF | "flashing unlock" | 0x073D78 | DATA | (none)
+0x0722DF | "flashing lock" | 0x073D88 | DATA | (none)
+0x0722ED | "oem get_unlock_bootloader_nonce" | 0x073D98 | DATA | (none)
+0x07230D | "flashing get_unlock_bootloader_nonce" | 0x073DA8 | DATA | (none)
+0x072332 | "flashing unlock_bootloader" | 0x073DB8 | DATA | (none)
+0x07234D | "flashing unlock_critical" | 0x073DC8 | DATA | (none)
+0x072366 | "flashing lock_critical" | 0x073DD8 | DATA | (none)
+0x07237D | "oem device-info" | 0x073DE8 | DATA | (none)
+0x0723BD | "continue" | 0x073E28 | DATA | (none)
+0x0723FD | "reboot-recovery" | 0x073E78 | DATA | (none)
+0x07240D | "reboot-fastboot" | 0x073E88 | DATA | (none)
+0x07241D | "reboot-bootloader" | 0x073E98 | DATA | (none)
+0x07242F | "getvar:" | 0x073EA8 | DATA | (none)
+0x072437 | "download:" | 0x073EB8 | DATA | (none)
+0x072473 | "max-download-size" | 0x010D2C | PARAM | FUN_000107d8 @ 0x107d8
+0x0724F8 | "erase-block-size" | 0x01152C | PARAM | FUN_000107d8 @ 0x107d8
+0x072509 | "version-bootloader" | 0x011548 | PARAM | FUN_000107d8 @ 0x107d8
+0x072539 | "parallel-download-flash" | 0x011694 | PARAM | FUN_000107d8 @ 0x107d8
+0x072551 | "IsAllowUnlock is %d\n" | 0x011710 | PARAM | FUN_000107d8 @ 0x107d8
+0x072566 | "No data to flash" | 0x0120A4 | PARAM | FUN_00012010 @ 0x12010
+0x07258E | "unlock_bootloader\n" | 0x01221C | PARAM | FUN_00012010 @ 0x12010
+0x0725A1 | "Flashing is not allowed in Lock State" | 0x01223C | PARAM | FUN_00012010 @ 0x12010
+0x0725C7 | "Flashing is not allowed for Critical Partitions\n" | 0x013BDC | PARAM | FUN_00012010 @ 0x12010
+0x0725C7 | "Flashing is not allowed for Critical Partitions\n" | 0x0122A0 | PARAM | FUN_00012010 @ 0x12010
+0x0725F8 | "Flashing is not allowed for persist partition\n" | 0x0122BC | PARAM | FUN_00012010 @ 0x12010
+0x072627 | "flashing avb_custom_key\n" | 0x012264 | PARAM | FUN_00012010 @ 0x12010
+0x0727C2 | "(%s) No such partition" | 0x012D14 | PARAM | FUN_00012010 @ 0x12010
+0x0727D9 | "Error flashing partition" | 0x012D38 | PARAM | FUN_00012010 @ 0x12010
+0x0727F2 | "flash image status:  %r\n" | 0x012CE8 | PARAM | FUN_00012010 @ 0x12010
+0x07282E | "Invalid OEM Unlock-allow Request" | 0x015AA4 | PARAM | FUN_00015a60 @ 0x15a60
+0x072865 | "Unlock-allow request cannot be reused." | 0x015B88 | PARAM | FUN_00015a60 @ 0x15a60
+0x07288C | "OEM Unlock-allow Request Failed" | 0x015B64 | PARAM | FUN_00015a60 @ 0x15a60
+0x0728AC | "Fastboot unlock is now allowed." | 0x015CA0 | PARAM | FUN_00015a60 @ 0x15a60
+0x0729C5 | "Error boot partition for slot: %s not found\n" | 0x01652C | PARAM | FUN_00016248 @ 0x16248
+0x072A72 | "Multi Slot boot is not supported\n" | 0x013020 | PARAM | FUN_00012010 @ 0x12010
+0x072B6D | "slot-unbootable" | 0x013168 | PARAM | FUN_00012010 @ 0x12010
+0x072B6D | "slot-unbootable" | 0x013194 | PARAM | FUN_00012010 @ 0x12010
+0x072B9B | "partition-type:system" | 0x013228 | PARAM | FUN_00012010 @ 0x12010
+0x072B9B | "partition-type:system" | 0x013254 | PARAM | FUN_00012010 @ 0x12010
+0x072BB1 | "partition-size:system" | 0x013268 | PARAM | FUN_00012010 @ 0x12010
+0x072BB1 | "partition-size:system" | 0x013294 | PARAM | FUN_00012010 @ 0x12010
+0x07311C | "UBI Image flashing not supported.\n" | 0x012B4C | PARAM | FUN_00012010 @ 0x12010
+0x0732E1 | "Erase is not allowed in Lock State" | 0x01414C | PARAM | (none)
+0x073304 | "Erase is not allowed for Critical Partitions\n" | 0x0141B0 | PARAM | (none)
+0x073332 | "Erase is not allowed for persist partition\n" | 0x0142D0 | PARAM | (none)
+0x0733AA | "Couldn't erase image:  %r\n" | 0x0142A8 | PARAM | (none)
+0x0733C5 | "get_unlock_ability: %d" | 0x0142FC | PARAM | (none)
+0x0733F1 | "unlocked!" | (no xrefs) | - | -
+0x0733FB | "Flashing Unlock is not allowed\n" | 0x0166FC | PARAM | FUN_00016654 @ 0x16654
+0x073435 | "Error locating PRNG protocol. Failed to generate nonce:%r\n" | 0x014430 | PARAM | (none)
+0x0734AF | "OEM Unlock Request Failed:%r\n" | 0x0144D8 | PARAM | (none)
+0x0734CD | "OEM Unlock Request Failed" | 0x0144EC | PARAM | (none)
+0x0734E7 | "Unlock Request: %016lx%a" | 0x014528 | PARAM | (none)
+0x073510 | "Device unlocked: %a" | 0x01467C | PARAM | (none)
+0x073524 | "Device critical unlocked: %a" | 0x0146A8 | PARAM | (none)
+0x073559 | "Device unsealed: %a" | 0x014714 | PARAM | (none)
+0x0735A5 | "rebooting the device\n" | 0x014878 | PARAM | (none)
+0x0735BB | "Failed to reboot" | 0x0148B4 | PARAM | (none)
+0x0735BB | "Failed to reboot" | 0x014960 | PARAM | (none)
+0x0735BB | "Failed to reboot" | 0x014A10 | PARAM | (none)
+0x0735BB | "Failed to reboot" | 0x014A94 | PARAM | (none)
+0x0735CC | "Failed to reboot to recovery mode" | 0x014900 | PARAM | (none)
+0x0735EE | "rebooting the device to recovery\n" | 0x014928 | PARAM | (none)
+0x073610 | "Failed to reboot to fastboot mode" | 0x0149B0 | PARAM | (none)
+0x073632 | "rebooting the device to fastbootd\n" | 0x0149D8 | PARAM | (none)
+0x073655 | "Rebooting the device into bootloader mode\n" | 0x014A58 | PARAM | (none)
+0x0736B5 | "Fastboot: %a ReadAdapterVoltage failed %r\n" | 0x016860 | PARAM | FUN_0001679c @ 0x1679c
+0x0736F5 | "Fastboot: %a GetBatteryCycleCount failed %r\n" | 0x0168FC | PARAM | FUN_0001679c @ 0x1679c
+0x07373D | "ERROR: Fail to get the number of bytes to download.\n" | 0x014E10 | PARAM | (none)
+0x073772 | "Failed to get the number of bytes to download" | 0x014E20 | PARAM | (none)
+0x0737A0 | "ERROR: Data size (%d) is more than max download size (%d)\n" | 0x014DD4 | PARAM | (none)
+0x0737DB | "Requested download size is more than max allowed\n" | 0x014DE4 | PARAM | (none)
+0x07380D | "CmdDownload: Send 12 %a\n" | 0x014EE8 | PARAM | (none)
+0x0738CD | "boot_" | 0x0153D4 | PARAM | FUN_00014fe0 @ 0x14fe0
+0x0738E4 | "slot-unbootable:" | 0x0155B4 | PARAM | FUN_00014fe0 @ 0x14fe0
+0x0738E4 | "slot-unbootable:" | 0x01560C | PARAM | FUN_00014fe0 @ 0x14fe0
+0x07390C | "has-slot:boot" | 0x015818 | PARAM | FUN_00014fe0 @ 0x14fe0
+0x073945 | "partition-size:" | 0x010E78 | PARAM | FUN_000107d8 @ 0x107d8
+0x073945 | "partition-size:" | 0x010EC8 | PARAM | FUN_000107d8 @ 0x107d8
+0x073955 | "partition-type:" | 0x010F24 | PARAM | FUN_000107d8 @ 0x107d8
+0x073955 | "partition-type:" | 0x010F80 | PARAM | FUN_000107d8 @ 0x107d8
+0x073A91 | "reboot-reason" | 0x011630 | PARAM | FUN_000107d8 @ 0x107d8
+0x073AF2 | "boot_a" | 0x01191C | PARAM | FUN_0001190c @ 0x1190c
+0x073AF2 | "boot_a" | 0x0302D0 | PARAM | FUN_00030200 @ 0x30200
+0x073B00 | "boot_b" | 0x01198C | PARAM | FUN_0001190c @ 0x1190c
+0x073B00 | "boot_b" | 0x0302D0 | PARAM | FUN_00030200 @ 0x30200
+0x073B3E | "unlock_bootloader" | 0x0120F0 | PARAM | FUN_00012010 @ 0x12010
+0x073B3E | "unlock_bootloader" | 0x012120 | PARAM | FUN_00012010 @ 0x12010
+0x074077 | "Boot partition is locked.\n" | 0x016B78 | PARAM | (none)
+0x0740CD | "Failed to set sealed state" | 0x016B94 | PARAM | (none)
+0x0740FB | "Adb is now locked" | 0x016C00 | PARAM | (none)
+0x0747E6 | "Error locating PRNG protocol, using default canary :%r\n" | 0x0174CC | PARAM | FUN_0001747c @ 0x1747c
+0x0748AF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x017874 | PARAM | FUN_00017810 @ 0x17810
+0x074AA7 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0183E0 | PARAM | FUN_0001836c @ 0x1836c
+0x074AA7 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0185C0 | PARAM | FUN_0001854c @ 0x1854c
+0x074CD6 | "Getting device serial number from flash storage...\n" | 0x019590 | PARAM | FUN_000191c0 @ 0x191c0
+0x0751A6 | "ERROR: Can not shutdown UEFI boot services. Status=0x%X\n" | 0x01B330 | PARAM | FUN_00019d38 @ 0x19d38
+0x075251 | "Invalid boot image header\n" | 0x01C07C | PARAM | FUN_0001c000 @ 0x1c000
+0x0753E1 | "Invalid boot image header: %d\n" | 0x01C5A0 | PARAM | FUN_0001c000 @ 0x1c000
+0x0753E1 | "Invalid boot image header: %d\n" | 0x031B7C | PARAM | FUN_00031ac8 @ 0x31ac8
+0x07606B | "Error while DTB parse continue with next DTB\n" | 0x01E794 | PARAM | FUN_0001d04c @ 0x1d04c
+0x076099 | "Error while DTB parsing RTIC prop continue with next DTB\n" | 0x01E7EC | PARAM | FUN_0001d04c @ 0x1d04c
+0x076099 | "Error while DTB parsing RTIC prop continue with next DTB\n" | 0x01EDD8 | PARAM | FUN_0001ec34 @ 0x1ec34
+0x077067 | "bootargs" | 0x021F98 | PARAM | FUN_00020fb8 @ 0x20fb8
+0x077070 | "ERROR: Cannot update chosen node [bootargs] - 0x%x\n" | 0x021FD4 | PARAM | FUN_00020fb8 @ 0x20fb8
+0x0778F8 | "Error locating PRNG protocol. Fail to generate Kaslr seed:%r\n" | 0x022034 | PARAM | FUN_00020fb8 @ 0x20fb8
+0x0779CA | "androidboot.hardware=cipher" | 0x022AF8 | PARAM | FUN_00022ad8 @ 0x22ad8
+0x077F5B | "Waiting for the erase event to signal the completion\n" | 0x0241A8 | PARAM | FUN_00024078 @ 0x24078
+0x078229 | " androidboot.baseband=" | 0x0250A8 | PARAM | FUN_000247c0 @ 0x247c0
+0x078229 | " androidboot.baseband=" | 0x0259AC | PARAM | FUN_000247c0 @ 0x247c0
+0x07833E | " androidboot.hw_major=" | 0x024A9C | PARAM | FUN_000247c0 @ 0x247c0
+0x07833E | " androidboot.hw_major=" | 0x025BAC | PARAM | FUN_000247c0 @ 0x247c0
+0x078355 | " androidboot.hw_minor=" | 0x024B1C | PARAM | FUN_000247c0 @ 0x247c0
+0x078355 | " androidboot.hw_minor=" | 0x025C14 | PARAM | FUN_000247c0 @ 0x247c0
+0x07837B | " androidboot.wlan_mac=" | 0x024C40 | PARAM | FUN_000247c0 @ 0x247c0
+0x07837B | " androidboot.wlan_mac=" | 0x025C9C | PARAM | FUN_000247c0 @ 0x247c0
+0x078392 | " androidboot.bt_mac=" | 0x024C8C | PARAM | FUN_000247c0 @ 0x247c0
+0x078392 | " androidboot.bt_mac=" | 0x025CC8 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783A7 | " androidboot.hardware=" | 0x024CD8 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783A7 | " androidboot.hardware=" | 0x025CF4 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783BE | " androidboot.model=" | 0x024D24 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783BE | " androidboot.model=" | 0x025D20 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783D2 | " androidboot.bootdevice=" | 0x0256B0 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783D2 | " androidboot.bootdevice=" | 0x024EE8 | PARAM | FUN_000247c0 @ 0x247c0
+0x0783EB | " androidboot.boot_devices=soc/" | 0x0258BC | PARAM | FUN_000247c0 @ 0x247c0
+0x0783EB | " androidboot.boot_devices=soc/" | 0x024F30 | PARAM | FUN_000247c0 @ 0x247c0
+0x07840A | " androidboot.serialno=" | 0x024F6C | PARAM | FUN_000247c0 @ 0x247c0
+0x078421 | " androidboot.mode=" | 0x024FF0 | PARAM | FUN_000247c0 @ 0x247c0
+0x07843B | " androidboot.alarmboot=true" | 0x02507C | PARAM | FUN_000247c0 @ 0x247c0
+0x078457 | " androidboot.mode=charger" | 0x025090 | PARAM | FUN_000247c0 @ 0x247c0
+0x078477 | " androidboot.slot_suffix=" | 0x025108 | PARAM | FUN_000247c0 @ 0x247c0
+0x0784DA | " androidboot.dtbo_idx=" | 0x0252FC | PARAM | FUN_000247c0 @ 0x247c0
+0x0784F1 | " androidboot.dtb_idx=" | 0x025358 | PARAM | FUN_000247c0 @ 0x247c0
+0x078507 | " androidboot.secure=" | 0x0253A8 | PARAM | FUN_000247c0 @ 0x247c0
+0x07851C | " androidboot.force_enable_usb_adb=" | 0x025400 | PARAM | FUN_000247c0 @ 0x247c0
+0x07851C | " androidboot.force_enable_usb_adb=" | 0x02579C | DATA | FUN_000247c0 @ 0x247c0
+0x07851C | " androidboot.force_enable_usb_adb=" | 0x02578C | PARAM | FUN_000247c0 @ 0x247c0
+0x07851C | " androidboot.force_enable_usb_adb=" | 0x025D60 | PARAM | FUN_000247c0 @ 0x247c0
+0x07853F | " androidboot.version_bootloader=" | 0x02545C | PARAM | FUN_000247c0 @ 0x247c0
+0x07853F | " androidboot.version_bootloader=" | 0x0257B0 | DATA | FUN_000247c0 @ 0x247c0
+0x07853F | " androidboot.version_bootloader=" | 0x0257A4 | PARAM | FUN_000247c0 @ 0x247c0
+0x07853F | " androidboot.version_bootloader=" | 0x025D84 | PARAM | FUN_000247c0 @ 0x247c0
+0x078560 | " androidboot.orientation=" | 0x0254C0 | PARAM | FUN_000247c0 @ 0x247c0
+0x078560 | " androidboot.orientation=" | 0x0257C4 | DATA | FUN_000247c0 @ 0x247c0
+0x078560 | " androidboot.orientation=" | 0x025DA8 | PARAM | FUN_000247c0 @ 0x247c0
+0x07857A | " androidboot.bootreason=" | 0x025520 | PARAM | FUN_000247c0 @ 0x247c0
+0x07857A | " androidboot.bootreason=" | 0x0257D0 | DATA | FUN_000247c0 @ 0x247c0
+0x07857A | " androidboot.bootreason=" | 0x025DCC | PARAM | FUN_000247c0 @ 0x247c0
+0x078593 | " androidboot.boottime=" | 0x025580 | PARAM | FUN_000247c0 @ 0x247c0
+0x078593 | " androidboot.boottime=" | 0x0257D4 | DATA | FUN_000247c0 @ 0x247c0
+0x078593 | " androidboot.boottime=" | 0x025DF0 | PARAM | FUN_000247c0 @ 0x247c0
+0x0785DA | "androidboot.console=" | 0x025828 | PARAM | FUN_000247c0 @ 0x247c0
+0x078C00 | "Backup the boot logo blt buffer failed: %r\n" | 0x02BA90 | PARAM | FUN_0002b870 @ 0x2b870
+0x078D1A | "Failed to update fastboot option item\n" | 0x02C52C | PARAM | (none)
+0x078D1A | "Failed to update fastboot option item\n" | 0x02C608 | PARAM | (none)
+0x078EDF | "Failed to update the unlock status: %r\n" | 0x02C82C | PARAM | FUN_0002c734 @ 0x2c734
+0x078F2D | "Unlock" | (no xrefs) | - | -
+0x078F39 | "Creating unlock keys detect event\n" | (no xrefs) | - | -
+0x079096 | "Unable to show fastboot menu on screen: %r\n" | 0x02CFCC | PARAM | FUN_0002cb04 @ 0x2cb04
+0x0790C2 | "Creating fastboot menu keys detect event\n" | 0x02D018 | PARAM | FUN_0002cb04 @ 0x2cb04
+0x0790EC | "\nProcessing fastboot commands, keys are now disabled\n\n" | 0x02CBF0 | PARAM | FUN_0002cb04 @ 0x2cb04
+0x07931D | "Unsupported  boot device type\n" | 0x02EDEC | PARAM | FUN_0002e3b4 @ 0x2e3b4
+0x0795BD | "IsCurrentSlotBootable: No boot partition entry for slot %s\n" | 0x030198 | PARAM | FUN_0003008c @ 0x3008c
+0x079619 | "Slot %s is unbootable \n" | 0x0301C0 | PARAM | FUN_0003008c @ 0x3008c
+0x079667 | "SetActiveSlot: No boot partition entry for slot %s\n" | 0x030704 | PARAM | FUN_000303cc @ 0x303cc
+0x079667 | "SetActiveSlot: No boot partition entry for slot %s\n" | 0x0306D4 | PARAM | FUN_000303cc @ 0x303cc
+0x0796E8 | "Reboot Required\n" | 0x0308A0 | PARAM | FUN_000303cc @ 0x303cc
+0x0796E8 | "Reboot Required\n" | 0x030ED0 | PARAM | FUN_000303cc @ 0x303cc
+0x07973F | "HandleActiveSlotUnbootable" | 0x030FE8 | PARAM | FUN_00030f58 @ 0x30f58
+0x07973F | "HandleActiveSlotUnbootable" | 0x031128 | PARAM | FUN_00030f58 @ 0x30f58
+0x07975A | "HandleActiveSlotUnbootable: No boot partition entry for slot %s\n" | 0x031188 | PARAM | FUN_00030f58 @ 0x30f58
+0x07975A | "HandleActiveSlotUnbootable: No boot partition entry for slot %s\n" | 0x031154 | PARAM | FUN_00030f58 @ 0x30f58
+0x07979B | "FirstBoot, skipping slot Unbootable\n" | 0x0311FC | PARAM | FUN_00030f58 @ 0x30f58
+0x0797C0 | "Alternate Slot %s is bootable\n" | 0x0310DC | PARAM | FUN_00030f58 @ 0x30f58
+0x0797DF | "HandleActiveSlotUnbootable: Rebooting\n" | 0x03122C | PARAM | FUN_00030f58 @ 0x30f58
+0x079806 | "HandleActiveSlotUnbootable: gRT->Resetystem didn't work\n" | 0x031278 | PARAM | FUN_00030f58 @ 0x30f58
+0x07983F | "Alternate Slot %s Not Bootable Unbootable %d, BootSuccess %d, RetryCount %d\n" | 0x0311BC | PARAM | FUN_00030f58 @ 0x30f58
+0x07988C | "ClearUnbootable: GetActiveSlot failed.\n" | (no xrefs) | - | -
+0x0798B4 | "ClearUnbootable: No boot partition entry for slot %s\n" | (no xrefs) | - | -
+0x079926 | "FindBootableSlot: No boot partition entry for slot %s\n" | 0x0313EC | PARAM | FUN_000312b4 @ 0x312b4
+0x07995D | "Active Slot %s is bootable\n" | 0x0313B8 | PARAM | FUN_000312b4 @ 0x312b4
+0x079979 | "Active Slot %s is bootable, retry count %ld\n" | 0x03157C | PARAM | FUN_000312b4 @ 0x312b4
+0x0799C7 | "Slot %s is unbootable, trying alternate slot\n" | 0x031488 | PARAM | FUN_000312b4 @ 0x312b4
+0x0799F5 | "Slot %s Unbootable %d, BootSuccess %d, RetryCount %d\n" | 0x0314B8 | PARAM | FUN_000312b4 @ 0x312b4
+0x07A013 | "GetBootPartitionEntry: No boot partition entry for slot %s\n" | 0x030288 | PARAM | FUN_00030200 @ 0x30200
+0x07A04F | "GetBootPartitionEntry: No boot partition entry for slot %s, invalid index\n" | 0x030334 | PARAM | FUN_00030200 @ 0x30200
+0x07A0B8 | "GetActiveSlot: No boot partition entry for slot %s\n" | 0x02DC4C | PARAM | FUN_0002da18 @ 0x2da18
+0x07A12C | "GetActiveSlot: First Boot: No boot partition entry for slot %s\n" | 0x02DDA0 | PARAM | FUN_0002da18 @ 0x2da18
+0x07A16C | "GetActiveSlot: First boot: set default slot _a\n" | 0x02DDD4 | PARAM | FUN_0002da18 @ 0x2da18
+0x07A1C1 | "GetActiveSlot: Slot attr: Priority %ld, Retry %ld, Active %ld, Success %ld, u..." | 0x02DD58 | PARAM | FUN_0002da18 @ 0x2da18
+0x07A23E | "Switching the boot lun from 1 to 2\n" | 0x030DB8 | PARAM | FUN_000303cc @ 0x303cc
+0x07A262 | "Switching the boot lun from 2 to 1\n" | 0x030C74 | PARAM | FUN_000303cc @ 0x303cc
+0x07A2BE | "ValidateSlotGuids: No boot partition entry for slot %s\n" | 0x03169C | PARAM | FUN_000312b4 @ 0x312b4
+0x07A5EC | "Unable to save device sealed state flags: %r\n" | 0x032F50 | PARAM | FUN_00032e70 @ 0x32e70
+0x07A662 | "Unable to save device unlock request: %r\n" | 0x0332B4 | PARAM | FUN_00033254 @ 0x33254
+0x07A68C | "Unable to save device unlock-allowed flag: %r\n" | 0x033390 | PARAM | FUN_00033330 @ 0x33330
+0x07A8AD | "Unable set the unlock value: %r\n" | 0x032A20 | PARAM | FUN_00032914 @ 0x32914
+0x07A8AD | "Unable set the unlock value: %r\n" | 0x032BE8 | PARAM | FUN_00032914 @ 0x32914
+0x07A8CE | "Unable set the unlock critical value: %r\n" | 0x032AE0 | PARAM | FUN_00032914 @ 0x32914
+0x07A8CE | "Unable set the unlock critical value: %r\n" | 0x032A74 | PARAM | FUN_00032914 @ 0x32914
+0x07A8F8 | "recovery\n--wipe_data\n--reason=MasterClearConfirm\n--locale=en_US\n--reboot-comm..." | 0x032F94 | PARAM | FUN_00032e70 @ 0x32e70
+0x07A8F8 | "recovery\n--wipe_data\n--reason=MasterClearConfirm\n--locale=en_US\n--reboot-comm..." | 0x032FDC | PARAM | FUN_00032e70 @ 0x32e70
+0x07AE24 | "qcom,camera-flash0" | 0x098328 | DATA | (none)
+0x07AE37 | "qcom,camera-flash1" | 0x098358 | DATA | (none)
+0x07B828 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0399C8 | PARAM | FUN_00039998 @ 0x39998
+0x07B828 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039A58 | PARAM | FUN_00039a28 @ 0x39a28
+0x07B828 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039AC8 | PARAM | FUN_00039a98 @ 0x39a98
+0x07B828 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039B38 | PARAM | FUN_00039b08 @ 0x39b08
+0x07B828 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039BA0 | PARAM | FUN_00039b70 @ 0x39b70
+0x07B828 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039C08 | PARAM | FUN_00039bd8 @ 0x39bd8
+0x07BA00 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039CB4 | PARAM | FUN_00039c50 @ 0x39c50
+0x07BA00 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x039F20 | PARAM | FUN_00039c50 @ 0x39c50
+0x07BACC | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A33C | PARAM | FUN_0003a300 @ 0x3a300
+0x07BB48 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A3B8 | PARAM | FUN_0003a37c @ 0x3a37c
+0x07BBCF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A434 | PARAM | FUN_0003a3fc @ 0x3a3fc
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B0A8 | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B0DC | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B118 | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B148 | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B178 | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B1B8 | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B200 | PARAM | FUN_0003b05c @ 0x3b05c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A92C | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A954 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A98C | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A9C0 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A9FC | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AA30 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AA60 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AA90 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AAD8 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AB28 | PARAM | FUN_0003a8e0 @ 0x3a8e0
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B2EC | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B320 | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B35C | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B390 | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B3C0 | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B3F0 | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B438 | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B488 | PARAM | FUN_0003b298 @ 0x3b298
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AC6C | PARAM | FUN_0003ac2c @ 0x3ac2c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03ACA0 | PARAM | FUN_0003ac2c @ 0x3ac2c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03ACDC | PARAM | FUN_0003ac2c @ 0x3ac2c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AD0C | PARAM | FUN_0003ac2c @ 0x3ac2c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AD4C | PARAM | FUN_0003ac2c @ 0x3ac2c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AD94 | PARAM | FUN_0003ac2c @ 0x3ac2c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A60C | PARAM | FUN_0003a5ac @ 0x3a5ac
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AE60 | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AE94 | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AED0 | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AF04 | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AF34 | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AF7C | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03AFCC | PARAM | FUN_0003ae18 @ 0x3ae18
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A694 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A6BC | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A6E4 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A718 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A754 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A788 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A7B8 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A800 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BC40 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03A850 | PARAM | FUN_0003a64c @ 0x3a64c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C868 | PARAM | FUN_0003c830 @ 0x3c830
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C898 | PARAM | FUN_0003c830 @ 0x3c830
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C8D0 | PARAM | FUN_0003c830 @ 0x3c830
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C908 | PARAM | FUN_0003c830 @ 0x3c830
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C954 | PARAM | FUN_0003c830 @ 0x3c830
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B8C0 | PARAM | FUN_0003b874 @ 0x3b874
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B8F0 | PARAM | FUN_0003b874 @ 0x3b874
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B928 | PARAM | FUN_0003b874 @ 0x3b874
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C154 | PARAM | FUN_0003c114 @ 0x3c114
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C184 | PARAM | FUN_0003c114 @ 0x3c114
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B9D8 | PARAM | FUN_0003b998 @ 0x3b998
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BA08 | PARAM | FUN_0003b998 @ 0x3b998
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C2E0 | PARAM | FUN_0003c294 @ 0x3c294
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C310 | PARAM | FUN_0003c294 @ 0x3c294
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C348 | PARAM | FUN_0003c294 @ 0x3c294
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BB90 | PARAM | FUN_0003bb4c @ 0x3bb4c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BC1C | PARAM | FUN_0003bb4c @ 0x3bb4c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C4A8 | PARAM | FUN_0003c468 @ 0x3c468
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C4D8 | PARAM | FUN_0003c468 @ 0x3c468
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BD3C | PARAM | FUN_0003bcfc @ 0x3bcfc
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BD6C | PARAM | FUN_0003bcfc @ 0x3bcfc
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BDA4 | PARAM | FUN_0003bcfc @ 0x3bcfc
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BDDC | PARAM | FUN_0003bcfc @ 0x3bcfc
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BE64 | PARAM | FUN_0003bcfc @ 0x3bcfc
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BE20 | PARAM | FUN_0003bcfc @ 0x3bcfc
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B564 | PARAM | FUN_0003b52c @ 0x3b52c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B58C | PARAM | FUN_0003b52c @ 0x3b52c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B5C8 | PARAM | FUN_0003b52c @ 0x3b52c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B604 | PARAM | FUN_0003b52c @ 0x3b52c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C5B0 | PARAM | FUN_0003c56c @ 0x3c56c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C638 | PARAM | FUN_0003c56c @ 0x3c56c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B698 | PARAM | FUN_0003b65c @ 0x3b65c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B6C0 | PARAM | FUN_0003b65c @ 0x3b65c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B710 | PARAM | FUN_0003b65c @ 0x3b65c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BEEC | PARAM | FUN_0003bea8 @ 0x3bea8
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BF24 | PARAM | FUN_0003bea8 @ 0x3bea8
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BF54 | PARAM | FUN_0003bea8 @ 0x3bea8
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03BF8C | PARAM | FUN_0003bea8 @ 0x3bea8
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B7E8 | PARAM | FUN_0003b7a8 @ 0x3b7a8
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03B818 | PARAM | FUN_0003b7a8 @ 0x3b7a8
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C030 | PARAM | FUN_0003bff4 @ 0x3bff4
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C080 | PARAM | FUN_0003bff4 @ 0x3bff4
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C6DC | PARAM | FUN_0003c69c @ 0x3c69c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C754 | PARAM | FUN_0003c69c @ 0x3c69c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C7B8 | PARAM | FUN_0003c69c @ 0x3c69c
+0x07BF4D | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03C428 | PARAM | FUN_0003c3c0 @ 0x3c3c0
+0x07C55C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CA5C | PARAM | FUN_0003ca2c @ 0x3ca2c
+0x07C55C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CAE4 | PARAM | FUN_0003caac @ 0x3caac
+0x07C55C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CB60 | PARAM | FUN_0003cb2c @ 0x3cb2c
+0x07C55C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CBEC | PARAM | FUN_0003cbb4 @ 0x3cbb4
+0x07C55C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CC74 | PARAM | FUN_0003cc40 @ 0x3cc40
+0x07C55C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CD0C | PARAM | FUN_0003ccd4 @ 0x3ccd4
+0x07C5D1 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x03CFA8 | PARAM | FUN_0003cf6c @ 0x3cf6c
+0x07D27C | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042344 | PARAM | FUN_00042308 @ 0x42308
+0x07D327 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0423BC | PARAM | FUN_0004237c @ 0x4237c
+0x07D327 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0423E4 | PARAM | FUN_0004237c @ 0x4237c
+0x07D327 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042428 | PARAM | FUN_0004237c @ 0x4237c
+0x07D327 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042508 | PARAM | FUN_000424b4 @ 0x424b4
+0x07D4D2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x04260C | PARAM | FUN_000425cc @ 0x425cc
+0x07D4D2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042634 | PARAM | FUN_000425cc @ 0x425cc
+0x07D6F2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x04285C | PARAM | FUN_00042824 @ 0x42824
+0x07D6F2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042750 | PARAM | FUN_000426dc @ 0x426dc
+0x07D6F2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042780 | PARAM | FUN_000426dc @ 0x426dc
+0x07D6F2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0427EC | PARAM | FUN_000427b8 @ 0x427b8
+0x07D7B8 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042CA0 | PARAM | FUN_00042c2c @ 0x42c2c
+0x07D7B8 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042CD0 | PARAM | FUN_00042c2c @ 0x42c2c
+0x07D853 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042D54 | PARAM | FUN_00042d08 @ 0x42d08
+0x07D853 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042D84 | PARAM | FUN_00042d08 @ 0x42d08
+0x07D853 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x042DD4 | PARAM | FUN_00042d08 @ 0x42d08
+0x07E02F | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x048F30 | PARAM | FUN_00048ed0 @ 0x48ed0
+0x07E02F | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x048F5C | PARAM | FUN_00048ed0 @ 0x48ed0
+0x07E253 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x04928C | PARAM | FUN_00049248 @ 0x49248
+0x07E253 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x049128 | PARAM | FUN_000490e4 @ 0x490e4
+0x07E253 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x049150 | PARAM | FUN_000490e4 @ 0x490e4
+0x07E764 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x049528 | PARAM | FUN_000494c4 @ 0x494c4
+0x07E764 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0495B0 | PARAM | FUN_000494c4 @ 0x494c4
+0x07E764 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x04A3AC | PARAM | FUN_000494c4 @ 0x494c4
+0x07E764 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x04A3FC | PARAM | FUN_000494c4 @ 0x494c4
+0x07E764 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x04A430 | PARAM | FUN_000494c4 @ 0x494c4
+0x07E764 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x0495F0 | PARAM | FUN_000494c4 @ 0x494c4
+0x07F5FF | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x051F04 | PARAM | FUN_00051ea0 @ 0x51ea0
+0x093687 | "E/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk..." | (no xrefs) | - | -
+0x0937C2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06B33C | PARAM | FUN_0006b2f8 @ 0x6b2f8
+0x0937C2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06B364 | PARAM | FUN_0006b2f8 @ 0x6b2f8
+0x0937C2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06B398 | PARAM | FUN_0006b2f8 @ 0x6b2f8
+0x0937C2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06B524 | PARAM | FUN_0006b3f0 @ 0x6b3f0
+0x0937C2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06B544 | PARAM | FUN_0006b3f0 @ 0x6b3f0
+0x0937C2 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06B568 | PARAM | FUN_0006b3f0 @ 0x6b3f0
+0x093A08 | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06BF74 | PARAM | FUN_0006bf38 @ 0x6bf38
+0x093BDD | "/disk/jenkins/workspace/aloha/Cipher-non-hlos-10/src/bootable/bootloader/edk2..." | 0x06C290 | PARAM | FUN_0006c1a4 @ 0x6c1a4
+0x095184 | "partition-size:" | (no xrefs) | - | -
+0x0951A4 | "partition-type:" | (no xrefs) | - | -
+0x095264 | "partition-size:" | (no xrefs) | - | -
+0x095284 | "partition-type:" | (no xrefs) | - | -
+0x095344 | "partition-size:" | (no xrefs) | - | -
+0x095364 | "partition-type:" | (no xrefs) | - | -
+0x09557C | "Restart bootloader" | (no xrefs) | - | -
+0x0964CC | "Please Reboot..." | 0x02CBFC | PARAM | FUN_0002cb04 @ 0x2cb04
+0x096C74 | "\n\nPortal is starting up in developer mode.\n\nTo exit developer mode, lock the ..." | (no xrefs) | - | -
+
+# --- Raw memory pattern matches ---
+0x072477 | RAW:"download" | (undefined data) | - | -
+0x072542 | RAW:"download" | (undefined data) | - | -
+0x073767 | RAW:"download" | (undefined data) | - | -
+0x073797 | RAW:"download" | (undefined data) | - | -
+0x0737C7 | RAW:"download" | (undefined data) | - | -
+0x0737E5 | RAW:"download" | (undefined data) | - | -
+0x06CD7E | RAW:"continue" | (undefined data) | - | -
+0x076081 | RAW:"continue" | (undefined data) | - | -
+0x0760BB | RAW:"continue" | (undefined data) | - | -
+0x0722BC | RAW:"get_unlock_ability" | (undefined data) | - | -
+0x096C76 | RAW:"Portal is starting" | (undefined data) | - | -
+0x096C8F | RAW:"developer mode" | (undefined data) | - | -
+0x096CA8 | RAW:"developer mode" | (undefined data) | - | -
+0x0723FF | RAW:"boot-recovery" | (undefined data) | - | -
+0x07240F | RAW:"boot-fastboot" | (undefined data) | - | -
+0x073444 | RAW:"PRNG protocol" | (undefined data) | - | -
+0x0747F5 | RAW:"PRNG protocol" | (undefined data) | - | -
+0x077907 | RAW:"PRNG protocol" | (undefined data) | - | -
+0x0720F7 | RAW:"partition-type" | (undefined data) | - | -
+0x06DDF0 | RAW:"No such partition" | (undefined data) | - | -
+0x0727C7 | RAW:"No such partition" | (undefined data) | - | -
+0x0725E3 | RAW:"Critical Partitions" | (undefined data) | - | -
+0x07331D | RAW:"Critical Partitions" | (undefined data) | - | -
+0x072614 | RAW:"persist partition" | (undefined data) | - | -
+0x07334B | RAW:"persist partition" | (undefined data) | - | -

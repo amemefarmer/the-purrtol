@@ -1,0 +1,2 @@
+FAILED (remote: 'unknown command')
+fastboot: error: Command failed

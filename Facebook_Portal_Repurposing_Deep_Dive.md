@@ -1,0 +1,253 @@
+# Facebook/Meta Portal: Deep Dive into Hardware, Firmware, and Repurposing
+
+## Executive Summary
+
+The Facebook (Meta) Portal line is a series of smart display and video calling devices built on Qualcomm SoCs running a heavily locked-down, customized version of Android. Meta discontinued the product line in late 2022 and has been progressively stripping features since, with voice assistants, third-party apps, and most functionality removed by early 2025. This has created a massive community interest in repurposing these devices — which contain excellent hardware — into general-purpose computing devices. **As of early 2026, no reliable public method exists to fully unlock retail Portal units**, though significant progress has been made by individual researchers, and several promising attack vectors remain under active investigation.
+
+---
+
+## 1. The Device Lineup & Hardware Specifications
+
+### Portal Models & Codenames
+
+| Model | Generation | Codename(s) | Display | SoC | RAM | Storage |
+|---|---|---|---|---|---|---|
+| Portal (10") | Gen 1 | aloha/ohana | 10" HD | Qualcomm QCS605 | 2 GB | 16–32 GB |
+| Portal+ | Gen 1 | — | 15.6" FHD (1920×1080) | Qualcomm QCS605 | 2 GB | 32 GB (UFS 2.1) |
+| Portal TV | Gen 1 | — | N/A (HDMI out) | Qualcomm SoC | 2 GB | eMMC |
+| Portal (10") | Gen 2 | omni/atlas | 10" HD | Qualcomm QCS605 | 2 GB | 16–32 GB |
+| Portal+ | Gen 2 | — | 14" FHD | Qualcomm QCS605 | 2 GB | 32 GB |
+| Portal Go | — | terry | 10" HD (portable) | Qualcomm QCS605 | 2 GB | 32 GB |
+| Portal Mini | — | — | 8" HD | Qualcomm QCS605 | 2 GB | — |
+
+### Core Hardware Components (from teardowns)
+
+- **SoC**: Qualcomm QCS605 — an octa-core IoT processor (ARM64), purpose-built for smart displays and IoT. Supports AI/ML workloads, dual camera ISP, and 4K video.
+- **RAM**: Samsung K4UHE3D4AB-MGCL (2 GB LPDDR4X) or SK Hynix H9HKNNNCRMMUER-NMH (2 GB LPDDR4X)
+- **Storage**: SanDisk SDINBDA4-32GB (eMMC) on some models; SK Hynix H28S6D302BMR (32 GB UFS 2.1) on Portal+ Gen 1
+- **WiFi/BT**: Qualcomm WCN3990 WiFi/Bluetooth SoC (Qualcomm Atheros)
+- **Power Management**: Qualcomm PM670, PM670L (with integrated audio codec), and PM3003A
+- **Camera**: 13 MP wide-angle (103°–114° FoV) with AI-powered smart framing
+- **Microphones**: 8× MEMS far-field microphone array
+- **Display connector**: 40-pin eDP (embedded DisplayPort) on Portal+ Gen 1
+- **External ports**: USB-C (officially "factory use only"), power barrel connector (12V 2A on Portal TV)
+- **OS**: Android 9 (Pie) — heavily customized by Facebook/Meta
+
+### What Makes This Hardware Attractive
+
+The Portal devices are essentially tablet-grade hardware with excellent cameras, microphone arrays, speakers, and displays — sold at deep discounts (often $15–50 on secondary markets). The QCS605 is a capable ARM64 processor. If unlocked, these could serve as:
+
+- Smart home dashboards (Home Assistant)
+- Video conferencing endpoints (Zoom, Teams, Google Meet)
+- Digital photo frames
+- Kitchen/workshop displays
+- Kiosk devices
+- General-purpose Android tablets
+
+---
+
+## 2. Software Architecture & Security Model
+
+### Operating System
+
+The Portal runs a heavily modified Android 9 (Pie) with:
+
+- A custom launcher replacing the standard Android home screen
+- Facebook/Meta-specific system services
+- A restricted browser ("Chromium" — actually a Meta-skinned version with heavy restrictions)
+- No Google Play Services or Google apps
+- No standard Android Settings app (replaced with a simplified Portal settings UI)
+- ADB (Android Debug Bridge) completely disabled on retail units
+- USB debugging greyed out and inaccessible
+
+### Boot Chain & Security
+
+The device uses Qualcomm's standard secure boot chain:
+
+1. **Primary Bootloader (PBL)** — burned into SoC ROM, cannot be modified. Contains EDL (Emergency Download) mode.
+2. **Secondary Bootloader (SBL/XBL)** — includes Qualcomm's eXtensible Boot Loader. Signed and verified.
+3. **Android Bootloader (ABOOT)** — Facebook's customized bootloader. Handles fastboot mode.
+4. **Boot image** → **Android system**
+
+Key security features:
+
+- **Verified Boot (dm-verity)**: System partition integrity is verified at boot. Modifying system partitions causes a boot loop.
+- **Secure Boot**: All boot chain components are cryptographically signed. Unsigned code cannot execute.
+- **Locked Bootloader**: Fastboot reports `Device unlocked: false`, `Device critical unlocked: false`, `Device unsealed: false`, `ADB allowed: false`.
+- **"Sealing" Process**: Facebook performs a "sealing" step before shipping that locks down everything — bootloader, ADB, fastboot, etc.
+- **ADB Entitlement**: ADB access is managed through Facebook's servers and only granted to registered employee accounts.
+- **Bootloader Unlock Requires Signed Response**: The command `fastboot flashing unlock_bootloader <code file>` exists but requires a cryptographically signed response to a one-time challenge code, generated by an internal Facebook tool.
+- **Encrypted Userdata**: User data partition is always encrypted.
+
+### Fastboot Partition Layout (from Portal+ Gen 1)
+
+The device exposes a rich partition layout in fastboot, including:
+
+```
+variant: APQ UFS
+persist, persist_bak, fsc, fsg, modemst1, modemst2, storsec, logdump...
+```
+
+Hardware revision info: `hw-major:0x37`, `hw-minor:0x01`
+
+---
+
+## 3. Known Access Methods & Attack Vectors
+
+### 3.1 Entering Fastboot Mode
+
+- **Portal+ Gen 1**: Hold **Volume Down + Power** during boot. Screen shows Portal logo with "Please Reboot..." in a black box. Device shows up as a fastboot device via USB-C.
+- **General**: Some models respond to volume button combinations during boot.
+- **Limitation**: Fastboot is accessible but locked. No flashing, erasing, or unlocking commands succeed.
+
+### 3.2 Entering EDL (Emergency Download) Mode — Qualcomm 9008
+
+- **Button combination**: Hold **all three buttons** (volume up + volume down + power) during boot, then plug in USB-C. Device appears as `Qualcomm HS-USB QDLoader 9008`.
+- **Status**: Device enters Qualcomm's Sahara/Firehose protocol mode. However:
+  - No publicly available firehose programmer (.mbn file) for the Portal's QCS605 configuration
+  - Without the correct signed programmer, you cannot read/write partitions
+  - The EDL programmer must be signed by Qualcomm or Facebook
+  - Tools like `bkerler/edl` (GitHub), QFIL, QPST, and AXIOMIflash can see the device but cannot interact meaningfully without the programmer file
+
+**December 2025 breakthrough**: A user on XDA posted a firehose file for the "atlas" (Portal 10" Gen 2, 16GB) model, claiming it can be used with QPST to flash partitions. The suggestion was to unpack boot.img, edit the ADB status flag, repack, and flash via QPST. **This is unverified and carries significant brick risk.**
+
+### 3.3 Android Recovery Mode
+
+- **Access**: Hold Volume Up + Volume Down during boot, wait through a 10-second countdown, then release.
+- **Options visible**: Factory reset, and "Apply update from ADB" (which prompts for `adb sideload`)
+- **Limitation**: Despite showing the ADB sideload prompt, ADB never actually recognizes the device from a connected computer.
+
+### 3.4 Developer/Debug Modes (Software)
+
+- **Hidden Developer Options**: On some firmware versions, connecting a USB keyboard and enabling developer mode through the browser or settings search reveals Android developer options. However, **USB debugging remains greyed out** and cannot be enabled on retail units.
+- **OEM Unlock toggle**: At least one user reported finding an OEM unlock toggle in developer options, but enabling it is feared to trigger additional Meta lockdowns or bricking.
+
+### 3.5 USB-C Port Behavior
+
+- Officially "factory use only" per Facebook support
+- Works as a USB-C video output (USB-C to HDMI adapter works for mirroring)
+- Works as a USB-C power delivery source (can charge other devices)
+- One user reported that inserting a USB-C OS hard disk caused the device to briefly show "Maintenance Boot Mode" with an option to "disable Facebook encryption" — this has not been reliably reproduced.
+
+### 3.6 Network Attack Surface
+
+- Port 8889 (HTTPS) is open on Portal TV when scanned via nmap
+- The Portal's browser was briefly exploitable via PDFs and share sheets to reach Android system info screens — these tricks have been patched in later firmware
+
+### 3.7 Qualcomm Bootloader Exploits
+
+- **First-gen Portals run Android 9 with security patches from August 1, 2019** — making them potentially vulnerable to known Qualcomm bootloader exploits (similar to those used on Quest 1/2).
+- A buffer overflow exploit exists for low-version bootloaders on the QCS605 platform, but without a dump of the specific bootloader firmware for the right version, it cannot be utilized.
+- Research is ongoing into whether ROP (Return-Oriented Programming) chains could be constructed to enable ADB through the exploit.
+
+---
+
+## 4. Developer Units vs. Retail Units
+
+A critical distinction exists:
+
+### Developer Units
+- Boot with a screen saying "Portal is starting up in developer mode"
+- ADB enabled by default
+- Bootloader unlocked
+- Can run standard Android commands
+- Multiple researchers (notably "marcel505" on XDA) have developer units
+- Full firmware has been dumped from these units
+- An Android 12L GSI was successfully flashed onto a prototype 2nd-gen Portal
+
+### Retail Units
+- Fully "sealed" — bootloader locked, ADB disabled, verity enabled
+- No known reliable method to unlock as of early 2026
+- The bootloader unlock process requires a signed cryptographic response from Facebook's internal tooling
+- Even with full firmware dumps available, flashing modified images fails due to secure boot verification
+
+---
+
+## 5. Available Resources
+
+### Firmware Dumps
+- **Full firmware for all Portal models** has been published at: `dumps.tadiphone.dev/dumps/facebook`
+- This includes firmware for: Portal 10" Gen 1 (aloha/ohana), Portal 10" Gen 2 (omni/atlas), Portal Go (terry), Portal Plus, Portal TV
+- Latest available firmware version: 1.42.3
+
+### Tools
+- **bkerler/edl** (GitHub) — Open-source EDL/Firehose tool for Qualcomm devices
+- **QFIL/QPST** — Qualcomm's official flash tools
+- **AXIOMIflash** — Alternative Qualcomm flash utility
+- **AndroidDumps/dumpyara** (GitHub) — Firmware extraction tools
+- **AndroidDumps/Firmware_extractor** (GitHub) — Archive-to-image extraction
+
+### Community
+- **XDA Forums thread** (primary hub): `xdaforums.com/t/anyone-been-able-to-do-anything-with-a-facebook-portal.3878505/` — 11+ pages, active since December 2018
+- **Reddit**: r/FacebookPortal
+- **Twitter/X**: @MarcelD505 — primary researcher with developer unit access
+
+---
+
+## 6. Possible Paths Forward
+
+### Path A: EDL + Firehose Programmer (Most Promising for Gen 2)
+1. Enter EDL mode (9008)
+2. Use the recently shared firehose file (atlas/16GB, December 2025)
+3. Use QPST/QFIL to read/dump current partitions (backup!)
+4. Modify boot.img to enable ADB
+5. Flash modified boot.img
+6. **Risk**: Secure boot may reject modified boot images. High brick potential.
+
+### Path B: Bootloader Exploit (Most Promising for Gen 1)
+1. Find or acquire a Gen 1 Portal on old firmware (pre-1.9.2 ideal)
+2. Exploit known Qualcomm QCS605 buffer overflow in the bootloader
+3. Construct ROP chain to enable ADB or unlock bootloader
+4. **Requires**: Deep ARM64 reverse engineering expertise and a bootloader dump for the specific firmware version
+
+### Path C: Acquire a Developer Unit
+1. Developer units with unlocked bootloaders occasionally surface on secondary markets or from ex-Facebook employees
+2. These can be used to: extract signing keys or certificates, analyze the unlock mechanism, potentially build unlock tools
+3. **Status**: Multiple people have developer units but have not yet cracked the retail unlock mechanism
+
+### Path D: GSI Flashing (Requires Unlocked Bootloader)
+1. Once bootloader is unlocked, the Portal supports Project Treble (Android 9+)
+2. Flash a Generic System Image (GSI) — e.g., phhusson's AOSP, LineageOS, or similar
+3. Android 12L GSI has been successfully demonstrated on a prototype unit
+4. **Prerequisite**: Bootloader must be unlocked first (see Paths A–C)
+
+### Path E: Hardware-Level EMMC/UFS Direct Access
+1. Physically desolder the storage chip or use JTAG/ISP connections
+2. Read/write directly to flash storage bypassing the SoC
+3. Modify partition contents to enable ADB or disable secure boot checks
+4. **Pros**: Bypasses all software security
+5. **Cons**: Requires micro-soldering skills, specialized equipment, and deep knowledge of the partition layout. High brick risk. Destructive to the device housing.
+
+---
+
+## 7. Practical Recommendations
+
+### If You Want to Try This Today
+
+1. **Start cheap**: Buy a Portal from Goodwill, eBay, or similar for $15–50. Expect to possibly brick it.
+2. **Join the XDA thread**: This is where active research is happening. Contribute findings, don't ask questions already answered in the thread.
+3. **Get comfortable with Qualcomm tools**: Learn QFIL, QPST, EDL mode, and the bkerler/edl Python tool before touching the Portal.
+4. **Back up everything**: If you get any access (EDL, fastboot), dump all partitions first before attempting any modifications.
+5. **Watch for the firehose development**: The December 2025 firehose file post for atlas is the most promising recent development. Monitor the XDA thread for results.
+
+### If You Have Reverse Engineering Skills
+
+The community badly needs:
+- Someone who can read ARM64 assembly to reverse-engineer the bootloader unlock challenge-response mechanism
+- Analysis of the XBL (eXtensible Boot Loader) images from the firmware dumps
+- Exploitation of the known QCS605 buffer overflow on early firmware versions
+- Development of a tool to generate the signed unlock response without Facebook's internal infrastructure
+
+### Realistic Expectations
+
+As of early 2026, turning a retail Facebook Portal into a generic Android device remains an **unsolved problem** for most people. The security is significantly more robust than typical consumer Android devices because Facebook invested heavily in locking these down (partly due to the privacy implications of the powerful camera and microphone hardware). The most realistic near-term outcome is that someone with the right exploit development skills will crack the bootloader unlock — and when that happens, GSI flashing should be straightforward given the Treble-compatible Android 9 base.
+
+---
+
+## 8. Security & Privacy Considerations
+
+It's worth noting the counterargument to unlocking Portals, raised by security researcher Pete Warden and others: an unlocked Portal running unvetted software with its powerful wide-angle camera (13 MP, 103°+ FoV) and 8-microphone array could be a significant privacy/surveillance risk if sold to unsuspecting buyers. Meta has cited this as a reason for not releasing unlock tools. Whether you agree with this reasoning or not, it's worth considering if you plan to redistribute repurposed devices.
+
+---
+
+*Last updated: February 2026. This is an active area of research — check the XDA thread for the latest developments.*

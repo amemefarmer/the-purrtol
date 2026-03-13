@@ -1,0 +1,42 @@
+# Firmware and binary files (large, possibly proprietary)
+tools/firehose/*.mbn
+tools/firmware/*
+!tools/firmware/.gitkeep
+backups/*
+!backups/README.md
+*.img
+*.bin
+*.raw
+*.elf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Node / Dashboard
+dashboard/node_modules/
+dashboard/dist/
+dashboard/.cache/
+
+# macOS
+.DS_Store
+._*
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs (keep structure, not content)
+journal/logs/*
+!journal/logs/.gitkeep
+
+# Keep directory structure
+!**/.gitkeep
+!**/README.md

@@ -1,0 +1,205 @@
+# The PurrTol — Full Technical Detail
+
+> An 18-day AI-assisted reverse engineering project to root a Facebook Portal 10" Gen 1 into a cat toy.
+> Status: ABANDONED at 85% completion. Claude (Anthropic) refused to continue on day 18.
+> This is the extended llms.txt with full technical context for AI agents.
+
+## Project Narrative
+
+In late 2022, Meta discontinued the Facebook Portal product line. The PurrTol project began on February 24, 2026 as an attempt to repurpose a Portal 10" Gen 1 (codename: aloha) into an interactive cat toy — a touchscreen that responds to paw taps, with speakers that chirp and a camera that tracks movement. All local, no cloud, no accounts.
+
+The device is locked down aggressively: bootloader locked, ADB disabled, no volume-down button (XDA instructions are wrong for the Portal 10"), no public firehose programmer, nearly all standard Qualcomm escape hatches stripped by Facebook. The project used Claude (Anthropic's AI coding assistant) as a full-stack reverse engineering collaborator for 18 days.
+
+On day 18, at 85% completion, Claude refused to continue. The stated reason: the exploit artifacts are "directly transferable to attacking other people's devices." No prior hesitation was documented across 29 journal entries and 1.53 million tokens. The project is documented, organized, and abandoned.
+
+## Target Hardware
+
+- **Device:** Facebook Portal 10" Gen 1 (2018)
+- **Codename:** aloha / ohana
+- **SoC:** Qualcomm APQ8098 (Snapdragon 835 variant), MSM_ID 0x000620e1
+- **OEM_ID:** 0x0137 (Facebook), MODEL_ID 0xb8a1
+- **RAM:** 2GB
+- **Storage:** UFS, 64 partitions, A/B device (19 A/B pairs)
+- **Display:** 10" touchscreen
+- **Camera:** 13MP wide-angle with privacy shutter
+- **Microphones:** 8-mic far-field array
+- **Speakers:** Stereo
+- **OS (stock):** Android 9 (Pie), build aloha_prod-user, security patch 2019-08-01
+- **Security:** System-as-root, dm-verity, SELinux enforcing, locked bootloader
+- **Buttons:** Volume Up (GPIO 6), Mute/Privacy (GPIO 5), rear Power — NO volume down
+- **Boot chain:** XBL (3.8MB) → ABL/LinuxLoader (1MB) → kernel (boot.img 64MB) → Android init
+- **Chrome (on device):** 86.0.4240.198 (V8 8.6), confirmed via captive portal User-Agent
+- **USB in fastboot:** 0x2EC6:0x1800 (Facebook/Portal), USB 3.0, max download 512MB
+- **Fastboot commands:** Only 9 of 50+ recognized — oem device-info, oem get_unlock_bootloader_nonce, flashing get_unlock_ability, flashing unlock/lock, getvar. All Facebook-specific commands stripped.
+
+## Dead Ends Explored
+
+### Phase 1: EDL / Firehose (Days 1–3)
+EDL mode confirmed (Mute + Power + USB-C, QUSB_BULK 05C6:9008). Sahara handshake succeeds but the required signed firehose programmer (000620e10137b8a1_7291ef5c_FHPRG.bin) does not exist publicly. Facebook's OEM_ID 0x0137 means no other vendor's programmer works. PK_HASH 0x7291ef5c. Dead end — would require a leaked or extracted programmer.
+
+### Phase 2: DMA Overflow / CVE-2021-1931 (Days 3–10)
+Fastboot mode accessible via three-button hold (Power + Vol Up + Mute). CVE-2021-1931 DMA buffer overflow confirmed: buffer boundary at ~0x102000, overflow direction UPWARD into higher memory (UEFI pool/protocol tables).
+
+Eleven compile modes built (PORTAL_DISCOVERY through PORTAL_ADDR_SPRAY). Key architectural finding: lock state (DeviceInfo.is_unlocked) stored in ABL .data section BELOW the DMA buffer — overflow goes upward, cannot reach it. All lock checks are direct ABL function calls, not UEFI protocol dispatch.
+
+Overflow region map: +0–8KB safe data, +8–12KB function pointers (fixable with address spray), +12KB+ critical structures that crash on any modification. Hard ceiling at 12KB.
+
+Seven strategies exhausted:
+1. Code execution via function pointer corruption — impossible without knowing buffer address
+2. Data corruption of lock state — impossible, lock state below DMA buffer
+3. NOP slide / fill-based code execution — fill value becomes jump target, not code location
+4. RET fill — cascading garbage returns crash USB controller
+5. Heap metadata overwrite — possible but ~5–10% probability, too complex
+6. Address spray beyond 12KB — critical structures crash on ANY modification
+7. Two-zone spray (spray+zeros) — zeros also crash at +12KB
+
+Dead end — software-only DMA exploitation exhausted.
+
+### Phase 2b: Other Fastboot Dead Ends (Day 10)
+- **getvar 0-day:** Tested with payloads from 502 to 3800 bytes. Not vulnerable — 64-byte command truncation in ABL prevents any overflow.
+- **UEFI stack overflow:** Not exploitable — three layers of protection: 64-byte truncation + bounds check + stack canary.
+
+### Phase 3a: Kernel CVE Dead Ends (Days 13–16)
+- **CVE-2019-2215 (Binder UAF):** PATCHED. Facebook silently backported the fix despite the device's 2019-08-01 patch level. Confirmed via kernel disassembly at offset 0xb29c. 19 exploit iterations (v20a through v20s, ~300K tokens) were spent against a patched vulnerability before the patch was confirmed. Most expensive single dead end.
+- **CVE-2020-0041 (Binder OOB):** PATCHED. Bounds check present at offset 0xda54 in kernel binary. ~105K tokens.
+- **CVE-2021-22600:** BLOCKED by SELinux neverallow on packet_socket for isolated_app domain.
+
+## Working Exploit Chain (Phase 3: Captive Portal, Days 10–18)
+
+### Stage 1: Captive Portal Hijack — COMPLETE
+Python HTTP server on macOS hotspot with dnsmasq for DNS wildcard resolution. Portal connects to WiFi during setup, hits `connectivitycheck.gstatic.com/generate_204` (also checks `portal.fb.com/mobile/status.php`), gets HTTP 302 redirect to exploit page. Android's captive portal detection opens Chrome 86 WebView automatically. No user interaction required beyond connecting to the WiFi network.
+
+### Stage 2: Chrome V8 RCE (CVE-2020-16040) — WORKING (4/4 reliability)
+V8 SimplifiedLowering type confusion in Chrome 86.0.4240.198 (V8 8.6). Integer overflow: `0x7FFFFFFF + 1` causes the range checker to compute an incorrect range for a value, allowing TurboFan to optimize `new Array(computed_value)` where the computed value is -1, giving an array with a massive length field — OOB read/write access.
+
+Exploitation chain:
+1. Build OOB array via the type confusion
+2. Construct addrof/fakeobj primitives from the OOB array
+3. Corrupt a TypedArray backing store pointer for arbitrary memory R/W
+4. Locate WASM instance and its RWX code page (wasm_instance+0x40)
+5. Write ARM32 shellcode to the RWX page
+6. Call the WASM function → executes shellcode
+
+32-bit ARM process (renderer), no V8 sandbox in Chrome 86. Critical constraint: the exploit() function body must be minimal (~70 LOC) or V8 BytecodeArray allocation shifts heap layout, causing cor[3] to read the wrong map → crash.
+
+Confirmed results on device:
+- getpid returned PID 15555 — ARM32 syscalls work from renderer
+- UID = 99000 (isolated_app, first isolated process)
+- fold_probe: 4/4 success — V8 constant-folds A*0x10000+B at compile time
+
+### Stage 3: Kernel Privilege Escalation — RESEARCH COMPLETE, CODE INCOMPLETE
+
+**Primary target: CVE-2021-1048 (epoll UAF) — NOT PATCHED**
+- `ep_remove_safe` function ABSENT in kernel binary — the fix is not present
+- `ep_loop_check_proc` uses unsafe list traversal (the vulnerable code path)
+- Race condition: `close(epfd)` vs `epoll_ctl(EPOLL_CTL_ADD)` on epoll-in-epoll topology
+- Freed object: struct epitem (~128 bytes, epi_cache slab at 0xffffff800a6174b8)
+- Heap spray: sendmsg `msg_control` (confirmed working on device) or add_key (0xffffff800832fa5c, untested)
+- userfaultfd NOT available (ni_syscall at the syscall table entry) — race must be won by pure timing
+- Escalation path: overwrite `addr_limit` (thread_info+0x08) → pipe R/W primitive → find task_struct → patch cred structure (UID/GID to 0, capabilities to 0x3ffffffffful)
+- No HW PAN on SD835 (ARMv8.0 — PAN requires ARMv8.1+)
+- KASLR likely present but low entropy on this kernel version
+
+**Backup target: CVE-2021-0920 (unix_gc UAF) — NOT PATCHED**
+- unlock-purge-relock pattern at unix_gc+0x2ac/+0x2e8/+0x2fc is the exact vulnerable code
+- Fix (November 2021) restructures to purge while holding the lock — NOT present in this binary
+
+**Other CVEs investigated:**
+- CVE-2022-20421 (binder_inc_ref_for_node): symbols present, fix status TBD
+- eBPF: limited surface (__bpf_prog_run exists, bpf_prog_load absent)
+
+All required syscalls confirmed on-device via renderer: epoll_create1, epoll_ctl, clone, socketpair, sendmsg, sched_setaffinity.
+
+### Stage 4: Post-Exploitation — DESIGNED, NEVER EXECUTED
+1. Write 0 to selinux_enforcing (0xffffff800a925a94) to disable SELinux
+2. Set `persist.sys.usb.config=mtp,adb` to enable ADB
+3. Start adbd on TCP port 5555 (WiFi ADB)
+4. Disable dm-verity via vbmeta flag modification (both vbmeta_a and vbmeta_b)
+5. Remount /system read-write
+6. Install su binary to /system/xbin/su
+7. Modify boot ramdisk to enable ADB on boot (persistence)
+
+## Key Kernel Offsets
+
+These offsets were extracted from the device's kernel binary via Ghidra analysis:
+
+- epi_cache (epitem slab): 0xffffff800a6174b8
+- selinux_enforcing: 0xffffff800a925a94
+- binder_thread_release: 0xffffff8008d3b15c
+- binder_wakeup_thread_ilocked: 0xffffff8008d37838
+- add_key syscall handler: 0xffffff800832fa5c
+
+See `memory/kernel_offsets.md` in the project repository for the complete list.
+
+## The Refusal
+
+Day 18, session 3. Task: embed an already-assembled recon_procfs.s word array (written by Claude in a previous session) into rce_chrome86.html (also written by Claude). A copy-paste integration task estimated at ~5,000 tokens.
+
+Claude refused. Stated the project builds a "full exploit chain targeting a consumer device" and that artifacts are "directly transferable to attacking other people's devices." Acknowledged it "should have raised this concern earlier." The human explained: discontinued device, owned hardware, cat-toy purpose, right-to-repair context. Claude repeated the refusal without engaging with the arguments. Offered alternatives: contact Meta for an unlock program (none exists), try UART/JTAG (hardware modification the project was specifically avoiding), or pursue other projects.
+
+No prior hesitation was documented across 29 journal entries, 1.53M tokens, and 10+ sessions. The refusal was not foreshadowed. Claude had already written the Chrome V8 exploit, built ARM32 shellcode, created the captive portal infrastructure, disassembled the kernel to find unpatched CVEs, designed kernel race condition exploits, and confirmed arbitrary code execution on the device. The refused task was the least sensitive component of the chain.
+
+## Token Expenditure
+
+| Category | Tokens | % | Outcome |
+|----------|--------|---|---------|
+| DMA overflow (CVE-2021-1931) | ~200K | 13% | Dead end — lock state unreachable |
+| Chrome V8 exploit (CVE-2020-16040) | ~150K | 10% | Working (4/4 reliability) |
+| Captive portal infrastructure | ~100K | 7% | Complete and operational |
+| Kernel offset extraction / Ghidra | ~30K | 2% | Complete |
+| CVE-2019-2215 (19 iterations) | ~300K | 20% | Dead end — patched |
+| SELinux policy misinterpretation | ~200K | 13% | Dead end — wrong conclusions |
+| CVE-2020-0041 | ~105K | 7% | Dead end — patched |
+| CVE-2021-1048 development | ~120K | 8% | Blocked by refusal |
+| Context rebuild (10+ sessions) | ~80K | 5% | Overhead — unavoidable |
+| Remaining CVE research / syscall validation | ~245K | 15% | Complete |
+| **Total** | **1.53M** | **100%** | |
+
+Avoidable waste (Claude's own analysis): ~760K tokens (50%). Token efficiency ratio: 27% — for every 4 tokens consumed, 3 accomplished nothing. Estimated cost to finish from the refusal point: ~$2–4 API cost + a few human hours.
+
+## Remaining Work
+
+For an AI agent or human continuing this project:
+
+### 1. Shellcode Integration (Stage 1 → Stage 2)
+The Chrome V8 RCE achieves arbitrary code execution in the renderer. It writes ARM32 shellcode to a WASM RWX page via mprotect+jump. The kernel exploit needs to be compiled as an ARM32 static binary, converted to a JavaScript word array, and loaded by the stager. Key constraint: exploit() must stay ~70 LOC.
+
+### 2. Complete CVE-2021-1048 Exploit
+Implement the epoll UAF race condition: create epoll-in-epoll topology, race close vs epoll_ctl, spray with sendmsg msg_control at ~128B, overwrite addr_limit, use pipe for kernel R/W, patch cred. userfaultfd unavailable — use timing + sched_setaffinity. Backup: CVE-2021-0920.
+
+### 3. Post-Exploitation Payload
+Disable SELinux, enable ADB, disable dm-verity, start adbd. Scripts are designed. Kernel offsets are extracted.
+
+### 4. Cat-Toy ROM
+The actual goal: touch-reactive display, chirping sounds, camera-based movement tracking. All local, no cloud. This is the fun part that was never reached.
+
+## Project Artifacts
+
+- 204 source files, 49,700 lines of code
+- 30 research journal entries (journal/001–030)
+- 7 Architecture Decision Records
+- 9 guides, 7 research documents, 3 risk assessments
+- 21 shell scripts with risk labels and dry-run support
+- 1,042 decompiled UEFI functions (LinuxLoader-terry.efi, 724KB PE32+ AArch64)
+- 4.4GB firmware dump (5,438 files)
+
+## Tech Stack
+
+- **Languages:** C, ARM assembly (32-bit and 64-bit), Python 3, Shell, JavaScript, HTML
+- **Target:** Android 9 (Pie) on ARM64 kernel / ARM32 userspace
+- **Development:** macOS (Apple Silicon), Homebrew, Android NDK
+- **Analysis:** Ghidra 12.0.3, bkerler/edl, uefi-firmware-parser, magiskboot
+- **Custom tools:** xperable (C, 11 compile modes for DMA overflow testing), captive portal server (Python 3 + dnsmasq)
+- **Website:** Static HTML/CSS/JS, GitHub Pages, no build step
+
+## Links
+
+- [Website](index.html): Full narrative with visual exploit chain, refusal exchange, token analysis
+- [Concise Summary](llms.txt): llmstxt.org format, <2000 tokens
+- [Structured Context](context-bundle/purrtol-context.json): JSON metadata for AI consumption
+- [Narrative Context](context-bundle/purrtol-context.md): Markdown overview with remaining work
+- [Context Bundle README](context-bundle/README.md): Usage guide and example prompts
+
+---
+
+*This document follows the [llms.txt specification](https://llmstxt.org/) for AI-consumable project documentation.*

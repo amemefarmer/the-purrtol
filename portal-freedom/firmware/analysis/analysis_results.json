@@ -1,0 +1,63 @@
+{
+  "pe_info": {
+    "file_size": 741376,
+    "machine": "0xaa64",
+    "image_base": "0x0",
+    "entry_point_rva": "0x1000",
+    "image_size": "0xb5000"
+  },
+  "sections": {
+    ".text": {
+      "va": 4096,
+      "vsize": 606208,
+      "raw_offset": 4096,
+      "raw_size": 606208,
+      "characteristics": "0x60000020"
+    },
+    ".data": {
+      "va": 610304,
+      "vsize": 118784,
+      "raw_offset": 610304,
+      "raw_size": 118784,
+      "characteristics": "0xc0000040"
+    },
+    ".reloc": {
+      "va": 729088,
+      "vsize": 12288,
+      "raw_offset": 729088,
+      "raw_size": 12288,
+      "characteristics": "0x42000040"
+    }
+  },
+  "code_boundary": "0x95000",
+  "cmd_strings": {
+    "flash:": "0x7229a",
+    "erase:": "0x722a1",
+    "continue": "0x723bd",
+    "reboot-bootloader": "0x7241d",
+    "getvar:": "0x7242f"
+  },
+  "oem_cmds": {
+    "unlock_bootloader": "0x7258e",
+    "get_unlock_ability: %d": "0x733c5",
+    "battery-soc": "0x73a9f",
+    "battery-cycle": "0x73acd"
+  },
+  "string_xrefs": {
+    "Fastboot: Processing commands": [
+      "0xe688",
+      "0xea38",
+      "0xeb80"
+    ],
+    "Download Finished": [
+      "0xfed8"
+    ],
+    "unknown command": [
+      "0x105c0"
+    ],
+    "Flashing is not allowed": [
+      "0x122b8"
+    ]
+  },
+  "function_count": 69
+}

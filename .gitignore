@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Claude Code
+.claude/
+
+# Root-level binary artifacts (duplicates of files in portal-freedom/)
+*.img
+*.elf
+LinuxLoader-terry.efi
+
+# Source images (originals — site versions are in docs/assets/images/)
+images/
+
+# Firmware OTA (1.2GB+ files)
+portal-freedom/firmware/ota/*.zip
+portal-freedom/firmware/ota/*.bin
+
+# Third-party tools with their own git repos
+portal-freedom/tools/xperable/
+
+# Compiled objects
+*.o
+
+# Large binaries
+portal-freedom/captive-portal/payloads/stage2
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
