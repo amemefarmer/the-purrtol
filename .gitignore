@@ -20,7 +20,7 @@
 LinuxLoader-terry.efi
 
 # Source images (originals — site versions are in docs/assets/images/)
-images/
+/images/
 
 # Firmware OTA (1.2GB+ files)
 portal-freedom/firmware/ota/*.zip
