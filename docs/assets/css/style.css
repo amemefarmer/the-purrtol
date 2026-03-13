@@ -1025,25 +1025,9 @@ em { font-style: italic; color: var(--color-text-heading); }
   text-align: center;
 }
 
-
-/* ------------------------------------------
-   NUMBERED LIST — ordered steps with styling
-   ------------------------------------------ */
-.numbered-list {
-  padding-left: 1.5em;
-  counter-reset: numbered-step;
-}
-
-.numbered-list li {
-  margin-bottom: var(--space-md);
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-  padding-left: var(--space-xs);
-}
-
-.numbered-list li::marker {
-  color: var(--color-portal-blue);
-  font-weight: 700;
+.prose .icon-list {
+  text-align: left;
+  margin: var(--space-lg) 0;
 }
 
 

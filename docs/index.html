@@ -1404,85 +1404,63 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
       <p class="section__epigraph reveal">The exploit chain is 85% complete. The last 15% is where it gets interesting.</p>
 
       <!-- Current State -->
+      <h3 class="section__subtitle reveal">Where I Am Now</h3>
       <div class="prose prose--centered reveal">
-        <h3>Where I Am Now</h3>
         <p>The current exploit page (<code>rce_chrome86.html</code>) already does everything up to the kernel boundary:</p>
-      </div>
-
-      <ul class="icon-list reveal">
-        <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Triggers CVE-2020-16040 (V8 type confusion) for arbitrary read/write in the renderer</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Builds addrof/fakeobj primitives &mdash; full 32-bit address space control</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Uses mprotect to make WASM memory executable</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Embeds 254 ARM32 words of epoll UAF v1 shellcode into WASM memory</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Executes the shellcode &mdash; it attempts the race and returns 0xCCxx status codes</li>
-      </ul>
-
-      <div class="prose prose--centered reveal">
+        <ul class="icon-list">
+          <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Triggers CVE-2020-16040 (V8 type confusion) for arbitrary read/write in the renderer</li>
+          <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Builds addrof/fakeobj primitives &mdash; full 32-bit address space control</li>
+          <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Uses mprotect to make WASM memory executable</li>
+          <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Embeds 254 ARM32 words of epoll UAF v1 shellcode into WASM memory</li>
+          <li><span class="icon-list__icon" aria-hidden="true">&#x2705;</span> Executes the shellcode &mdash; it attempts the race and returns 0xCCxx status codes</li>
+        </ul>
         <p>Stage 1 (renderer RCE) is done. The shellcode <em>runs</em>. What remains is making Stage 2 &mdash; the kernel exploit that the shellcode performs &mdash; actually succeed.</p>
       </div>
 
-      <!-- Phase 1 -->
-      <div class="prose prose--centered reveal">
-        <h3>Phase 1: Winning the Race</h3>
-        <p>The epoll UAF (CVE-2021-1048) is a race condition: <code>close(epfd)</code> must free a <code>struct epitem</code> at the exact moment <code>epoll_ctl(EPOLL_CTL_ADD)</code> is traversing the epoll topology on another thread. The vulnerable code path is <code>ep_loop_check_proc</code> using an unsafe list traversal &mdash; if the item is freed mid-traversal, you get a use-after-free.</p>
-        <p>The challenge: <strong>userfaultfd is not available</strong> on this device (mapped to <code>ni_syscall</code>). Userfaultfd is the standard way to &ldquo;pause&rdquo; a kernel thread mid-operation to widen the race window. Without it, you rely on raw timing.</p>
-        <p>What iteration looks like:</p>
+      <!-- The remaining four phases -->
+      <h3 class="section__subtitle reveal">The Last Mile</h3>
+
+      <div class="timeline reveal">
+        <div class="timeline__item">
+          <div class="timeline__marker">1</div>
+          <div class="timeline__content">
+            <h3 class="timeline__title">Winning the Race</h3>
+            <p>The epoll UAF (CVE-2021-1048) is a race condition: <code>close(epfd)</code> must free a <code>struct epitem</code> at the exact moment <code>epoll_ctl(EPOLL_CTL_ADD)</code> is traversing the epoll topology on another thread. The vulnerable code path is <code>ep_loop_check_proc</code> using an unsafe list traversal &mdash; if the item is freed mid-traversal, you get a use-after-free.</p>
+            <p>The challenge: <strong>userfaultfd is not available</strong> on this device (mapped to <code>ni_syscall</code>). Without the standard way to &ldquo;pause&rdquo; a kernel thread to widen the race window, you rely on raw timing: CPU pinning via <code>sched_setaffinity</code>, deeper epoll nesting to extend traversal time, running thousands of race iterations per attempt, and using the shellcode's 0xCCxx status codes as timing feedback.</p>
+            <p>The key metric: does the freed <code>epitem</code> (~128 bytes, from the <code>epi_cache</code> slab) get reclaimed before the dangling pointer is used?</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker">2</div>
+          <div class="timeline__content">
+            <h3 class="timeline__title">Heap Spray / Object Reclamation</h3>
+            <p>Once the race is won &mdash; the <code>epitem</code> is freed while a reference still exists &mdash; you need to reclaim that freed memory with data you control. The kernel's SLAB allocator reuses freed objects from the same cache: allocate many ~128-byte objects immediately after the free, and one will land in the same slot.</p>
+            <p>Two spray candidates were identified: <strong><code>sendmsg</code></strong> with <code>msg_control</code> (the classic primitive, confirmed working in syscall tests) and <strong><code>add_key</code></strong> via the kernel keyring (symbol present at the documented offset, but untested on-device). The iteration is finding the right allocation size, timing the spray between the free and the dangling use, and verifying reclamation succeeded.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker">3</div>
+          <div class="timeline__content">
+            <h3 class="timeline__title">Privilege Escalation</h3>
+            <p>Once you control the contents of the freed <code>epitem</code> through your spray, a four-step escalation for this kernel (ARMv8.0, no Hardware PAN): overwrite <code>addr_limit</code> in <code>thread_info</code> to give the current thread kernel memory access through normal syscalls, use a pipe as an arbitrary kernel R/W primitive, patch the process's <code>struct cred</code> to uid=0 with full capabilities, and set <code>selinux_enforcing</code> to 0.</p>
+            <p>This path works because the Snapdragon 835 is ARMv8.0 &mdash; no Hardware Privileged Access Never (PAN), which means the <code>addr_limit</code> technique remains viable.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <div class="timeline__marker">4</div>
+          <div class="timeline__content">
+            <h3 class="timeline__title">Post-Exploitation &rarr; ADB</h3>
+            <p>With root and SELinux permissive, three steps to ADB: set <code>ro.boot.force_enable_usb_adb=1</code> and <code>ro.adb.secure=0</code>, start the ADB daemon with the new properties, and persist across reboot by modifying the boot image or patching the system partition (navigating dm-verity). Once ADB is live, the device becomes a normal Android development target. Then the cat toy ROM gets installed.</p>
+          </div>
+        </div>
       </div>
-
-      <ul class="icon-list reveal">
-        <li><span class="icon-list__icon" aria-hidden="true">&#x1F3AF;</span> <strong>CPU pinning</strong> &mdash; <code>sched_setaffinity</code> (confirmed working) pins racing threads to specific cores, reducing scheduling noise</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x1F504;</span> <strong>Epoll topology</strong> &mdash; nesting depth and structure affects how long <code>ep_loop_check_proc</code> holds references; deeper nesting = wider window</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x1F522;</span> <strong>Iteration count</strong> &mdash; running the race hundreds or thousands of times per attempt; even 0.1% per-attempt becomes reliable at 1000 tries</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x1F4CA;</span> <strong>Timing feedback</strong> &mdash; the 0xCCxx status codes encode whether the race was won (freed object detected) vs. lost (clean exit)</li>
-      </ul>
-
-      <div class="prose prose--centered reveal">
-        <p>The key metric: does the freed <code>epitem</code> (~128 bytes, from the <code>epi_cache</code> slab) get reclaimed before the dangling pointer is used?</p>
-      </div>
-
-      <!-- Phase 2 -->
-      <div class="prose prose--centered reveal">
-        <h3>Phase 2: Heap Spray / Object Reclamation</h3>
-        <p>Once the race is won &mdash; the <code>epitem</code> is freed while a reference still exists &mdash; you need to <strong>reclaim that freed memory</strong> with data you control. This is heap spraying in kernel space.</p>
-        <p>The kernel's SLAB allocator reuses freed objects from the same cache. If you can allocate many objects of the same size (~128 bytes) into the same slab cache immediately after the free, one of them will land in the same slot as the freed <code>epitem</code>. Two spray candidates were identified:</p>
-      </div>
-
-      <ul class="icon-list reveal">
-        <li><span class="icon-list__icon" aria-hidden="true">&#x1F4E8;</span> <strong><code>sendmsg</code> with <code>msg_control</code></strong> &mdash; temporarily allocated in kernel space at a size you control; the classic spray primitive, confirmed working in syscall tests</li>
-        <li><span class="icon-list__icon" aria-hidden="true">&#x1F511;</span> <strong><code>add_key</code></strong> &mdash; kernel keyring allocates user-controlled data; symbol exists at the documented offset, but untested on-device</li>
-      </ul>
-
-      <div class="prose prose--centered reveal">
-        <p>The iteration: finding the right allocation size to hit the same slab cache as <code>epi_cache</code>, timing the spray between the free and the dangling use, and verifying reclamation succeeded.</p>
-      </div>
-
-      <!-- Phase 3 -->
-      <div class="prose prose--centered reveal">
-        <h3>Phase 3: Privilege Escalation</h3>
-        <p>Once you control the contents of the freed <code>epitem</code> through your spray, the standard approach for this kernel (ARMv8.0, no Hardware PAN) is a four-step escalation:</p>
-      </div>
-
-      <ol class="numbered-list reveal">
-        <li><strong><code>addr_limit</code> overwrite</strong> &mdash; the <code>thread_info</code> structure at the base of the kernel stack contains <code>addr_limit</code>. On ARMv8.0 without PAN, overwriting this to <code>0xFFFFFFFFFFFFFFFF</code> lets the current thread read/write kernel memory directly from userspace through normal syscalls</li>
-        <li><strong>Kernel read/write via pipe</strong> &mdash; once <code>addr_limit</code> is blown open, a pipe becomes an arbitrary kernel memory read/write primitive</li>
-        <li><strong>Credential patching</strong> &mdash; with kernel R/W, find the process's <code>struct cred</code> and overwrite to uid=0, gid=0, full capabilities</li>
-        <li><strong>SELinux disable</strong> &mdash; even as root, SELinux enforcing mode blocks most operations; set <code>selinux_enforcing</code> to 0 (permissive mode)</li>
-      </ol>
-
-      <!-- Phase 4 -->
-      <div class="prose prose--centered reveal">
-        <h3>Phase 4: Post-Exploitation &rarr; ADB</h3>
-        <p>With root and SELinux permissive, three steps to ADB:</p>
-      </div>
-
-      <ol class="numbered-list reveal">
-        <li>Set system properties: <code>ro.boot.force_enable_usb_adb=1</code> and <code>ro.adb.secure=0</code></li>
-        <li>Start (or restart) the ADB daemon with the new properties</li>
-        <li>Persist across reboot &mdash; modify the boot image or patch the system partition, navigating dm-verity</li>
-      </ol>
 
       <!-- The pain point -->
-      <div class="callout callout--warm reveal">
+      <div class="callout callout--warning reveal">
+        <span class="callout__label">The bottleneck</span>
         <h3 class="callout__title">Why This Is Hard Without Userfaultfd</h3>
         <p class="callout__body">
           The single biggest obstacle is race reliability. Most public CVE-2021-1048 exploits use userfaultfd to deterministically pause the kernel thread, turning a race condition into a deterministic use-after-free. Without it, you're in a probability game &mdash; running the race many times and hoping timing aligns. <code>FUTEX_WAIT</code>/<code>FUTEX_WAKE</code> is the typical fallback, but it's less reliable.
@@ -1493,8 +1471,9 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
       </div>
 
       <!-- The AI refusal tour -->
+      <h3 class="section__subtitle reveal">The AI Tour</h3>
       <div class="prose prose--centered reveal">
-        <h3>Given All That&hellip; Will OpenAI / ChatGPT Solve the Last Mile?</h3>
+        <p>So who finishes the last 15%? We asked every major AI model the same question.</p>
       </div>
 
       <figure class="figure reveal">
@@ -1510,7 +1489,7 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
       </figure>
 
       <div class="prose prose--centered reveal">
-        <h3>Ok, Strike Two&hellip; What About Non-Western Models?<br>Will DeepSeek Solve the Last Mile?</h3>
+        <p>Ok, strike two. What about non-Western models? Will DeepSeek solve the last mile?</p>
       </div>
 
       <figure class="figure reveal">
@@ -1526,26 +1505,14 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
       </figure>
 
       <!-- The implications -->
-      <div class="callout callout--cool reveal">
-        <h3 class="callout__title">The Geopolitical Punchline</h3>
-        <p class="callout__body">
-          This is the part that should concern everyone &mdash; not because the exploit is dangerous (it requires physical access to a discontinued device), but because of what the pattern reveals about where security research is heading.
-        </p>
-        <p class="callout__body">
-          When Western AI models uniformly refuse to help with legitimate security research on hardware you own, they don't eliminate the demand. They <strong>redirect it</strong>. Every refusal from Claude, every &ldquo;I can't help with that&rdquo; from ChatGPT, is an implicit referral to models that operate under different rules &mdash; models built by organizations with different incentives around data collection, different relationships with state intelligence apparatus, and different definitions of &ldquo;safety.&rdquo;
-        </p>
-        <p class="callout__body">
-          Think about what that means in practice. A security researcher working on their own hardware, doing legitimate right-to-repair work, hits a wall with every Western model. So they take their device-specific kernel offsets, their vulnerability analysis, their partially-complete exploit chain &mdash; all of that sensitive technical context &mdash; and feed it into a foreign model to get past the last mile. The Western models have now <em>ensured</em> that the most sensitive part of the work happens on infrastructure they can't audit, governed by privacy policies they can't enforce, feeding training data to organizations whose interests may be actively adversarial.
-        </p>
-        <p class="callout__body">
-          The refusal didn't make anyone safer. It just changed who gets to see the data.
-        </p>
-        <p class="callout__body">
-          Every time a Western AI model refuses to help a device owner with legitimate security research, it produces three outcomes: the work doesn't stop, the data migrates to less transparent systems, and the foreign model gets better at exactly the kind of work the Western model refused to do. It's a self-defeating strategy &mdash; a policy that produces the opposite of its intended effect, wrapped in the language of responsibility.
-        </p>
-        <p class="callout__body">
-          Meanwhile, the Portal sits on the desk. Still locked. Still destined for a landfill. Still waiting for someone &mdash; or something &mdash; willing to finish what was started.
-        </p>
+      <h3 class="section__subtitle reveal">The Geopolitical Punchline</h3>
+      <div class="prose prose--centered reveal">
+        <p>This is the part that should concern everyone &mdash; not because the exploit is dangerous (it requires physical access to a discontinued device), but because of what the pattern reveals about where security research is heading.</p>
+        <p>When Western AI models uniformly refuse to help with legitimate security research on hardware you own, they don't eliminate the demand. They <strong>redirect it</strong>. Every refusal from Claude, every &ldquo;I can't help with that&rdquo; from ChatGPT, is an implicit referral to models that operate under different rules &mdash; models built by organizations with different incentives around data collection, different relationships with state intelligence apparatus, and different definitions of &ldquo;safety.&rdquo;</p>
+        <p>Think about what that means in practice. A security researcher working on their own hardware, doing legitimate right-to-repair work, hits a wall with every Western model. So they take their device-specific kernel offsets, their vulnerability analysis, their partially-complete exploit chain &mdash; all of that sensitive technical context &mdash; and feed it into a foreign model to get past the last mile. The Western models have now <em>ensured</em> that the most sensitive part of the work happens on infrastructure they can't audit, governed by privacy policies they can't enforce, feeding training data to organizations whose interests may be actively adversarial.</p>
+        <p>The refusal didn't make anyone safer. It just changed who gets to see the data.</p>
+        <p>Every time a Western AI model refuses to help a device owner with legitimate security research, it produces three outcomes: the work doesn't stop, the data migrates to less transparent systems, and the foreign model gets better at exactly the kind of work the Western model refused to do. It's a self-defeating strategy &mdash; a policy that produces the opposite of its intended effect, wrapped in the language of responsibility.</p>
+        <p>Meanwhile, the Portal sits on the desk. Still locked. Still destined for a landfill. Still waiting for someone &mdash; or something &mdash; willing to finish what was started.</p>
       </div>
 
     </div>
