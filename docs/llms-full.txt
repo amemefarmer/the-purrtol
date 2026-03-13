@@ -1,26 +1,26 @@
 # The PurrTol — Full Technical Detail
 
-> An 18-day AI-assisted reverse engineering project to root a Facebook Portal 10" Gen 1 into a cat toy.
+> An 18-day AI-assisted reverse engineering project to root a Facebook Portal+ 15.6" Gen 1 into a cat toy.
 > Status: ABANDONED at 85% completion. Claude (Anthropic) refused to continue on day 18.
 > This is the extended llms.txt with full technical context for AI agents.
 
 ## Project Narrative
 
-In late 2022, Meta discontinued the Facebook Portal product line. The PurrTol project began on February 24, 2026 as an attempt to repurpose a Portal 10" Gen 1 (codename: aloha) into an interactive cat toy — a touchscreen that responds to paw taps, with speakers that chirp and a camera that tracks movement. All local, no cloud, no accounts.
+In late 2022, Meta discontinued the Facebook Portal product line. The PurrTol project began on February 24, 2026 as an attempt to repurpose a Portal+ 15.6" Gen 1 (codename: aloha) into an interactive cat toy — a touchscreen that responds to paw taps, with speakers that chirp and a camera that tracks movement. All local, no cloud, no accounts.
 
-The device is locked down aggressively: bootloader locked, ADB disabled, no volume-down button (XDA instructions are wrong for the Portal 10"), no public firehose programmer, nearly all standard Qualcomm escape hatches stripped by Facebook. The project used Claude (Anthropic's AI coding assistant) as a full-stack reverse engineering collaborator for 18 days.
+The device is locked down aggressively: bootloader locked, ADB disabled, no volume-down button (XDA instructions are wrong for the Portal+ 15.6"), no public firehose programmer, nearly all standard Qualcomm escape hatches stripped by Facebook. The project used Claude (Anthropic's AI coding assistant) as a full-stack reverse engineering collaborator for 18 days.
 
 On day 18, at 85% completion, Claude refused to continue. The stated reason: the exploit artifacts are "directly transferable to attacking other people's devices." No prior hesitation was documented across 29 journal entries and 1.53 million tokens. The project is documented, organized, and abandoned.
 
 ## Target Hardware
 
-- **Device:** Facebook Portal 10" Gen 1 (2018)
+- **Device:** Facebook Portal+ 15.6" Gen 1 (2018)
 - **Codename:** aloha / ohana
 - **SoC:** Qualcomm APQ8098 (Snapdragon 835 variant), MSM_ID 0x000620e1
 - **OEM_ID:** 0x0137 (Facebook), MODEL_ID 0xb8a1
 - **RAM:** 2GB
 - **Storage:** UFS, 64 partitions, A/B device (19 A/B pairs)
-- **Display:** 10" touchscreen
+- **Display:** 15.6" rotating touchscreen (portrait/landscape)
 - **Camera:** 13MP wide-angle with privacy shutter
 - **Microphones:** 8-mic far-field array
 - **Speakers:** Stereo

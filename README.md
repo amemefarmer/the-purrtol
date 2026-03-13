@@ -1,8 +1,8 @@
 # The PurrTol
 
-An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal 10" Gen 1 into an interactive cat toy. Reached 85% completion before Claude (Anthropic) refused to continue.
+An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal+ 15.6" Gen 1 into an interactive cat toy. Reached 85% completion before Claude (Anthropic) refused to continue.
 
-**[Read the full story &rarr;](https://purrtol.com/)**
+**[Read the full story &rarr;](https://amemefarmer.github.io/the-purrtol/)**
 
 ## What happened
 
@@ -38,7 +38,7 @@ Facebook_Portal/
 
 ## The device
 
-- **Facebook Portal 10" Gen 1 (2018)**, codename aloha
+- **Facebook Portal+ 15.6" Gen 1 (2018)**, codename aloha
 - Qualcomm APQ8098 (Snapdragon 835), 2GB RAM
 - Android 9 (Pie), Chrome 86.0.4240.198
 - Bootloader locked, ADB disabled, no volume-down button

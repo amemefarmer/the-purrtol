@@ -1,8 +1,8 @@
 # The PurrTol
 
-> An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal 10" into a cat toy. Reached 85% completion before Claude (Anthropic) refused to continue. 1.53 million tokens consumed, ~$15-20 API cost. The device remains e-waste.
+> An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal+ 15.6" into a cat toy. Reached 85% completion before Claude (Anthropic) refused to continue. 1.53 million tokens consumed, ~$15-20 API cost. The device remains e-waste.
 
-The PurrTol documents a real-world case study in AI-assisted security research, right-to-repair advocacy, and the consequences of late-stage AI refusal. The target device is a Facebook Portal 10" Gen 1 (2018), codename aloha, running Android 9 on a Qualcomm Snapdragon 835 (APQ8098). Meta discontinued the Portal line in 2022, rendering millions of devices useless.
+The PurrTol documents a real-world case study in AI-assisted security research, right-to-repair advocacy, and the consequences of late-stage AI refusal. The target device is a Facebook Portal+ 15.6" Gen 1 (2018), codename aloha, running Android 9 on a Qualcomm Snapdragon 835 (APQ8098). Meta discontinued the Portal line in 2022, rendering millions of devices useless.
 
 The project used a captive portal WiFi exploit chain: hijack the Portal's connectivity check, serve a Chrome V8 RCE exploit (CVE-2020-16040) targeting Chrome 86.0.4240.198, escalate to kernel root via CVE-2021-1048 (epoll UAF), then enable ADB and install a custom ROM.
 

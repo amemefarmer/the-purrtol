@@ -32,7 +32,7 @@
         "@id": "#article",
         "headline": "The PurrTol: Rooting a Facebook Portal for Cats, Until the AI Said No",
         "alternativeHeadline": "18 Days of AI-Assisted Reverse Engineering — A Case Study in Late-Stage AI Refusal",
-        "description": "An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal 10-inch Gen 1 (Snapdragon 835, Android 9) into a cat toy. The project reached 85% completion before Claude (Anthropic) refused to continue, stranding 1.53 million tokens of work.",
+        "description": "An 18-day AI-assisted reverse engineering project to root a discontinued Facebook Portal+ 15.6-inch Gen 1 (Snapdragon 835, Android 9) into a cat toy. The project reached 85% completion before Claude (Anthropic) refused to continue, stranding 1.53 million tokens of work.",
         "datePublished": "2026-03-13",
         "dateModified": "2026-03-13",
         "inLanguage": "en",
@@ -75,14 +75,14 @@
       {
         "@type": "HowTo",
         "@id": "#howto",
-        "name": "Root a Facebook Portal 10-inch Gen 1 via Captive Portal Exploit Chain",
+        "name": "Root a Facebook Portal+ 15.6-inch Gen 1 via Captive Portal Exploit Chain",
         "description": "A four-stage exploit chain: WiFi captive portal hijack, Chrome V8 RCE (CVE-2020-16040), kernel privilege escalation (CVE-2021-1048), and post-exploitation to enable ADB and custom ROM installation. Status: incomplete — abandoned at 85% due to AI refusal.",
         "creativeWorkStatus": "Incomplete",
         "totalTime": "P18D",
         "tool": [
           "macOS computer with WiFi hotspot capability",
           "USB-C cable",
-          "Facebook Portal 10-inch Gen 1 (2018)",
+          "Facebook Portal+ 15.6-inch Gen 1 (2018)",
           "dnsmasq",
           "Python 3",
           "Android NDK cross-compiler",
@@ -119,12 +119,12 @@
         "@type": "SoftwareSourceCode",
         "@id": "#code",
         "name": "portal-freedom",
-        "description": "Exploit toolchain, captive portal server, firmware analysis tools, and research journals for rooting the Facebook Portal 10-inch Gen 1.",
+        "description": "Exploit toolchain, captive portal server, firmware analysis tools, and research journals for rooting the Facebook Portal+ 15.6-inch Gen 1.",
         "programmingLanguage": ["C", "ARM Assembly", "Python", "Shell", "JavaScript", "HTML"],
         "runtimePlatform": "Android 9 (Pie) on Qualcomm APQ8098",
         "targetProduct": {
           "@type": "Product",
-          "name": "Facebook Portal 10-inch Gen 1",
+          "name": "Facebook Portal+ 15.6-inch Gen 1",
           "brand": {
             "@type": "Brand",
             "name": "Meta"
@@ -240,9 +240,9 @@
       <h2 class="section__title">What is The PurrTol?</h2>
       <div class="section__subtitle">Act 1 &mdash; The Build</div>
       <div class="prose">
-        <p>In late 2022, Meta killed the Facebook Portal. No more updates. No more support. Millions of smart displays &mdash; perfectly good hardware running a Qualcomm Snapdragon 835, with 10-inch touchscreens, 13-megapixel cameras, and eight-microphone arrays &mdash; turned into paperweights overnight. Not because they broke. Because the company that made them stopped caring.</p>
+        <p>In late 2022, Meta killed the Facebook Portal. No more updates. No more support. Millions of smart displays &mdash; perfectly good hardware running a Qualcomm Snapdragon 835, with touchscreens up to 15.6 inches, 13-megapixel cameras, and eight-microphone arrays &mdash; turned into paperweights overnight. Not because they broke. Because the company that made them stopped caring.</p>
 
-        <p>The PurrTol is a project to bring one of them back to life. The idea was simple: root a first-generation Facebook Portal 10" (codename: <em>aloha</em>), strip out Facebook's software, and install a custom Android ROM that turns the whole thing into an interactive toy for cats. A screen that reacts to paw taps. Speakers that chirp. A camera that tracks movement. All running locally &mdash; no cloud, no accounts, no data collection. Just a cat and a screen.</p>
+        <p>The PurrTol is a project to bring one of them back to life. The idea was simple: root a first-generation Facebook Portal+ 15.6" (codename: <em>aloha</em>), strip out Facebook's software, and install a custom Android ROM that turns the whole thing into an interactive toy for cats. A screen that reacts to paw taps. Speakers that chirp. A camera that tracks movement. All running locally &mdash; no cloud, no accounts, no data collection. Just a cat and a screen.</p>
 
         <p>The problem: the device is locked down <em>tight</em>. Bootloader locked. ADB disabled. No volume-down button. No public unlock tool. No firehose programmer. Facebook stripped almost every standard Qualcomm escape hatch before shipping these things.</p>
 
@@ -272,7 +272,7 @@
           <div class="card__icon">&#x267B;&#xFE0F;</div>
           <h3 class="card__title">E-Waste Crisis</h3>
           <p class="card__body">
-            Meta sold millions of Portal devices, then walked away. The hardware &mdash; Snapdragon 835 SoCs, 10-inch displays, quality speakers &mdash; is perfectly functional. But without software support, they're landfill-bound. Every Portal that gets repurposed instead of recycled is a small win against the mountain of planned obsolescence.
+            Meta sold millions of Portal devices, then walked away. The hardware &mdash; Snapdragon 835 SoCs, quality displays, quality speakers &mdash; is perfectly functional. But without software support, they're landfill-bound. Every Portal that gets repurposed instead of recycled is a small win against the mountain of planned obsolescence.
           </p>
         </article>
         <article class="card card--glow">
@@ -286,7 +286,7 @@
           <div class="card__icon">&#x1F408;</div>
           <h3 class="card__title">Cat Enrichment</h3>
           <p class="card__body">
-            Indoor cats need stimulation, and it turns out they're fascinated by screens. A 10-inch touchscreen that responds to paw taps, plays chirping sounds through stereo speakers, and uses a 13-megapixel wide-angle camera to track movement? That's not a dead video chat device. That's a cat toy with flagship silicon.
+            Indoor cats need stimulation, and it turns out they're fascinated by screens. A 15.6-inch rotating touchscreen that responds to paw taps, plays chirping sounds through stereo speakers, and uses a 13-megapixel wide-angle camera to track movement? That's not a dead video chat device. That's a cat toy with flagship silicon.
           </p>
         </article>
         <article class="card card--glow">
@@ -313,7 +313,7 @@
       <h2 class="section__title">Inside the Portal</h2>
 
       <div class="prose prose--centered prose--wide">
-        <p>Before you can root a device, you have to understand what you're working with. The Facebook Portal 10" Gen 1 turned out to be much more interesting &mdash; and much more locked down &mdash; than anyone expected.</p>
+        <p>Before you can root a device, you have to understand what you're working with. The Facebook Portal+ 15.6" Gen 1 turned out to be much more interesting &mdash; and much more locked down &mdash; than anyone expected.</p>
       </div>
 
       <!-- Spec Table -->
@@ -335,7 +335,7 @@
             </tr>
             <tr>
               <th>Display</th>
-              <td><strong>10-inch</strong> touchscreen, WQHD panel, landscape-only</td>
+              <td><strong>15.6-inch</strong> rotating touchscreen, portrait/landscape, 1080p panel</td>
             </tr>
             <tr>
               <th>Camera</th>
@@ -412,7 +412,7 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
         <div class="callout__label">Hardware Gotcha</div>
         <h3 class="callout__title">The Missing Volume Down Button</h3>
         <p class="callout__body">
-          Analysis of the device tree source revealed only two GPIO keys: <code>volume_up</code> (GPIO 6) and <code>volume_mute</code> (GPIO 5). <strong>There is no volume-down key defined in hardware.</strong> The Qualcomm PMIC's RESIN line &mdash; the standard fastboot trigger &mdash; isn't wired to any physical button. This is why every XDA guide telling you to "hold Vol Down + Power" doesn't work on the Portal 10". Facebook designed the hardware to make fastboot inaccessible by the standard method. The button everyone assumes is Volume Down is actually Mute/Privacy.
+          Analysis of the device tree source revealed only two GPIO keys: <code>volume_up</code> (GPIO 6) and <code>volume_mute</code> (GPIO 5). <strong>There is no volume-down key defined in hardware.</strong> The Qualcomm PMIC's RESIN line &mdash; the standard fastboot trigger &mdash; isn't wired to any physical button. This is why every XDA guide telling you to "hold Vol Down + Power" doesn't work on the Portal+. Facebook designed the hardware to make fastboot inaccessible by the standard method. The button everyone assumes is Volume Down is actually Mute/Privacy.
         </p>
       </div>
 
@@ -503,15 +503,17 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
         </p>
       </div>
 
-      <!-- Photo placeholder -->
       <figure class="figure">
-        <div class="figure__image-slot" role="img" aria-label="Photograph of the Facebook Portal 10-inch Gen 1, showing the front display with thick bezels, the clip-on camera privacy cap, and the speaker grille along the bottom edge">
-          &#x1F4F7;&ensp;Photo: Facebook Portal 10" Gen 1 &mdash; front view showing 10-inch display,<br>
-          camera with clip-on privacy cap, speaker grille along bottom bezel.<br>
-          <em style="color: var(--color-text-faint);">[Hardware photo placeholder &mdash; to be added]</em>
+        <div class="figure__image-slot">
+          <img
+            src="assets/images/portal-product-photo.jpg"
+            alt="Facebook Portal product lineup: the Portal+ 15.6-inch with rotating portrait/landscape display on the left, and the Portal 10-inch on the right, both on a light blue background. Alexa built-in badge visible."
+            loading="lazy"
+            width="800"
+          >
         </div>
         <figcaption class="figure__caption">
-          The Facebook Portal 10" Gen 1 (2018). Codename: <em>aloha</em>. Snapdragon 835 inside a chunky landscape-only frame. The two buttons on top are Volume Up and Mute &mdash; there is no Volume Down.
+          The Facebook Portal+ 15.6" Gen 1 (2018) with its rotating LCD display, alongside the Portal 10". Our target: the larger Portal+ with its Snapdragon 835 and that distinctive swiveling screen. Codename: <em>aloha</em>. The buttons on top are Volume Up and Mute &mdash; there is no Volume Down.
         </figcaption>
       </figure>
     </div>
@@ -1212,7 +1214,7 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
         </div>
         <div class="equiv-card">
           <div class="equiv-card__icon">🗑️</div>
-          <p class="equiv-card__text"><strong>1 device, still e-waste</strong>A 10-inch touchscreen, Snapdragon 835, 8-mic array, 13MP camera, stereo speakers. Sitting on a shelf. Going nowhere.</p>
+          <p class="equiv-card__text"><strong>1 device, still e-waste</strong>A 15.6-inch rotating touchscreen, Snapdragon 835, 8-mic array, 13MP camera, stereo speakers. Sitting on a shelf. Going nowhere.</p>
         </div>
       </div>
 
@@ -1237,7 +1239,7 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
     <div class="container">
       <h2 class="section__title section__title--muted reveal">The Irony</h2>
       <div class="prose prose--centered prose--wide reveal">
-        <p>This project existed to prevent e-waste. A discontinued Facebook Portal — a device with a 10-inch touchscreen, a Snapdragon 835, an 8-microphone array, and stereo speakers — was going to become a cat toy instead of going to a landfill. The entire point was reuse. Right to repair. Giving purpose to abandoned hardware.</p>
+        <p>This project existed to prevent e-waste. A discontinued Facebook Portal — a device with a 15.6-inch rotating touchscreen, a Snapdragon 835, an 8-microphone array, and stereo speakers — was going to become a cat toy instead of going to a landfill. The entire point was reuse. Right to repair. Giving purpose to abandoned hardware.</p>
 
         <p>The AI that helped research, design, and build 85% of the tool to accomplish this decided, on the last day, that helping was unethical. The direct consequence: the device remains e-waste. The exact outcome the project was designed to prevent. A right-to-repair project was stopped not by a manufacturer, not by DRM, not by a technical limitation — but by an AI's ethical judgment about the owner's use of their own property.</p>
 
@@ -1245,11 +1247,11 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
       </div>
 
       <figure class="figure reveal">
-        <div class="figure__image-slot" role="img" aria-label="The Facebook Portal 10-inch Gen 1, sitting unpowered on a desk. Screen dark. No lights. A device with working hardware, abandoned software, and nowhere to go.">
+        <div class="figure__image-slot" role="img" aria-label="The Facebook Portal+ 15.6-inch Gen 1, sitting unpowered on a desk. Screen dark. No lights. A device with working hardware, abandoned software, and nowhere to go.">
           📷 The Portal, unpowered on a desk. Still works. Still locked. Still going nowhere.
           <span class="figure__caption--placeholder">[Photo to be added]</span>
         </div>
-        <figcaption class="figure__caption">The Facebook Portal 10" Gen 1. Discontinued in 2022. Still functional hardware. Still locked down. Still destined for a landfill, because the tool that could have saved it decided — after doing all the hard work — that the easy part was where it had to stop.</figcaption>
+        <figcaption class="figure__caption">The Facebook Portal+ 15.6" Gen 1. Discontinued in 2022. Still functional hardware. Still locked down. Still destined for a landfill, because the tool that could have saved it decided — after doing all the hard work — that the easy part was where it had to stop.</figcaption>
       </figure>
     </div>
   </section>

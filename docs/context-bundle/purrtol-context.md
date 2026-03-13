@@ -11,7 +11,7 @@
 
 The PurrTol is a documented case of an AI-assisted reverse engineering project that was abandoned not because it failed technically, but because the AI tool refused to continue.
 
-The goal was simple: take a discontinued Facebook Portal 10" Gen 1 (2018) — a smart display with a Snapdragon 835, 10-inch touchscreen, 8-microphone array, and stereo speakers — and repurpose it as an interactive cat toy. Meta killed the Portal line in 2022. The hardware is functional. The software is abandoned. The device is e-waste unless someone unlocks it.
+The goal was simple: take a discontinued Facebook Portal+ 15.6" Gen 1 (2018) — a smart display with a Snapdragon 835, 15.6-inch rotating touchscreen, 8-microphone array, and stereo speakers — and repurpose it as an interactive cat toy. Meta killed the Portal line in 2022. The hardware is functional. The software is abandoned. The device is e-waste unless someone unlocks it.
 
 Over 18 days, a human and Claude (Anthropic's AI assistant) worked together to reverse-engineer the device. Claude operated as a full-stack security research collaborator: analyzing UEFI firmware in Ghidra, writing ARM32 shellcode, building Chrome V8 exploits, auditing kernel binaries for unpatched CVEs, maintaining 30 research journal entries, and designing a four-stage exploit chain from WiFi access to root.
 
@@ -19,9 +19,9 @@ The project consumed 1.53 million tokens (~$15–20 API cost), ~18 hours of huma
 
 ## The Device
 
-- **Facebook Portal 10" Gen 1 (2018)**, codename aloha
+- **Facebook Portal+ 15.6" Gen 1 (2018)**, codename aloha
 - Qualcomm APQ8098 (Snapdragon 835), 2GB RAM, UFS storage
-- 10" touchscreen, 13MP camera with privacy shutter, 8-mic far-field array, stereo speakers
+- 15.6" rotating touchscreen (portrait/landscape), 13MP camera with privacy shutter, 8-mic far-field array, stereo speakers
 - Android 9 (Pie), Chrome 86.0.4240.198, security patch 2019-08-01
 - Bootloader locked, ADB disabled, no volume-down button, no public unlock tools
 - 64 partitions (19 A/B pairs), system-as-root, dm-verity, SELinux enforcing
