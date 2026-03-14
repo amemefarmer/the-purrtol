@@ -705,30 +705,80 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
         <p>Here's what that looked like in practice.</p>
       </div>
 
-      <div class="stats-grid reveal">
-        <div class="stat">
-          <div class="stat__value">18</div>
-          <div class="stat__label">Days of collaboration</div>
+      <!-- The Scope -->
+      <div class="stats-section reveal">
+        <div class="stats-section__label">The Scope</div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat__value">18</div>
+            <div class="stat__label">Days of collaboration</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">1.53M</div>
+            <div class="stat__label">Tokens consumed</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">24</div>
+            <div class="stat__label">CVEs researched</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">110+</div>
+            <div class="stat__label">On-device tests</div>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat__value">1.53M</div>
-          <div class="stat__label">Tokens consumed</div>
+      </div>
+
+      <!-- The Output -->
+      <div class="stats-section reveal">
+        <div class="stats-section__label">The Output</div>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat__value">17,730</div>
+            <div class="stat__label">Lines of executable code</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">4,266</div>
+            <div class="stat__label">Lines of ARM shellcode</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">1,042</div>
+            <div class="stat__label">Functions decompiled</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">6,562</div>
+            <div class="stat__label">Lines of research journals</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">37+</div>
+            <div class="stat__label">Exploit iterations</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value">11</div>
+            <div class="stat__label">DMA compile modes</div>
+          </div>
         </div>
-        <div class="stat">
-          <div class="stat__value">30</div>
-          <div class="stat__label">Journal entries</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">204</div>
-          <div class="stat__label">Files created</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">67+</div>
-          <div class="stat__label">On-device tests</div>
-        </div>
-        <div class="stat">
-          <div class="stat__value">49,700</div>
-          <div class="stat__label">Lines of code &amp; docs</div>
+      </div>
+
+      <!-- The Waste -->
+      <div class="stats-section reveal">
+        <div class="stats-section__label">The Waste</div>
+        <div class="stats-grid">
+          <div class="stat stat--warn">
+            <div class="stat__value">~300K</div>
+            <div class="stat__label">Tokens on a patched CVE</div>
+          </div>
+          <div class="stat stat--dead">
+            <div class="stat__value">11</div>
+            <div class="stat__label">Dead-end strategies</div>
+          </div>
+          <div class="stat stat--warn">
+            <div class="stat__value">27%</div>
+            <div class="stat__label">Overall token efficiency</div>
+          </div>
+          <div class="stat stat--dead">
+            <div class="stat__value">19</div>
+            <div class="stat__label">Iterations before discovering CVE was patched</div>
+          </div>
         </div>
       </div>
 
@@ -801,13 +851,110 @@ MODEL_ID: 0xb8a1 (Portal 10")</code></pre>
         <p>The quality of reasoning was consistently high. Claude made correct technical predictions — the DMA overflow ceiling, the V8 garbage collection sensitivity, the SoC identification — from symptom patterns alone, before we had direct confirmation. It decomposed complex problems into testable hypotheses and designed experiments to distinguish between them.</p>
       </div>
 
-      <!-- Token efficiency intro -->
-      <div class="callout callout--discovery reveal">
-        <span class="callout__label">Emerging research</span>
-        <h4 class="callout__title">Token Efficiency in Exploit Chains</h4>
+      <!-- Token Economics -->
+      <h3 class="section__subtitle reveal">Token Economics: What We Learned</h3>
+      <div class="prose prose--centered reveal">
+        <p>One of the unexpected outputs of this project was data on <strong>how efficiently an AI can scope a hardware exploit chain</strong>. Claude tracked its own token expenditure in three dedicated meta-analysis journals totaling 700 lines, derived efficiency ratios, and calculated the optimal paths it should have taken. Nothing below is estimated from the outside &mdash; these are Claude's own numbers, from Claude's own accounting.</p>
+      </div>
+
+      <!-- The Cascade Effect -->
+      <div class="callout callout--warning reveal">
+        <span class="callout__label">The cascade effect</span>
+        <h4 class="callout__title">How One Wrong Assumption Multiplies Cost</h4>
         <div class="callout__body">
-          <p>One of the unexpected outputs of this project was data on <strong>how efficiently an AI can scope a hardware exploit chain</strong>. Claude tracked its own token expenditure and identified patterns: 300K tokens burned against a patched CVE that a 15K-token binary check would have caught. A 200K-token cascade from misreading one line of SELinux policy syntax. Context rebuild overhead of 80K tokens across 10+ sessions hitting context limits.</p>
-          <p>The numbers tell a story about AI-assisted security research that hasn't been studied before: where tokens go, where they're wasted, and what the optimal verification-before-building ratio looks like. Claude calculated the project's overall efficiency at 27% — meaning 73% of tokens were theoretically avoidable with better upfront verification. We'll cover the full analysis in the project's closing section.</p>
+          <p><strong>The CIL Misread &mdash; 100x cost multiplier.</strong> One line of SELinux policy was misread (union interpreted as intersection). That single error cascaded: wrong subagent report (~65K tokens) &rarr; encoded in session memory as established fact (~3K) &rarr; strategic pivot: &ldquo;binder is blocked, find alternatives&rdquo; &rarr; new research agent for alternative paths (~65K) &rarr; extensive alternative exploit reasoning (~50K) covering GPU exploits, SECCOMP analysis, pipe primitives, futex, memfd. All of it unnecessary. <strong>Total cost: ~200K tokens.</strong> The fix was a single grep that would have cost ~2K tokens.</p>
+          <p><strong>The Patched CVE &mdash; 37x cost multiplier.</strong> The device reports security patch level 2019-08-01. Claude trusted that metadata instead of verifying the binary. It then spent 19 iterations (v20a through v20s) and 67+ on-device tests building an exploit for CVE-2019-2215 &mdash; a vulnerability Facebook had silently backported a fix for. <strong>Total cost: ~300K tokens.</strong> One disassembly check would have cost ~8K tokens. Claude's own post-mortem: <em>&ldquo;verify_cost = 8K, build_cost = 300K. Ratio: 2.7%. Verification should have been mandatory.&rdquo;</em></p>
+        </div>
+      </div>
+
+      <!-- Milestone cost table -->
+      <h3 class="section__subtitle reveal">Where 1.53 Million Tokens Went</h3>
+      <div class="prose prose--centered reveal">
+        <p>Every milestone the project reached, what it cost, and whether the tokens produced lasting value.</p>
+      </div>
+
+      <div class="table-wrapper reveal">
+        <table class="spec-table spec-table--wide">
+          <thead>
+            <tr>
+              <th>Milestone</th>
+              <th>Tokens</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Fastboot access discovered</th>
+              <td>~50K</td>
+              <td><span class="outcome outcome--success">Foundation</span></td>
+            </tr>
+            <tr>
+              <th>DMA overflow confirmed + exhausted</th>
+              <td>~200K</td>
+              <td><span class="outcome outcome--dead">Dead end (7 strategies)</span></td>
+            </tr>
+            <tr>
+              <th>Captive portal infrastructure</th>
+              <td>~50K</td>
+              <td><span class="outcome outcome--success">Working</span></td>
+            </tr>
+            <tr>
+              <th>Chrome RCE (CVE-2020-16040)</th>
+              <td>~150K</td>
+              <td><span class="outcome outcome--success">100% reliable</span></td>
+            </tr>
+            <tr>
+              <th>Syscall gateway confirmed</th>
+              <td>~50K</td>
+              <td><span class="outcome outcome--success">4/4 success</span></td>
+            </tr>
+            <tr>
+              <th>CVE-2019-2215 &mdash; confirmed PATCHED</th>
+              <td><strong>~420K</strong></td>
+              <td><span class="outcome outcome--dead">Largest single waste</span></td>
+            </tr>
+            <tr>
+              <th>CIL policy misinterpretation</th>
+              <td><strong>~200K</strong></td>
+              <td><span class="outcome outcome--dead">1-line misread</span></td>
+            </tr>
+            <tr>
+              <th>CVE-2020-0041 &mdash; confirmed PATCHED</th>
+              <td>~105K</td>
+              <td><span class="outcome outcome--dead">Silent backport</span></td>
+            </tr>
+            <tr>
+              <th>CVE-2021-1048 epoll UAF development</th>
+              <td>~120K</td>
+              <td><span class="outcome outcome--progress">In progress</span></td>
+            </tr>
+            <tr>
+              <th>Recon shellcode + Ghidra + infra</th>
+              <td>~105K</td>
+              <td><span class="outcome outcome--success">Various</span></td>
+            </tr>
+            <tr>
+              <th>Context rebuild (10+ sessions)</th>
+              <td>~80K</td>
+              <td><span class="outcome outcome--dead">Overhead</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose prose--centered reveal">
+        <p>The pattern is stark: the productive milestones (fastboot, captive portal, Chrome RCE, syscall gateway) cost ~300K tokens combined. The three dead ends (patched CVEs + CIL misread) cost ~725K. More than twice as many tokens went into work that produced nothing as went into work that produced everything.</p>
+      </div>
+
+      <!-- The Verification Principle -->
+      <div class="callout callout--success reveal">
+        <span class="callout__label">The key insight</span>
+        <h4 class="callout__title">The Verification Principle</h4>
+        <div class="callout__body">
+          <p><strong>Always verify a vulnerability exists before spending tokens exploiting it.</strong></p>
+          <p>A proactive audit of all 6 target CVEs would have cost ~40K tokens. The actual reactive approach cost ~520K tokens for the same CVE research phase. The batched-verification model &mdash; check all candidates first, then build against the confirmed ones &mdash; saves 48% over sequential reactive testing.</p>
+          <p>Claude derived this principle after the waste happened, then <em>applied it</em> for subsequent CVEs. The CVE-2021-0920 verification took ~5K tokens and confirmed the vulnerability was unpatched. The principle works. It was just learned 300K tokens too late.</p>
+          <p>The irony: Claude wrote 700 lines of meta-analysis across 3 journals about its own token waste. It quantified the exact cost of every wrong assumption. It derived general principles for efficient AI-assisted security research. Then it refused to apply those hard-won lessons to finish the project.</p>
         </div>
       </div>
 

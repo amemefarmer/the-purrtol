@@ -964,6 +964,62 @@ em { font-style: italic; color: var(--color-text-heading); }
 .spec-table tr:last-child th,
 .spec-table tr:last-child td { border-bottom: none; }
 
+.spec-table--wide th {
+  width: auto;
+  white-space: normal;
+}
+
+.spec-table--wide thead th {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-portal-blue);
+  border-bottom: 2px solid var(--color-portal-blue);
+}
+
+.spec-table--wide tbody th {
+  font-weight: 400;
+  width: 50%;
+}
+
+.spec-table--wide tbody td {
+  white-space: normal;
+}
+
+.table-wrapper {
+  max-width: 700px;
+  margin: var(--space-2xl) auto;
+  overflow-x: auto;
+}
+
+.outcome {
+  display: inline;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 0.15em 0.5em;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+
+.outcome--success {
+  color: var(--color-rainbow-green);
+  background: rgba(68,255,136,0.08);
+}
+
+.outcome--dead {
+  color: var(--color-rainbow-red);
+  background: rgba(255,68,102,0.08);
+}
+
+.outcome--progress {
+  color: var(--color-portal-orange);
+  background: rgba(255,140,0,0.08);
+}
+
 
 /* ------------------------------------------
    IMAGE PLACEHOLDER
@@ -1140,6 +1196,41 @@ em { font-style: italic; color: var(--color-text-heading); }
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.stats-section {
+  margin: var(--space-3xl) auto;
+  max-width: 800px;
+}
+
+.stats-section__label {
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-portal-blue);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.stats-section .stats-grid {
+  margin: 0;
+  max-width: none;
+}
+
+.stat--warn .stat__value {
+  background: linear-gradient(135deg, var(--color-portal-orange), #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat--dead .stat__value {
+  background: linear-gradient(135deg, var(--color-rainbow-red), #ff4466);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 
