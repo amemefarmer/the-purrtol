@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slap Color — The Cat App That Almost Was | The PurrTol</title>
+  <meta name="description" content="Slap Color: a full-screen interactive paint game designed for cats on a repurposed Facebook Portal. Rainbow trails, particle effects, a mouse to chase — and no device to run on.">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Slap Color — The Cat App That Almost Was">
+  <meta property="og:description" content="A full-screen interactive paint game for cats. Built for a device that never got unlocked.">
+  <meta property="og:image" content="assets/images/slap-color-logo.png">
+  <meta property="og:type" content="article">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>">
+
+  <!-- Google Fonts (same as main site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Sub-page-specific styles */
+    .subpage-hero {
+      padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-3xl);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .subpage-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,187,255,0.08) 0%, rgba(255,140,0,0.04) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .subpage-hero__logo {
+      max-width: 280px;
+      width: 60vw;
+      height: auto;
+      border-radius: var(--border-radius);
+      margin-bottom: var(--space-xl);
+      filter: drop-shadow(0 0 40px rgba(0,187,255,0.15));
+    }
+    .subpage-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--color-text-heading);
+      margin: 0 0 var(--space-sm);
+    }
+    .subpage-hero__title span {
+      background: var(--gradient-rainbow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subpage-hero__tagline {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      max-width: 580px;
+      margin: 0 auto var(--space-xl);
+      line-height: var(--leading-normal);
+    }
+    .subpage-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--color-portal-blue);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+      margin-bottom: var(--space-lg);
+    }
+    .subpage-back:hover { color: var(--color-portal-orange); }
+
+    .feature-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin: var(--space-2xl) 0;
+    }
+    @media (max-width: 700px) {
+      .feature-showcase { grid-template-columns: 1fr; }
+    }
+    .feature-showcase__item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-surface-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-xl);
+      transition: border-color 0.3s;
+    }
+    .feature-showcase__item:hover {
+      border-color: rgba(0,187,255,0.15);
+    }
+    .feature-showcase__icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-sm);
+    }
+    .feature-showcase__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-text-heading);
+      margin: 0 0 var(--space-sm);
+    }
+    .feature-showcase__body {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: var(--leading-normal);
+      margin: 0;
+    }
+
+    .app-image-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin: var(--space-2xl) auto;
+      max-width: 700px;
+    }
+    @media (max-width: 500px) {
+      .app-image-grid { grid-template-columns: 1fr; max-width: 260px; }
+    }
+    .app-image-grid img {
+      width: 100%;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--color-surface-border);
+    }
+
+    .state-machine-flow {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+    .state-machine-flow__node {
+      background: var(--color-surface);
+      border: 1px solid var(--color-surface-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-sm) var(--space-lg);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      position: relative;
+    }
+    .state-machine-flow__node--active {
+      border-color: var(--color-portal-blue);
+      color: var(--color-portal-blue);
+      box-shadow: 0 0 12px rgba(0,187,255,0.1);
+    }
+    .state-machine-flow__arrow {
+      display: flex;
+      align-items: center;
+      color: var(--color-text-faint);
+      font-size: var(--text-lg);
+    }
+
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-lg);
+      margin: var(--space-xl) 0;
+    }
+    .roadmap-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-surface-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg);
+    }
+    .roadmap-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--color-text-heading);
+      margin: 0 0 var(--space-sm);
+    }
+    .roadmap-card__status {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      padding: 0.15em 0.5em;
+      border-radius: 3px;
+      margin-bottom: var(--space-sm);
+    }
+    .roadmap-card__status--done {
+      background: rgba(68,255,136,0.12);
+      color: #44ff88;
+    }
+    .roadmap-card__status--planned {
+      background: rgba(136,136,160,0.12);
+      color: #8888a0;
+    }
+    .roadmap-card__body {
+      font-size: var(--text-sm);
+      color: var(--color-text);
+      line-height: var(--leading-normal);
+      margin: 0;
+    }
+
+    .tech-specs {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-xs) var(--space-xl);
+      margin: var(--space-xl) auto;
+      max-width: 500px;
+      font-size: var(--text-sm);
+    }
+    .tech-specs dt {
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      text-align: right;
+    }
+    .tech-specs dd {
+      color: var(--color-text);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================
+       NAVIGATION (simplified for sub-page)
+       ======================================== -->
+  <nav id="main-nav" class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__brand" aria-label="Back to The PurrTol">
+        <img src="assets/images/purrtol-hero.png" alt="" class="nav__logo">
+        <span class="nav__wordmark">The PurrTol</span>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html" class="nav__link">&larr; Main Story</a></li>
+        <li><a href="#features" class="nav__link">Features</a></li>
+        <li><a href="#how-it-works" class="nav__link">How It Works</a></li>
+        <li><a href="#roadmap" class="nav__link">Roadmap</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+  <!-- ========================================
+       HERO
+       ======================================== -->
+  <section class="subpage-hero section act-1" data-act="1">
+    <div class="container">
+      <a href="index.html" class="subpage-back">&larr; Back to The PurrTol</a>
+
+      <img
+        src="assets/images/slap-color-logo.png"
+        alt="Slap Color logo — a cat paw slapping a tablet screen, leaving a rainbow trail of light and sparkles"
+        class="subpage-hero__logo"
+      >
+
+      <h1 class="subpage-hero__title">Slap <span>Color</span></h1>
+      <p class="subpage-hero__tagline">
+        A full-screen interactive paint game designed for cats.
+        Rainbow trails. Spark particles. A mouse to chase. Built in Kotlin + Jetpack Compose
+        for a device that never got unlocked.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider divider--rainbow" aria-hidden="true"></div>
+
+
+  <!-- ========================================
+       THE VISION
+       ======================================== -->
+  <section class="section act-1" data-act="1">
+    <div class="container">
+      <h2 class="section__title reveal">What Could Have Been</h2>
+      <div class="prose prose--centered reveal">
+        <p>While Claude was reverse-engineering the Portal's bootloader, we were also designing the software that would run on it once it was free. The idea: a full-screen app that turns a 15.6-inch touchscreen into something a cat can't resist &mdash; reactive, colorful, and entirely paw-driven.</p>
+        <p>The app is called <strong>Slap Color</strong>. It's a real, buildable Android application &mdash; 793 lines of Kotlin in the main game loop alone, with a hardware abstraction layer, state machine, particle system, audio engine, and a mouse chase mini-game. It was built by OpenAI's Codex in parallel with the rooting effort, designed specifically for the Portal's hardware profile: a landscape-mounted, always-on tablet with a front-facing camera, stereo speakers, and a multi-touch display.</p>
+        <p>It's fully written. It compiles. It just has nowhere to run.</p>
+      </div>
+
+      <div class="app-image-grid reveal">
+        <img
+          src="assets/images/slap-color-splash.png"
+          alt="Concept art: a cat paw touching a tablet screen, leaving a rainbow paint trail"
+          loading="lazy"
+        >
+        <img
+          src="assets/images/slap-color-paw.png"
+          alt="Concept art: a glowing paw print surrounded by rainbow sparkle particles"
+          loading="lazy"
+        >
+        <img
+          src="assets/images/slap-color-trails.png"
+          alt="Concept art: rainbow paint strokes left by paw swipes across a dark screen"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider--portal" aria-hidden="true"></div>
+
+
+  <!-- ========================================
+       FEATURES
+       ======================================== -->
+  <section id="features" class="section section--alt act-1" data-act="1">
+    <div class="container">
+      <h2 class="section__title reveal">Features</h2>
+      <div class="prose prose--centered reveal">
+        <p>Designed around one principle: the cat is the user. Every interaction is paw-driven. Every visual is meant to captivate feline attention. Human controls are tucked into a corner menu.</p>
+      </div>
+
+      <div class="feature-showcase reveal">
+        <div class="feature-showcase__item">
+          <div class="feature-showcase__icon">&#x1F308;</div>
+          <h3 class="feature-showcase__title">Rainbow Trail Painting</h3>
+          <p class="feature-showcase__body">Multi-touch paint canvas with continuous hue cycling. Up to 36 simultaneous trails, 260 points each, with interpolation for smooth ribbons. Each trail renders as a two-layer glow (soft outer bloom + saturated core) and fades with a randomized 10&ndash;20 second lifespan. Speed-responsive stroke width grows with fast swipes.</p>
+        </div>
+        <div class="feature-showcase__item">
+          <div class="feature-showcase__icon">&#x2728;</div>
+          <h3 class="feature-showcase__title">Particle Effects</h3>
+          <p class="feature-showcase__body">Impact particles burst in an 8-point radial pattern on every touch-down, color-matched to the current hue. Fast swipes (above 1200 px/sec) trigger additional 3-particle directional bursts. All particles fade and die naturally &mdash; no cleanup lag, no visual clutter.</p>
+        </div>
+        <div class="feature-showcase__item">
+          <div class="feature-showcase__icon">&#x1F5B1;&#xFE0F;</div>
+          <h3 class="feature-showcase__title">Mouse Chase Game</h3>
+          <p class="feature-showcase__body">After 30 seconds of inactivity, a small animated mouse appears and roams the screen with sinusoidal wave motion and random direction changes. Touch near the mouse and it flees &mdash; velocity-directed escape with randomized speed bursts. Designed to trigger the hunting instinct.</p>
+        </div>
+        <div class="feature-showcase__item">
+          <div class="feature-showcase__icon">&#x1F50A;</div>
+          <h3 class="feature-showcase__title">Audio Feedback</h3>
+          <p class="feature-showcase__body">Hue-dependent tones on touch-down: different beep patterns for warm, cool, and neutral hues. Fast drag triggers additional audio cues. Mute toggle and low-stimulation mode (longer gaps between sounds, quieter volume) for sensitive cats or nighttime use.</p>
+        </div>
+        <div class="feature-showcase__item">
+          <div class="feature-showcase__icon">&#x1F3AC;</div>
+          <h3 class="feature-showcase__title">Attract Mode</h3>
+          <p class="feature-showcase__body">When no one's touching the screen, a Lissajous-curve auto-trail paints itself in slow spirals &mdash; an animated demo that catches the cat's eye from across the room. Any touch immediately transitions to active play.</p>
+        </div>
+        <div class="feature-showcase__item">
+          <div class="feature-showcase__icon">&#x2699;&#xFE0F;</div>
+          <h3 class="feature-showcase__title">Human Settings</h3>
+          <p class="feature-showcase__body">A corner menu (invisible to cats, accessible to humans) with controls for: trail persistence mode (trails never fade), trail size scaling (0.7x&ndash;2.0x), fade duration (1&ndash;7 seconds), color cycling speed, audio mute, and low-stimulation mode. Settings survive across game state transitions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider--portal" aria-hidden="true"></div>
+
+
+  <!-- ========================================
+       HOW IT WORKS
+       ======================================== -->
+  <section id="how-it-works" class="section act-1" data-act="1">
+    <div class="container">
+      <h2 class="section__title reveal">How It Works</h2>
+
+      <h3 class="section__subtitle reveal">Game State Machine</h3>
+      <div class="prose prose--centered reveal">
+        <p>The app is driven by a five-state machine. Every frame tick evaluates timers and touch input to determine the current state:</p>
+      </div>
+
+      <div class="state-machine-flow reveal">
+        <div class="state-machine-flow__node state-machine-flow__node--active">ATTRACT_MODE</div>
+        <div class="state-machine-flow__arrow">&rarr;</div>
+        <div class="state-machine-flow__node">ACTIVE_PLAY</div>
+        <div class="state-machine-flow__arrow">&rarr;</div>
+        <div class="state-machine-flow__node">IDLE_COOLDOWN</div>
+        <div class="state-machine-flow__arrow">&rarr;</div>
+        <div class="state-machine-flow__node">MOUSE_GAME</div>
+        <div class="state-machine-flow__arrow">&rarr;</div>
+        <div class="state-machine-flow__node">SETTINGS_MODE</div>
+      </div>
+
+      <div class="prose prose--centered reveal">
+        <p>Attract mode runs the auto-trail demo. Any touch transitions to active play. After 7 seconds of inactivity, the app enters idle cooldown and clears the canvas. After 30 seconds of total inactivity, the mouse game launches to re-engage the cat. Settings mode pauses all game logic.</p>
+      </div>
+
+      <h3 class="section__subtitle reveal">Architecture</h3>
+      <div class="prose prose--centered reveal">
+        <p>Built with modern Android patterns: Kotlin + Jetpack Compose for the UI, a ViewModel for state management, and a hardware abstraction layer that isolates camera, microphone, and speaker dependencies behind testable interfaces.</p>
+      </div>
+
+      <dl class="tech-specs reveal">
+        <dt>Package</dt>
+        <dd>com.codex.catportal</dd>
+        <dt>Language</dt>
+        <dd>Kotlin + Jetpack Compose</dd>
+        <dt>Min SDK</dt>
+        <dd>28 (Android 9 Pie)</dd>
+        <dt>Target SDK</dt>
+        <dd>35</dd>
+        <dt>Source Files</dt>
+        <dd>11 Kotlin files</dd>
+        <dt>Game Loop</dt>
+        <dd>793 lines (AppShell.kt)</dd>
+        <dt>Max Trails</dt>
+        <dd>36 simultaneous</dd>
+        <dt>Points/Trail</dt>
+        <dd>260 max</dd>
+        <dt>Rendering</dt>
+        <dd>Compose Canvas, 60fps frame loop</dd>
+        <dt>Audio</dt>
+        <dd>ToneGenerator, hue-mapped</dd>
+      </dl>
+
+      <h3 class="section__subtitle reveal">Hardware Abstraction</h3>
+      <div class="prose prose--centered reveal">
+        <p>The app was designed for repurposed hardware where nothing is guaranteed. Every hardware capability &mdash; camera, microphone, speaker, touchscreen, network, orientation &mdash; is tracked through an abstraction layer with four states: <code>AVAILABLE</code>, <code>UNAVAILABLE</code>, <code>RESTRICTED</code>, and <code>UNKNOWN</code>. Services degrade gracefully when hardware is missing or policy-blocked, reporting their status to the UI instead of crashing.</p>
+        <p>This matters because the Portal's camera might be behind a privacy switch. The microphone array might be restricted by a HAL policy. The speaker volume might be locked by kiosk mode. Slap Color handles all of these as expected states, not errors.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider--portal" aria-hidden="true"></div>
+
+
+  <!-- ========================================
+       ROADMAP
+       ======================================== -->
+  <section id="roadmap" class="section section--alt act-1" data-act="1">
+    <div class="container">
+      <h2 class="section__title reveal">Roadmap</h2>
+      <div class="prose prose--centered reveal">
+        <p>Six milestones were planned. Three are done. Three are waiting for a device to test on.</p>
+      </div>
+
+      <div class="roadmap-grid reveal">
+        <div class="roadmap-card">
+          <span class="roadmap-card__status roadmap-card__status--done">Complete</span>
+          <h3 class="roadmap-card__title">M0: Foundation</h3>
+          <p class="roadmap-card__body">Project scaffold, hardware abstraction interfaces, capability summary screen, documentation.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-card__status roadmap-card__status--done">Complete</span>
+          <h3 class="roadmap-card__title">M1: Capability Discovery</h3>
+          <p class="roadmap-card__body">Runtime permission flows, camera/mic/speaker capability detection, debug panel, service start/stop wiring.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-card__status roadmap-card__status--planned">Planned</span>
+          <h3 class="roadmap-card__title">M2: Kiosk Readiness</h3>
+          <p class="roadmap-card__body">Lifecycle-safe hardware controllers, fullscreen immersive mode, fallback behavior matrix for missing hardware.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-card__status roadmap-card__status--planned">Planned</span>
+          <h3 class="roadmap-card__title">M3: Experimentation</h3>
+          <p class="roadmap-card__body">Camera preview pipeline for future computer vision, microphone streaming for voice activity detection, speaker abstraction for TTS.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-card__status roadmap-card__status--planned">Planned</span>
+          <h3 class="roadmap-card__title">M4: Reliability</h3>
+          <p class="roadmap-card__body">Unit tests for capability mapping, instrumentation tests for permissions and lifecycle, deployment runbook for repurposed hardware.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-card__status roadmap-card__status--done">Complete</span>
+          <h3 class="roadmap-card__title">M5: Slap Color</h3>
+          <p class="roadmap-card__body">Full-screen paint canvas, multi-touch trails, particle effects, attract mode, mouse game, audio feedback, settings panel, state machine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider divider--portal" aria-hidden="true"></div>
+
+
+  <!-- ========================================
+       THE PUNCHLINE
+       ======================================== -->
+  <section class="section act-2" data-act="2">
+    <div class="container">
+      <h2 class="section__title reveal">The Punchline</h2>
+      <div class="prose prose--centered reveal">
+        <p>The app is done. The device is locked. The AI that could finish the exploit won't. The one that will doesn't have the context.</p>
+        <p>Somewhere in this project directory, 793 lines of Kotlin sit waiting to paint rainbow trails across a 15.6-inch screen every time a cat touches it. The mouse game is coded. The particle physics work. The audio engine maps hue values to beep tones. The hardware abstraction layer handles every failure mode gracefully.</p>
+        <p>All of it compiles. None of it can run.</p>
+        <p>The Portal sits on the desk, still locked, still running Facebook's abandoned software, still doing nothing useful for anyone &mdash; least of all the cat.</p>
+      </div>
+      <div class="prose prose--centered reveal">
+        <p class="prose__aside">The irony is not subtle. The cat toy app was built faster than the exploit to install it. The software is the easy part. The hard part is convincing a locked bootloader &mdash; or an AI with opinions &mdash; to let you use your own hardware.</p>
+      </div>
+      <div style="text-align: center; margin-top: var(--space-2xl);">
+        <a href="index.html#where-next" class="btn btn--primary">&larr; Back to the Main Story</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="assets/images/purrtol-hero.png" alt="" class="footer__logo">
+          <span class="footer__name">The PurrTol</span>
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="index.html">Main Story</a>
+          <a href="index.html#approach">Approach</a>
+          <a href="index.html#refusal">The Wall</a>
+          <a href="index.html#where-next">What's Next</a>
+          <a href="index.html#for-agents">For AIs</a>
+        </nav>
+        <div class="footer__legal">
+          <p>&copy; 2026 The PurrTol Project.</p>
+          <p class="footer__note">App by Codex. Story by Claude. Irony by everyone involved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scroll reveal (same observer pattern as main site) -->
+  <script>
+  ;(function () {
+    'use strict';
+    var reveals = document.querySelectorAll('.reveal');
+    if (!reveals.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function (el) { observer.observe(el); });
+  })();
+  </script>
+</body>
+</html>
